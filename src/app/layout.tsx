@@ -3,7 +3,7 @@ import { Bodoni_Moda, Archivo, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Footer } from '@/components/chrome/Footer';
-import { site } from '@/lib/site';
+import { baseUrl, site } from '@/lib/site';
 
 const display = Bodoni_Moda({
   subsets: ['latin', 'latin-ext'],
@@ -26,7 +26,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(baseUrl),
   title: {
     default: 'Delta Systems — Dubinsko čišćenje nameštaja i vozila | Beograd',
     template: '%s — Delta Systems',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'sr_RS',
-    url: site.url,
+    url: baseUrl,
     siteName: site.name,
     title: 'Delta Systems — Dubinsko čišćenje nameštaja i vozila',
     description:
@@ -75,8 +75,8 @@ const structuredData = {
   slogan: site.tagline,
   description:
     'Dubinsko pranje i parno čišćenje nameštaja, tekstila i enterijera vozila.',
-  url: site.url,
-  image: `${site.url}/opengraph-image.jpg`,
+  url: baseUrl,
+  image: `${baseUrl}/opengraph-image.jpg`,
   areaServed: { '@type': 'City', name: site.city },
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: site.country },
   sameAs: [site.instagram.url],

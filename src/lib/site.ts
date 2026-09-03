@@ -27,6 +27,21 @@ export const site = {
   address: null as string | null,
 };
 
+/**
+ * Osnovna adresa za metapodatke, sitemap i structured data.
+ *
+ * Redosled: NEXT_PUBLIC_SITE_URL → Vercel produkcijski domen → site.url.
+ * Dok domen nije prebačen, Open Graph i canonical pokazuju na Vercel adresu;
+ * kada se domen poveže, Vercel sam prijavljuje deltasystems.rs.
+ */
+export const baseUrl = (() => {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit.replace(/\/$/, '');
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercel) return `https://${vercel}`;
+  return site.url;
+})();
+
 export type NavItem = {
   code: string;
   label: string;
