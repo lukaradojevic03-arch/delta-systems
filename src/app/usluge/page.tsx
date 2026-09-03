@@ -19,21 +19,18 @@ const AMBIENT = [
   {
     src: '/media/amb-dnevna-siva.jpg',
     alt: 'Dnevna soba sa tapaciranom garniturom',
-    k: 'A.01',
     t: 'Stan i kuća',
     s: 'Garniture, fotelje, tepisi',
   },
   {
     src: '/media/amb-dusek.jpg',
     alt: 'Spavaća soba sa dušekom i tapaciranim uzglavljem',
-    k: 'A.02',
     t: 'Spavaći deo',
     s: 'Dušeci, uzglavlja, tekstil',
   },
   {
     src: '/media/amb-sediste.jpg',
     alt: 'Tapacirano sedište iz blizine',
-    k: 'A.03',
     t: 'Enterijer vozila',
     s: 'Sedišta, patosnice, tapacirung',
   },
@@ -43,7 +40,6 @@ export default function UslugePage() {
   return (
     <>
       <PageHeader
-        code="02"
         eyebrow="Usluge"
         lines={['Dve celine.', 'Jedan metod.']}
         titleSize="text-[clamp(1.89rem,12.5cqi,5.85rem)]"
@@ -53,11 +49,6 @@ export default function UslugePage() {
             standardu. Redosled tretmana je isti, menja se samo materijal.
           </>
         }
-        meta={[
-          { k: 'Celine', v: 'Nameštaj / Vozila' },
-          { k: 'Metod', v: '4 koraka' },
-          { k: 'Područje', v: 'Beograd' },
-        ]}
       />
 
       <section className="edge pb-12 md:pb-16">
@@ -68,7 +59,7 @@ export default function UslugePage() {
       <section className="relative bg-azure-900">
         <div className="grid sm:grid-cols-3">
           {AMBIENT.map((x, i) => (
-            <Reveal key={x.k} delay={i * 0.08} className="cq group relative">
+            <Reveal key={x.t} delay={i * 0.08} className="cq group relative">
               <div className="duotone relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={x.src}
@@ -80,8 +71,7 @@ export default function UslugePage() {
                 />
               </div>
               <div className="absolute inset-x-0 bottom-0 z-[4] p-5">
-                <span className="t-meta-sm block text-paper/60">{x.k}</span>
-                <span className="t-display mt-1.5 block text-[clamp(1.15rem,5.4cqi,1.9rem)] text-paper">
+                <span className="t-display block text-[clamp(1.15rem,5.4cqi,1.9rem)] text-paper">
                   {x.t}
                 </span>
                 <span className="t-meta-sm mt-1.5 block text-paper/70">{x.s}</span>
@@ -96,7 +86,7 @@ export default function UslugePage() {
         <div className="edge py-14 md:py-20">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="cq md:col-span-5">
-              <SectionLabel code="02.1">Razlika</SectionLabel>
+              <SectionLabel>Razlika</SectionLabel>
               <LineReveal
                 as="h2"
                 delay={0.08}
@@ -122,7 +112,7 @@ export default function UslugePage() {
       {/* Matrica površina · tehnički pregled */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-20">
-          <SectionLabel code="02.3" invert>
+          <SectionLabel invert>
             Površina → metod
           </SectionLabel>
 
@@ -159,7 +149,7 @@ export default function UslugePage() {
                 {services.map((s, i) => (
                   <Reveal key={s.slug} delay={i * 0.12}>
                     <p className="t-meta text-paper/55">
-                      {s.code} · {s.title}
+                      {s.title}
                     </p>
                     <MetaList
                       invert
@@ -184,8 +174,8 @@ export default function UslugePage() {
       <section className="bg-paper">
         <div className="edge py-14 md:py-20">
           <div className="grid gap-8 md:grid-cols-12">
-            <div className="cq md:col-span-4">
-              <SectionLabel code="02.4">Česta pitanja</SectionLabel>
+            <div className="cq md:col-span-4 md:sticky md:top-28 md:self-start">
+              <SectionLabel>Česta pitanja</SectionLabel>
               <LineReveal
                 as="h2"
                 delay={0.08}
@@ -194,14 +184,9 @@ export default function UslugePage() {
               />
               <Reveal delay={0.18} className="mt-6">
                 <p className="t-body max-w-[32ch] text-slate pretty">
-                  Ako nema odgovora koji vam treba, pitajte direktno, javljamo
-                  se na isti kanal na koji ste pisali.
+                  Ako nema odgovora koji vam treba, pitanje se rešava u jednoj
+                  poruci. Javljamo se na isti kanal na koji ste pisali.
                 </p>
-              </Reveal>
-              <Reveal delay={0.24} className="mt-7">
-                <Link href="/kontakt" className="btn btn-blue shear-l">
-                  Pošalji upit
-                </Link>
               </Reveal>
             </div>
 

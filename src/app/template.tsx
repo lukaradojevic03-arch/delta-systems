@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { nav } from '@/lib/site';
 import { EASE, EASE_SHEAR } from '@/lib/cn';
+import { usePerf } from '@/components/perf/Perf';
 
 /**
  * Prelaz između stranica.
@@ -15,6 +16,7 @@ import { EASE, EASE_SHEAR } from '@/lib/cn';
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const reduce = useReducedMotion();
+  const tier = usePerf();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -24,8 +26,17 @@ export default function Template({ children }: { children: React.ReactNode }) {
     nav.find((n) => (n.href === '/' ? pathname === '/' : pathname.startsWith(n.href))) ??
     null;
 
-  if (reduce) {
-    return <div key={pathname}>{children}</div>;
+  if (reduce || tier === 'low') {
+    return (
+      <motion.div
+        key={pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.28 }}
+      >
+        {children}
+      </motion.div>
+    );
   }
 
   return (
@@ -52,7 +63,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: 0.6, times: [0, 0.4, 1], ease: 'linear' }}
           >
-            {entry ? `${entry.code} · ${entry.label}` : 'Delta Systems'}
+            {entry ? entry.label : 'Delta Systems'}
           </motion.span>
         </motion.div>
       </div>

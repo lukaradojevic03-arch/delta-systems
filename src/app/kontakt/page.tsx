@@ -16,7 +16,6 @@ export default function KontaktPage() {
   return (
     <>
       <PageHeader
-        code="06"
         eyebrow="Kontakt"
         lines={['Recite šta', 'treba očistiti.']}
         titleSize="text-[clamp(1.89rem,12.5cqi,5.85rem)]"
@@ -26,11 +25,6 @@ export default function KontaktPage() {
             se vidi materijal i tip zaprljanja.
           </>
         }
-        meta={[
-          { k: 'Koraka', v: '03' },
-          { k: 'Fotografije', v: 'Do 3 komada' },
-          { k: 'Područje', v: site.city },
-        ]}
       />
 
       <section className="edge pb-16 md:pb-24">

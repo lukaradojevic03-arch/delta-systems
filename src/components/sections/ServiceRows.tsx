@@ -46,19 +46,7 @@ export function ServiceRows({
               className="group relative block py-6 md:py-9"
             >
               <div className="grid items-center gap-6 md:grid-cols-12 md:gap-8">
-                <div className="md:col-span-1">
-                  <span
-                    className={cn(
-                      't-meta-sm transition-opacity duration-500',
-                      invert ? 'text-paper/45' : 'text-stone',
-                      dim && 'opacity-40',
-                    )}
-                  >
-                    {s.code}
-                  </span>
-                </div>
-
-                <div className="cq md:col-span-5">
+                <div className="cq md:col-span-5 md:col-start-1">
                   <h3
                     className={cn(
                       't-display text-[clamp(1.89rem,17.2cqi,4.68rem)] transition-all duration-[900ms] ease-delta',

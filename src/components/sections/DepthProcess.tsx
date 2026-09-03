@@ -68,9 +68,9 @@ export function DepthProcess() {
           </div>
 
           <div className="mt-8 border-t border-ink/12 pt-4">
-            <p className="t-meta-sm text-stone">Korak</p>
-            <p className="t-display mt-2 text-[2.4rem] leading-none">
-              {steps[active].code}
+            <p className="t-meta-sm text-slate">Trenutno</p>
+            <p className="t-display mt-2 text-[1.5rem] leading-tight text-ink">
+              {steps[active].title}
             </p>
           </div>
         </div>
@@ -87,9 +87,9 @@ export function DepthProcess() {
             transition={{ duration: 0.8, ease: EASE }}
             className="border-t border-ink/12 py-9 last:border-b md:py-14"
           >
-            <div className="flex items-baseline gap-5">
-              <span className="t-meta-sm w-8 shrink-0 text-stone">{s.code}</span>
-              <span className="t-meta-sm text-stone">{s.depth}</span>
+            <div className="flex items-center gap-3">
+              <span className="block h-px w-5 bg-azure-400" aria-hidden="true" />
+              <span className="t-meta-sm text-azure-700">{s.depth}</span>
             </div>
 
             <h3 className="t-display mt-4 text-[clamp(1.46rem,8.6cqi,3.12rem)]">

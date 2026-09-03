@@ -8,27 +8,21 @@ import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
 /* ------------------------------------------------------------------ */
 
 export function PageHeader({
-  code,
   eyebrow,
   lines,
   lede,
-  meta,
   /** cqi koeficijent naslova · bira se prema dužini najdužeg reda */
   titleSize = 'text-[clamp(1.89rem,13.3cqi,5.85rem)]',
 }: {
-  code: string;
   eyebrow: string;
   lines: string[];
   lede: ReactNode;
-  meta?: { k: string; v: string }[];
   titleSize?: string;
 }) {
   return (
     <header className="edge pb-9 pt-[104px] md:pb-14 md:pt-[136px]">
       <Reveal>
-        <p className="t-meta text-stone">
-          {code} · {eyebrow}
-        </p>
+        <p className="t-meta text-azure-600">{eyebrow}</p>
       </Reveal>
 
       <div className="mt-6 grid gap-8 md:mt-10 md:grid-cols-12 md:gap-10">
@@ -45,12 +39,6 @@ export function PageHeader({
           <Reveal delay={0.22}>
             <p className="t-lede max-w-[42ch] text-ink/80 pretty">{lede}</p>
           </Reveal>
-
-          {meta && (
-            <Reveal delay={0.3}>
-              <MetaList className="mt-8" items={meta} />
-            </Reveal>
-          )}
         </div>
       </div>
 
@@ -64,22 +52,24 @@ export function PageHeader({
 /* ------------------------------------------------------------------ */
 
 export function SectionLabel({
-  code,
   children,
   className,
   invert = false,
 }: {
-  code: string;
   children: ReactNode;
   className?: string;
   invert?: boolean;
 }) {
   return (
-    <Reveal className={cn('flex items-baseline gap-4', className)}>
-      <span className={cn('t-meta-sm', invert ? 'text-paper/45' : 'text-stone')}>
-        {code}
-      </span>
-      <span className={cn('t-meta', invert ? 'text-paper/80' : 'text-ink')}>
+    <Reveal className={cn('flex items-center gap-3', className)}>
+      <span
+        className={cn(
+          'block h-px w-6',
+          invert ? 'bg-azure-300/70' : 'bg-azure-400',
+        )}
+        aria-hidden="true"
+      />
+      <span className={cn('t-meta', invert ? 'text-paper/75' : 'text-azure-700')}>
         {children}
       </span>
     </Reveal>

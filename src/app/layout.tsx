@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Bodoni_Moda, Archivo } from 'next/font/google';
 import './globals.css';
+import { PerfProvider } from '@/components/perf/Perf';
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Footer } from '@/components/chrome/Footer';
 import { baseUrl, site } from '@/lib/site';
@@ -111,9 +112,11 @@ export default function RootLayout({
           Preskoči na sadržaj
         </a>
 
-        <SiteChrome />
-        <main id="sadrzaj">{children}</main>
-        <Footer />
+        <PerfProvider>
+          <SiteChrome />
+          <main id="sadrzaj">{children}</main>
+          <Footer />
+        </PerfProvider>
 
         <script
           type="application/ld+json"

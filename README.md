@@ -148,6 +148,27 @@ bez rokova, procenata i cena. Ono što zavisi od slučaja, tako i piše.
 
 ---
 
+## Prilagođavanje uređaju
+
+`PerfProvider` (`components/perf/Perf.tsx`) na klijentu određuje nivo i
+upisuje ga u `<html data-perf="high|mid|low">`.
+
+Nivo se računa iz `deviceMemory`, `hardwareConcurrency`, režima uštede
+podataka i tipa mreže, a zatim se **proverava merenjem stvarnog vremena
+kadra** kroz ~45 kadrova posle učitavanja. Ako uređaj ne stiže, nivo se
+spušta; ako stiže, ništa se ne menja.
+
+| Nivo | Šta radi |
+| --- | --- |
+| `high` | Sve: parallax, zrno, duotone sa dva blend sloja, maskirani reveal redova, prelaz između stranica sa ukošenim pločama |
+| `mid` | Bez parallaxa, slabije zrno; ostalo isto |
+| `low` | Samo prelivanje providnosti, bez rada po skrolu, bez zrna, bez backdrop-filtera |
+
+Jači uređaji ne gube ništa · nivo se nikada ne diže iznad onoga što je
+izmereno, ali se ni ne spušta bez razloga.
+
+---
+
 ## Forma za upit
 
 Tok u tri koraka: *predmet → detalji → kontakt i fotografije*

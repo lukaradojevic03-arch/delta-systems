@@ -21,17 +21,8 @@ export function Faq({ limit }: { limit?: number }) {
                 type="button"
                 onClick={() => setOpen(on ? null : i)}
                 aria-expanded={on}
-                className="group flex w-full items-start gap-5 py-5 text-left md:gap-8 md:py-6"
+                className="group flex w-full items-start gap-6 py-5 text-left md:py-6"
               >
-                <span
-                  className={cn(
-                    't-meta-sm mt-1.5 w-7 shrink-0 transition-colors duration-500',
-                    on ? 'text-azure-700' : 'text-stone',
-                  )}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-
                 <span
                   className={cn(
                     'flex-1 font-sans text-[1.0625rem] leading-snug tracking-[-0.012em] transition-colors duration-500 md:text-[1.1875rem]',
@@ -65,7 +56,7 @@ export function Faq({ limit }: { limit?: number }) {
                   transition={{ duration: 0.42, ease: EASE }}
                   className="overflow-hidden"
                 >
-                  <p className="t-body max-w-[62ch] pb-6 pl-12 text-slate pretty md:pl-[3.25rem]">
+                  <p className="t-body max-w-[62ch] pb-6 pr-8 text-slate pretty">
                     {f.a}
                   </p>
                 </motion.div>

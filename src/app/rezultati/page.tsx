@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { site } from '@/lib/site';
 import { ResultsGallery } from '@/components/sections/ResultsGallery';
-import { LineReveal, Reveal } from '@/components/motion/Reveal';
-import { PageHeader, SectionLabel } from '@/components/ui/Bits';
+import { Reveal } from '@/components/motion/Reveal';
+import { PageHeader } from '@/components/ui/Bits';
 
 export const metadata: Metadata = {
   title: 'Rezultati · Pre i posle dubinskog čišćenja',
@@ -16,7 +14,6 @@ export default function RezultatiPage() {
   return (
     <>
       <PageHeader
-        code="04"
         eyebrow="Rezultati"
         lines={['Isti kadar.', 'Druga slika.']}
         titleSize="text-[clamp(1.89rem,13.3cqi,5.85rem)]"
@@ -26,11 +23,6 @@ export default function RezultatiPage() {
             prestaje jedno stanje, a počinje drugo.
           </>
         }
-        meta={[
-          { k: 'Interakcija', v: 'Prevlačenje / strelice' },
-          { k: 'Obrada', v: 'Bez retuširanja' },
-          { k: 'Izvor', v: 'Arhiva izlazaka' },
-        ]}
       />
 
       <section className="bg-azure-50">
@@ -38,24 +30,21 @@ export default function RezultatiPage() {
           <div className="grid gap-6 sm:grid-cols-3 sm:gap-8">
             {[
               {
-                k: 'R.01',
                 t: 'Isti kadar',
                 s: 'Fotografija posle snima se sa istog mesta kao ona pre. Bez druge sobe i drugog svetla.',
               },
               {
-                k: 'R.02',
                 t: 'Bez obrade',
                 s: 'Nema retuširanja, izoštravanja ni pojačane boje. Ono što vidite je ono što je ostalo posle tretmana.',
               },
               {
-                k: 'R.03',
                 t: 'Δ klizač',
                 s: 'Gde se kadrovi poklapaju, povlačite granicu sami. Gde se ne poklapaju, stoje dve odvojene fotografije.',
               },
             ].map((x, i) => (
-              <Reveal key={x.k} delay={i * 0.08}>
-                <p className="t-meta-sm text-azure-600">{x.k}</p>
-                <p className="t-display mt-2 text-[clamp(1.15rem,3vw,1.6rem)] text-ink">
+              <Reveal key={x.t} delay={i * 0.08}>
+                <span className="block h-px w-6 bg-azure-400" aria-hidden="true" />
+                <p className="t-display mt-4 text-[clamp(1.15rem,3vw,1.6rem)] text-ink">
                   {x.t}
                 </p>
                 <p className="t-body mt-2.5 text-slate pretty">{x.s}</p>
@@ -67,44 +56,6 @@ export default function RezultatiPage() {
 
       <ResultsGallery />
 
-      <section className="bg-paper-warm">
-        <div className="edge py-14 md:py-20">
-          <div className="grid gap-10 md:grid-cols-12 md:gap-8">
-            <div className="cq md:col-span-6">
-              <SectionLabel code="04.1">Sledeći slučaj</SectionLabel>
-              <LineReveal
-                as="h2"
-                delay={0.08}
-                lines={['Vaš komad', 'može biti', 'sledeći.']}
-                className="t-display mt-6 text-[clamp(1.63rem,14.8cqi,3.59rem)]"
-              />
-            </div>
-
-            <div className="md:col-span-4 md:col-start-8 md:pt-6">
-              <Reveal delay={0.18}>
-                <p className="t-body max-w-[34ch] text-slate pretty">
-                  Pošaljite fotografiju stanja. Ako se posao završi kod vas,
-                  isti kadar pre i posle ide u arhivu, uz vašu saglasnost.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.26} className="mt-8 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-blue shear-l">
-                  Pošalji fotografiju
-                </Link>
-                <a
-                  href={site.instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-line"
-                >
-                  Instagram
-                </a>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -64,14 +64,13 @@ export function ResultsGallery() {
 
 function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
   const meta = [
-    { k: 'Kategorija', v: data.category },
     { k: 'Materijal', v: data.material },
     { k: 'Tretman', v: data.treatment },
   ];
 
   const Head = (
     <div className="cq">
-      <span className="t-meta block text-stone">{data.code}</span>
+      <span className="t-meta block text-azure-600">{data.category}</span>
       <h2 className="t-display mt-2 text-[clamp(1.38rem,9.4cqi,3.12rem)]">
         {data.title}
       </h2>

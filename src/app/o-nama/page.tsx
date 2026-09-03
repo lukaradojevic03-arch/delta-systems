@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { principles, site } from '@/lib/site';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
 import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
@@ -16,7 +15,6 @@ export default function ONamaPage() {
   return (
     <>
       <PageHeader
-        code="05"
         eyebrow="O nama"
         lines={['Delta je', 'oznaka za', 'razliku.']}
         titleSize="text-[clamp(2.06rem,16.4cqi,5.85rem)]"
@@ -27,11 +25,6 @@ export default function ONamaPage() {
             posle.
           </>
         }
-        meta={[
-          { k: 'Sedište', v: site.city },
-          { k: 'Delatnost', v: 'Dubinsko čišćenje' },
-          { k: 'Kanal', v: site.instagram.handle },
-        ]}
       />
 
       {/* Izjava */}
@@ -90,7 +83,7 @@ export default function ONamaPage() {
       {/* Principi */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-20">
-          <SectionLabel code="05.1" invert>
+          <SectionLabel invert>
             Način rada
           </SectionLabel>
 
@@ -102,10 +95,7 @@ export default function ONamaPage() {
                 delay={i * 0.07}
                 className="grid gap-3 border-t border-paper/15 py-7 last:border-b md:grid-cols-12 md:gap-8 md:py-10"
               >
-                <span className="t-meta-sm text-paper/45 md:col-span-1">
-                  {p.code}
-                </span>
-                <div className="cq md:col-span-5">
+                <div className="cq md:col-span-5 md:col-start-1">
                   <h3 className="t-display text-[clamp(1.2rem,6.2cqi,2.34rem)]">
                     {p.title}
                   </h3>
@@ -124,7 +114,7 @@ export default function ONamaPage() {
         <div className="edge py-14 md:py-20">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="cq md:col-span-5">
-              <SectionLabel code="05.15">Očekivanja</SectionLabel>
+              <SectionLabel>Očekivanja</SectionLabel>
               <LineReveal
                 as="h2"
                 delay={0.08}
@@ -226,7 +216,7 @@ export default function ONamaPage() {
         <div className="edge py-14 md:py-20">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-5">
-              <SectionLabel code="05.2">Gde radimo</SectionLabel>
+              <SectionLabel>Gde radimo</SectionLabel>
               <LineReveal
                 as="h2"
                 delay={0.08}
@@ -262,17 +252,14 @@ export default function ONamaPage() {
                 </p>
               </Reveal>
 
-              <Reveal delay={0.24} className="mt-10 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-blue shear-l">
-                  Pošalji upit
-                </Link>
+              <Reveal delay={0.24} className="mt-8">
                 <a
                   href={site.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-line"
+                  className="link-delta t-meta text-azure-700"
                 >
-                  {site.instagram.handle}
+                  Instagram {site.instagram.handle} →
                 </a>
               </Reveal>
             </div>

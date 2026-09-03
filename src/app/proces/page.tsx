@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { pillars } from '@/lib/site';
 import { DepthProcess } from '@/components/sections/DepthProcess';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
@@ -18,7 +17,6 @@ export default function ProcesPage() {
   return (
     <>
       <PageHeader
-        code="03"
         eyebrow="Proces"
         lines={['Od površine', 'nadole.']}
         titleSize="text-[clamp(1.89rem,13.3cqi,5.85rem)]"
@@ -28,11 +26,6 @@ export default function ProcesPage() {
             temperatura i sredstvo. Ništa se ne preskače zato što se ne vidi.
           </>
         }
-        meta={[
-          { k: 'Koraka', v: '07' },
-          { k: 'Slojeva', v: 'Površina / Vlakno / Dubina' },
-          { k: 'Kraj', v: 'Provera detalja' },
-        ]}
       />
 
       {/* Tri sloja · materijalni ključ za lenjir dubine */}
@@ -42,23 +35,20 @@ export default function ProcesPage() {
             {
               src: '/media/mat-koza.jpg',
               alt: 'Makro snimak zrna kože',
-              k: 'L.01',
               t: 'Površina',
             },
             {
               src: '/media/mat-velur-rose.jpg',
               alt: 'Nabori velura izbliza',
-              k: 'L.02',
               t: 'Vlakno',
             },
             {
               src: '/media/mat-vuna.jpg',
               alt: 'Grubo tkano vuneno vlakno',
-              k: 'L.03',
               t: 'Osnova',
             },
           ].map((x, i) => (
-            <Reveal key={x.k} delay={i * 0.1} className="cq">
+            <Reveal key={x.t} delay={i * 0.1} className="cq">
               <ImageReveal
                 src={x.src}
                 alt={x.alt}
@@ -66,9 +56,9 @@ export default function ProcesPage() {
                 shear={i === 1 ? 'right' : undefined}
                 sizes="(max-width: 768px) 30vw, 30vw"
               />
-              <div className="mt-3 flex items-baseline gap-3">
-                <span className="t-meta-sm text-stone">{x.k}</span>
-                <span className="t-meta text-ink">{x.t}</span>
+              <div className="mt-3 flex items-center gap-3">
+                <span className="block h-px w-5 bg-azure-400" aria-hidden="true" />
+                <span className="t-meta text-azure-700">{x.t}</span>
               </div>
             </Reveal>
           ))}
@@ -82,7 +72,7 @@ export default function ProcesPage() {
       {/* Metod · četiri stuba kao tehnički rezime */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-20">
-          <SectionLabel code="03.1" invert>
+          <SectionLabel invert>
             Metod
           </SectionLabel>
 
@@ -115,8 +105,7 @@ export default function ProcesPage() {
                     delay={i * 0.08}
                     className="cq border-t border-paper/15 py-6 last:border-b"
                   >
-                    <p className="t-meta-sm text-paper/45">{p.code}</p>
-                    <h3 className="t-display mt-2 text-[clamp(1.2rem,7cqi,1.87rem)]">
+                    <h3 className="t-display text-[clamp(1.2rem,7cqi,1.87rem)]">
                       {p.title}
                     </h3>
                     <p className="t-body mt-3 max-w-[44ch] text-paper/70 pretty">
@@ -135,7 +124,7 @@ export default function ProcesPage() {
         <div className="edge py-14 md:py-20">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="cq md:col-span-5">
-              <SectionLabel code="03.15">Razlika</SectionLabel>
+              <SectionLabel>Razlika</SectionLabel>
               <LineReveal
                 as="h2"
                 delay={0.08}
@@ -161,7 +150,7 @@ export default function ProcesPage() {
         <div className="edge py-14 md:py-20">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-5">
-              <SectionLabel code="03.2">Pre dolaska</SectionLabel>
+              <SectionLabel>Pre dolaska</SectionLabel>
               <LineReveal
                 as="h2"
                 delay={0.08}
@@ -190,14 +179,6 @@ export default function ProcesPage() {
                 />
               </Reveal>
 
-              <Reveal delay={0.26} className="mt-10 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-blue shear-l">
-                  Pošalji upit
-                </Link>
-                <Link href="/rezultati" className="btn btn-line">
-                  Rezultati
-                </Link>
-              </Reveal>
             </div>
           </div>
         </div>

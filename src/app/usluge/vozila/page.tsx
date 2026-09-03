@@ -18,16 +18,10 @@ export default function VozilaPage() {
   return (
     <>
       <PageHeader
-        code={service.code}
         eyebrow="Usluga · Vozila"
         lines={['Enterijer', 'do vlakna.']}
         titleSize="text-[clamp(2.06rem,15.6cqi,5.85rem)]"
         lede={service.lede}
-        meta={[
-          { k: 'Sedišta', v: 'Dubinsko pranje' },
-          { k: 'Tvrde površine', v: 'Parno čišćenje' },
-          { k: 'Kabina', v: 'Dezinfekcija' },
-        ]}
       />
 
       {/* ---------------------------------------------------------- */}
@@ -39,8 +33,7 @@ export default function VozilaPage() {
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-3">
             <div className="md:sticky md:top-28 md:self-start">
-              <p className="t-meta-sm text-stone">Čin 01</p>
-              <h2 className="t-display mt-3 text-[clamp(1.46rem,18.7cqi,2.5rem)]">
+              <h2 className="t-display text-[clamp(1.46rem,18.7cqi,2.5rem)]">
                 Stanje
               </h2>
               <div className="rule-spectrum mt-5 w-14" />
@@ -77,8 +70,7 @@ export default function VozilaPage() {
         <div className="edge py-14 md:py-24">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-3">
-              <p className="t-meta-sm text-paper/45">Čin 02</p>
-              <h2 className="t-display mt-3 text-[clamp(1.46rem,18.7cqi,2.5rem)]">
+              <h2 className="t-display text-[clamp(1.46rem,18.7cqi,2.5rem)]">
                 Tretman
               </h2>
               <div className="rule-spectrum mt-5 w-14" />
@@ -155,8 +147,7 @@ export default function VozilaPage() {
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-3">
             <div className="md:sticky md:top-28 md:self-start">
-              <p className="t-meta-sm text-stone">Čin 03</p>
-              <h2 className="t-display mt-3 text-[clamp(1.46rem,18.7cqi,2.5rem)]">
+              <h2 className="t-display text-[clamp(1.46rem,18.7cqi,2.5rem)]">
                 Rezultat
               </h2>
               <div className="rule-spectrum mt-5 w-14" />
@@ -195,7 +186,7 @@ export default function VozilaPage() {
       {/* Zone enterijera */}
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-20">
-          <SectionLabel code={`${service.code}.4`}>Zone</SectionLabel>
+          <SectionLabel>Zone</SectionLabel>
 
           <div className="mt-10 grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-5">
@@ -232,19 +223,15 @@ export default function VozilaPage() {
                     delay={i * 0.06}
                     className="flex items-baseline gap-5 border-b border-ink/12 py-4"
                   >
-                    <span className="t-meta-sm w-10 shrink-0 text-stone">
-                      Z.{String(i + 1).padStart(2, '0')}
-                    </span>
+                    <span
+                      className="mt-[0.8em] block h-px w-5 shrink-0 bg-azure-400"
+                      aria-hidden="true"
+                    />
                     <span className="t-lede text-ink">{item}</span>
                   </Reveal>
                 ))}
               </ul>
 
-              <Reveal delay={0.3} className="mt-10">
-                <Link href="/kontakt" className="btn btn-blue shear-l">
-                  Zakaži čišćenje
-                </Link>
-              </Reveal>
             </div>
           </div>
         </div>

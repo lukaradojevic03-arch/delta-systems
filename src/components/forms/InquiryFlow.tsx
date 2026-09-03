@@ -215,9 +215,6 @@ export function InquiryFlow() {
     <div>
       {/* napredak */}
       <div className="flex items-center gap-4 border-t border-ink/12 pt-5">
-        <span className="t-meta-sm text-stone">
-          {String(step + 1).padStart(2, '0')} / 03
-        </span>
         <div className="relative h-px flex-1 bg-ink/12">
           <motion.div
             className="rule-azure absolute left-0 top-0 h-px origin-left"
@@ -288,10 +285,6 @@ export function InquiryFlow() {
                   className="group relative block w-full border-b border-ink/12 py-5 text-left sm:py-6"
                 >
                   <span className="flex items-start gap-4 sm:items-center sm:gap-8">
-                    <span className="t-meta-sm mt-2 w-9 shrink-0 text-stone sm:mt-0">
-                      {o.c}
-                    </span>
-
                     <span className="cq min-w-0 flex-1">
                       <span className="t-display block text-[clamp(1.46rem,13.3cqi,2.5rem)] transition-transform duration-700 ease-delta group-hover:translate-x-2">
                         {o.t}
@@ -357,9 +350,23 @@ export function InquiryFlow() {
             transition={{ duration: 0.45, ease: EASE }}
             className="pt-10"
           >
-            <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
-              {kind === 'namestaj' ? 'Šta se čisti?' : 'Šta ulazi u obim?'}
-            </h2>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
+                {kind === 'namestaj' ? 'Šta se čisti?' : 'Šta ulazi u obim?'}
+              </h2>
+              <button
+                type="button"
+                onClick={() => setStep(0)}
+                className="t-meta-sm text-azure-700 underline underline-offset-4"
+              >
+                {kind === 'namestaj' ? 'Nameštaj' : 'Vozilo'} · promeni
+              </button>
+            </div>
+
+            <p className="t-body mt-3 max-w-[46ch] text-slate pretty sm:hidden">
+              Dodirnite sve što se odnosi na vas. Ništa nije obavezno osim
+              predmeta.
+            </p>
 
             <Field label="Predmet" hint="Više izbora je moguće">
               <Chips
@@ -404,11 +411,17 @@ export function InquiryFlow() {
               />
             </Field>
 
-            <div className="mt-10 flex flex-wrap gap-3">
+            {!canStep1 && (
+              <p className="t-meta-sm mt-8 text-slate sm:mt-10">
+                Izaberite bar jedan predmet da nastavite.
+              </p>
+            )}
+
+            <StepActions>
               <button
                 type="button"
                 onClick={() => setStep(0)}
-                className="btn btn-line"
+                className="btn btn-line flex-1 justify-center sm:flex-none"
               >
                 Nazad
               </button>
@@ -416,14 +429,14 @@ export function InquiryFlow() {
                 type="button"
                 disabled={!canStep1}
                 onClick={() => setStep(2)}
-                className={cn('btn btn-ink shear-l', !canStep1 && 'pointer-events-none opacity-35')}
+                className={cn(
+                  'btn btn-blue shear-l flex-[2] justify-center sm:flex-none',
+                  !canStep1 && 'pointer-events-none opacity-35',
+                )}
               >
                 Dalje
               </button>
-            </div>
-            {!canStep1 && (
-              <p className="t-meta-sm mt-4 text-stone">Izaberite bar jedan predmet.</p>
-            )}
+            </StepActions>
           </motion.div>
         )}
 
@@ -537,8 +550,21 @@ export function InquiryFlow() {
               Podaci se koriste isključivo za odgovor na ovaj upit.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button type="button" onClick={() => setStep(1)} className="btn btn-line">
+            {!canSubmit && (
+              <p className="t-meta-sm mt-5 text-slate">
+                Potrebni su ime i bar jedan kontakt.
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="t-meta-sm mt-5 text-azure-700">{errorMsg}</p>
+            )}
+
+            <StepActions>
+              <button
+                type="button"
+                onClick={() => setStep(1)}
+                className="btn btn-line flex-1 justify-center sm:flex-none"
+              >
                 Nazad
               </button>
               <button
@@ -546,22 +572,14 @@ export function InquiryFlow() {
                 onClick={submit}
                 disabled={!canSubmit || status === 'sending'}
                 className={cn(
-                  'btn btn-ink shear-l',
-                  (!canSubmit || status === 'sending') && 'pointer-events-none opacity-35',
+                  'btn btn-blue shear-l flex-[2] justify-center sm:flex-none',
+                  (!canSubmit || status === 'sending') &&
+                    'pointer-events-none opacity-35',
                 )}
               >
                 {status === 'sending' ? 'Šalje se…' : 'Pošalji upit'}
               </button>
-            </div>
-
-            {!canSubmit && (
-              <p className="t-meta-sm mt-4 text-stone">
-                Potrebni su ime i bar jedan kontakt.
-              </p>
-            )}
-            {status === 'error' && (
-              <p className="t-meta-sm mt-4 text-iris">{errorMsg}</p>
-            )}
+            </StepActions>
           </motion.div>
         )}
       </AnimatePresence>
@@ -573,6 +591,27 @@ export function InquiryFlow() {
 /*  Polja                                                              */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Traka sa radnjama.
+ * Na telefonu se lepi za dno panela da sledeći korak uvek bude na dohvat;
+ * od `sm` naviše je običan red dugmadi u toku stranice.
+ */
+function StepActions({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className={cn(
+        'sticky bottom-0 z-10 -mx-6 mt-8 flex gap-3 border-t border-ink/12',
+        'bg-paper-warm/95 px-6 py-4 backdrop-blur-sm',
+        'sm:static sm:mx-0 sm:mt-10 sm:flex-wrap sm:border-0 sm:bg-transparent',
+        'sm:px-0 sm:py-0 sm:backdrop-blur-none',
+      )}
+      style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 1rem)' }}
+    >
+      {children}
+    </div>
+  );
+}
+
 function Field({
   label,
   hint,
@@ -583,10 +622,16 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mt-10 border-t border-ink/12 pt-5">
-      <div className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-        <span className="t-meta text-ink">{label}</span>
-        {hint && <span className="t-meta-sm text-stone">{hint}</span>}
+    <div className="mt-9 border-t border-ink/12 pt-5">
+      <div className="mb-4">
+        <span className="block font-sans text-[0.9375rem] font-medium tracking-[-0.008em] text-ink md:text-base">
+          {label}
+        </span>
+        {hint && (
+          <span className="mt-0.5 block font-sans text-[0.8125rem] text-slate">
+            {hint}
+          </span>
+        )}
       </div>
       {children}
     </div>
@@ -613,12 +658,18 @@ function Chips({
             onClick={() => onToggle(o)}
             aria-pressed={on}
             className={cn(
-              'font-sans text-[11px] uppercase tracking-[0.14em] px-4 py-2.5 transition-all duration-500 ease-delta',
+              'flex min-h-[44px] items-center gap-2 px-4 font-sans text-[0.9375rem]',
+              'transition-all duration-500 ease-delta',
               on
-                ? 'bg-ink text-paper'
-                : 'text-slate shadow-[inset_0_0_0_1px_rgba(14,17,22,0.18)] hover:shadow-[inset_0_0_0_1px_rgba(14,17,22,0.45)] hover:text-ink',
+                ? 'bg-azure-700 text-paper'
+                : 'text-slate shadow-[inset_0_0_0_1px_rgba(14,17,22,0.16)] hover:text-ink hover:shadow-[inset_0_0_0_1px_rgba(50,73,115,0.5)]',
             )}
           >
+            {on && (
+              <span aria-hidden="true" className="text-[0.8em] leading-none">
+                ✓
+              </span>
+            )}
             {o}
           </button>
         );

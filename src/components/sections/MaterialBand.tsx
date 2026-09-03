@@ -83,8 +83,7 @@ export function MaterialBand({ className }: { className?: string }) {
             />
 
             <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-              <span className="t-meta-sm block text-paper/50">{m.code}</span>
-              <span className="t-display mt-2 block text-[clamp(1.05rem,4.6cqi,1.7rem)] text-paper">
+              <span className="t-display block text-[clamp(1.05rem,4.6cqi,1.7rem)] text-paper">
                 {m.label}
               </span>
               <span className="t-meta-sm mt-1.5 block text-paper/65">

@@ -199,11 +199,8 @@ function MenuOverlay({ pathname }: { pathname: string }) {
                   <Link
                     ref={i === 0 ? firstRef : undefined}
                     href={item.href}
-                    className="group flex items-center gap-4 py-3.5"
+                    className="group flex items-center gap-4 py-4"
                   >
-                    <span className="t-meta-sm w-7 shrink-0 text-paper/45">
-                      {item.code}
-                    </span>
                     <span className="t-display text-[clamp(1.7rem,min(7.5vw,7vh),3.2rem)]">
                       {item.label}
                     </span>

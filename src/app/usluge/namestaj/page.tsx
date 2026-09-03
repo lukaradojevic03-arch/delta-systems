@@ -23,16 +23,10 @@ export default function NamestajPage() {
   return (
     <>
       <PageHeader
-        code={service.code}
         eyebrow="Usluga · Nameštaj"
         lines={['Nameštaj', 'iznutra.']}
         titleSize="text-[clamp(2.06rem,17.2cqi,5.85rem)]"
         lede={service.lede}
-        meta={[
-          { k: 'Osnovno', v: 'Dubinsko pranje' },
-          { k: 'Podloge', v: 'Parno čišćenje' },
-          { k: 'Završno', v: 'Dezinfekcija' },
-        ]}
       />
 
       {/* Poređenje · tapacirani velur, isti kadar */}
@@ -50,12 +44,12 @@ export default function NamestajPage() {
               label="Tabure od velura, poređenje pre i posle dubinskog pranja"
             />
             <p className="t-meta-sm mt-4 text-stone">
-              {tabure.code} · {tabure.title}, isti kadar
+              {tabure.title}, isti kadar
             </p>
           </div>
 
           <div className="md:col-span-6 md:col-start-7 md:pt-6">
-            <SectionLabel code={`${service.code}.1`}>Na čemu radimo</SectionLabel>
+            <SectionLabel>Na čemu radimo</SectionLabel>
             <ul className="mt-7">
               {service.items.map((item, i) => (
                 <Reveal
@@ -64,9 +58,10 @@ export default function NamestajPage() {
                   delay={i * 0.07}
                   className="flex items-baseline gap-4 border-t border-ink/12 py-3.5 last:border-b"
                 >
-                  <span className="t-meta-sm w-8 shrink-0 text-stone">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+                  <span
+                    className="mt-[0.7em] block h-px w-4 shrink-0 bg-azure-400"
+                    aria-hidden="true"
+                  />
                   <span className="t-body text-ink">{item}</span>
                 </Reveal>
               ))}
@@ -107,7 +102,7 @@ export default function NamestajPage() {
       {/* Kome je namenjeno */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-20">
-          <SectionLabel code={`${service.code}.2`} invert>
+          <SectionLabel invert>
             Kada ima smisla
           </SectionLabel>
 
@@ -186,7 +181,7 @@ export default function NamestajPage() {
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionLabel code={`${service.code}.3`}>Tok posla</SectionLabel>
+            <SectionLabel>Tok posla</SectionLabel>
             <Reveal delay={0.1}>
               <Link href="/proces" className="link-delta t-meta text-ink">
                 Ceo proces →
@@ -199,8 +194,7 @@ export default function NamestajPage() {
           <ol className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
             {steps.slice(1, 5).map((s, i) => (
               <Reveal as="li" key={s.code} delay={i * 0.1} className="cq">
-                <p className="t-meta-sm text-stone">{s.code}</p>
-                <h3 className="t-display mt-3 text-[clamp(1.03rem,8.6cqi,1.56rem)]">
+                <h3 className="t-display text-[clamp(1.03rem,8.6cqi,1.56rem)]">
                   {s.title}
                 </h3>
                 <p className="t-body mt-3 text-slate pretty">{s.body}</p>
@@ -214,7 +208,7 @@ export default function NamestajPage() {
       <section className="edge py-14 md:py-20">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-5">
-            <SectionLabel code={`${service.code}.4`}>Rezultat</SectionLabel>
+            <SectionLabel>Rezultat</SectionLabel>
             <LineReveal
               as="h2"
               delay={0.08}
@@ -226,12 +220,9 @@ export default function NamestajPage() {
                 {garnitura.note}
               </p>
             </Reveal>
-            <Reveal delay={0.28} className="mt-8 flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn btn-blue shear-l">
-                Pošalji upit
-              </Link>
-              <Link href="/rezultati" className="btn btn-line">
-                Rezultati
+            <Reveal delay={0.28} className="mt-7">
+              <Link href="/rezultati" className="link-delta t-meta text-azure-700">
+                Više poređenja pre i posle →
               </Link>
             </Reveal>
           </div>

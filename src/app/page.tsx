@@ -77,7 +77,7 @@ export default function HomePage() {
 
                   <div className="mt-3 flex items-start justify-between gap-6">
                     <p className="t-meta-sm text-stone">
-                      {tabure.code} · {tabure.title}
+                      {tabure.title}
                     </p>
                     <p className="t-meta-sm max-w-[22ch] text-right text-stone">
                       Prevucite da vidite razliku
@@ -100,7 +100,7 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="relative bg-azure-900 text-paper">
         <div className="edge py-14 md:py-24">
-          <SectionLabel code="02" invert>
+          <SectionLabel invert>
             Šta ostaje u tkanini
           </SectionLabel>
 
@@ -192,7 +192,7 @@ export default function HomePage() {
       <section className="bg-paper">
         <div className="edge py-14 md:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionLabel code="03">Usluge</SectionLabel>
+            <SectionLabel>Usluge</SectionLabel>
             <Reveal delay={0.1}>
               <Link href="/usluge" className="link-delta t-meta text-ink">
                 Sve usluge →
@@ -213,7 +213,7 @@ export default function HomePage() {
         <div className="edge py-14 md:py-24">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="cq md:col-span-5">
-              <SectionLabel code="04">Metod</SectionLabel>
+              <SectionLabel>Metod</SectionLabel>
               <LineReveal
                 as="h2"
                 delay={0.08}
@@ -258,7 +258,7 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-24">
-          <SectionLabel code="05" invert>
+          <SectionLabel invert>
             Rezultati
           </SectionLabel>
 
@@ -336,7 +336,7 @@ export default function HomePage() {
         <div className="edge py-16 md:py-28">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-7">
-              <SectionLabel code="06" invert>
+              <SectionLabel invert>
                 Upit
               </SectionLabel>
 
@@ -374,10 +374,19 @@ export default function HomePage() {
 
             <div className="md:col-span-4 md:col-start-9">
               <RuleReveal spectrum className="mb-6" />
-              <MetaList
-                invert
-                items={pillars.map((p) => ({ k: p.code, v: p.title }))}
-              />
+              <ul className="space-y-3">
+                {pillars.map((p) => (
+                  <li key={p.title} className="flex items-center gap-3">
+                    <span
+                      className="block h-px w-5 shrink-0 bg-azure-300/70"
+                      aria-hidden="true"
+                    />
+                    <span className="font-sans text-[0.9375rem] text-paper/90 md:text-base">
+                      {p.title}
+                    </span>
+                  </li>
+                ))}
+              </ul>
               <Reveal delay={0.2}>
                 <p className="t-meta-sm mt-6 text-paper/50">{site.taglineSr}</p>
               </Reveal>

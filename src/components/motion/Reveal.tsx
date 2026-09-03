@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { cn, EASE } from '@/lib/cn';
+import { usePerf } from '@/components/perf/Perf';
 
 /* ------------------------------------------------------------------ */
 /*  Reveal · blok koji ulazi odozdo pri prvom pojavljivanju            */
@@ -58,6 +59,7 @@ export function LineReveal({
   as?: 'h1' | 'h2' | 'h3' | 'p' | 'div';
 }) {
   const reduce = useReducedMotion();
+  const light = usePerf() === 'low' || reduce;
 
   return (
     <Tag className={className}>
@@ -84,7 +86,7 @@ export function LineReveal({
             className="block"
             style={{ paddingTop: '0.26em', paddingBottom: '0.24em' }}
             variants={
-              reduce
+              light
                 ? { hidden: { opacity: 0 }, shown: { opacity: 1 } }
                 : {
                     hidden: { y: '105%', opacity: 0 },

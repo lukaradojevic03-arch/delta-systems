@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { cn, EASE } from '@/lib/cn';
+import { usePerf } from '@/components/perf/Perf';
 
 /* ------------------------------------------------------------------ */
 /*  ImageReveal · slika se otkriva ispod maske koja klizi naviše,      */
@@ -34,6 +35,8 @@ export function ImageReveal({
   quality?: number;
 }) {
   const reduce = useReducedMotion();
+  const tier = usePerf();
+  const light = reduce || tier === 'low';
   const shearClass =
     shear === 'left'
       ? 'shear-l'
@@ -57,7 +60,7 @@ export function ImageReveal({
       <motion.div
         className="absolute inset-0"
         variants={
-          reduce
+          light
             ? { hidden: { opacity: 0 }, shown: { opacity: 1 } }
             : {
                 hidden: { clipPath: 'inset(100% 0% 0% 0%)' },
@@ -69,9 +72,9 @@ export function ImageReveal({
         <motion.div
           className="absolute inset-0"
           variants={
-            reduce
-              ? {}
-              : { hidden: { scale: 1.14 }, shown: { scale: 1 } }
+            tier === 'high' && !reduce
+              ? { hidden: { scale: 1.14 }, shown: { scale: 1 } }
+              : {}
           }
           transition={{ duration: 1.6, delay, ease: EASE }}
         >
@@ -105,6 +108,7 @@ export function Parallax({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const tier = usePerf();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
@@ -113,7 +117,10 @@ export function Parallax({
 
   return (
     <div ref={ref} className={className}>
-      <motion.div style={reduce ? undefined : { y }} className="will-change-transform">
+      <motion.div
+        style={reduce || tier !== 'high' ? undefined : { y }}
+        className={tier === 'high' ? 'will-change-transform' : undefined}
+      >
         {children}
       </motion.div>
     </div>

@@ -26,16 +26,8 @@ export function MethodIndex() {
               onFocus={() => setI(idx)}
               onClick={() => setI(idx)}
               aria-current={idx === i}
-              className="group flex w-full items-baseline gap-5 border-t border-ink/12 py-5 text-left last:border-b"
+              className="group flex w-full items-baseline border-t border-ink/12 py-5 text-left last:border-b"
             >
-              <span
-                className={cn(
-                  't-meta-sm transition-colors duration-500',
-                  idx === i ? 'text-ink' : 'text-stone',
-                )}
-              >
-                {p.code}
-              </span>
               <span
                 className={cn(
                   't-display text-[clamp(0.95rem,6.2cqi,2.18rem)] transition-all duration-700 ease-delta',
@@ -62,7 +54,6 @@ export function MethodIndex() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.45, ease: EASE }}
             >
-              <p className="t-meta text-stone">{active.code}</p>
               <p className="t-lede mt-5 max-w-[36ch] text-ink">{active.body}</p>
               <div className="rule-spectrum my-7 w-16" />
               <p className="t-body max-w-[44ch] text-slate pretty">{active.detail}</p>
@@ -75,7 +66,6 @@ export function MethodIndex() {
       <ul className="md:hidden">
         {pillars.map((p) => (
           <li key={p.code} className="cq border-t border-ink/12 py-6 last:border-b">
-            <p className="t-meta-sm text-stone">{p.code}</p>
             <h3 className="t-display mt-2 text-[clamp(1.2rem,7cqi,1.72rem)]">
               {p.title}
             </h3>

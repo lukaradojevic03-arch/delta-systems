@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/cn';
+import { usePerf } from '@/components/perf/Perf';
 
 /**
  * Δ · interaktivno poređenje PRE / POSLE.
@@ -40,6 +41,7 @@ export function DeltaSlider({
   const [pos, setPos] = useState(50);
   const [active, setActive] = useState(false);
   const [hinted, setHinted] = useState(false);
+  const tier = usePerf();
 
   const setFromClientX = useCallback((clientX: number) => {
     const el = wrapRef.current;
@@ -92,6 +94,7 @@ export function DeltaSlider({
     const el = wrapRef.current;
     if (!el) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (tier === 'low') return;
 
     let raf = 0;
     let cancelled = false;
@@ -120,7 +123,7 @@ export function DeltaSlider({
       io.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [hinted]);
+  }, [hinted, tier]);
 
   const clip = `polygon(0% 0%, ${pos + SHEAR}% 0%, ${pos - SHEAR}% 100%, 0% 100%)`;
 
