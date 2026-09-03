@@ -1,0 +1,227 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { getService } from '@/lib/site';
+import { ImageReveal, Parallax } from '@/components/motion/Media';
+import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
+import { DepthScale, MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
+
+export const metadata: Metadata = {
+  title: 'Vozila — dubinsko pranje sedišta i enterijera',
+  description:
+    'Dubinsko pranje sedišta, patosnica i tapacirunga, parno čišćenje tvrdih površina i dezinfekcija enterijera — sa pažnjom prema materijalima i detaljima.',
+  alternates: { canonical: '/usluge/vozila' },
+};
+
+const service = getService('vozila')!;
+
+export default function VozilaPage() {
+  return (
+    <>
+      <PageHeader
+        code={service.code}
+        eyebrow="Usluga — Vozila"
+        lines={['Enterijer', 'do vlakna.']}
+        titleSize="text-[clamp(2.4rem,20cqi,7.5rem)]"
+        lede={service.lede}
+        meta={[
+          { k: 'Sedišta', v: 'Dubinsko pranje' },
+          { k: 'Tvrde površine', v: 'Parno čišćenje' },
+          { k: 'Kabina', v: 'Dezinfekcija' },
+        ]}
+      />
+
+      {/* ---------------------------------------------------------- */}
+      {/*  Tri čina: stanje → tretman → rezultat                      */}
+      {/* ---------------------------------------------------------- */}
+
+      {/* ČIN 01 — STANJE */}
+      <section className="edge pb-16 md:pb-24">
+        <div className="md:grid md:grid-cols-12 md:gap-8">
+          <div className="cq md:col-span-3">
+            <div className="md:sticky md:top-28 md:self-start">
+              <p className="t-meta-sm text-stone">Čin 01</p>
+              <h2 className="t-display mt-3 text-[clamp(1.7rem,24cqi,3.2rem)]">
+                Stanje
+              </h2>
+              <div className="rule-spectrum mt-5 w-14" />
+              <p className="t-body mt-5 max-w-[28ch] text-slate pretty">
+                Ono što se nakupi u kabini ne stoji na površini. Tekstil sedišta
+                i patosnice rade isto što i tepih u stanu.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 gap-3 md:col-span-8 md:col-start-5 md:mt-0">
+            <ImageReveal
+              src="/media/vozilo-prednja-pre.jpg"
+              alt="Prednja sedišta vozila pre dubinskog pranja"
+              ratio="752 / 960"
+              sizes="(max-width: 768px) 46vw, 28vw"
+              shear="right"
+            />
+            <div className="mt-10 md:mt-16">
+              <ImageReveal
+                src="/media/vozilo-zadnja-pre.jpg"
+                alt="Zadnja klupa u vozilu pre čišćenja enterijera"
+                ratio="752 / 960"
+                sizes="(max-width: 768px) 46vw, 28vw"
+                delay={0.12}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ČIN 02 — TRETMAN (bez fotografije: to je deo koji se ne vidi) */}
+      <section className="relative bg-ink text-paper">
+        <div className="edge py-20 md:py-32">
+          <div className="grid gap-10 md:grid-cols-12 md:gap-8">
+            <div className="cq md:col-span-3">
+              <p className="t-meta-sm text-paper/45">Čin 02</p>
+              <h2 className="t-display mt-3 text-[clamp(1.7rem,24cqi,3.2rem)]">
+                Tretman
+              </h2>
+              <div className="rule-spectrum mt-5 w-14" />
+              <Reveal delay={0.1} className="mt-8 hidden md:block">
+                <DepthScale invert className="h-32" />
+              </Reveal>
+            </div>
+
+            <div className="cq md:col-span-7 md:col-start-6">
+              <LineReveal
+                as="p"
+                lines={['Deo posla koji', 'se ne fotografiše.']}
+                className="t-display text-[clamp(1.6rem,12cqi,4.2rem)]"
+              />
+
+              <Reveal delay={0.2} className="mt-8">
+                <p className="t-lede max-w-[44ch] text-paper/85 pretty">
+                  Sedišta i patosnice idu na ekstrakciju — rastvor ulazi u
+                  vlakno i izlazi zajedno sa prljavštinom. Plastika, staklo i
+                  detalji oko ventilacije rade se parom, bez hemikalija.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.28} className="mt-8">
+                <p className="t-body max-w-[46ch] text-paper/60 pretty">
+                  Na kraju ide dubinska dezinfekcija cele kabine i ekstrakcija
+                  vlage, da vozilo ne ostane vlažno posle tretmana.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.34} className="mt-10">
+                <MetaList
+                  invert
+                  items={service.surfaces.map((s) => ({
+                    k: s.label,
+                    v: s.method,
+                  }))}
+                />
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ČIN 03 — REZULTAT */}
+      <section className="edge py-16 md:py-28">
+        <div className="md:grid md:grid-cols-12 md:gap-8">
+          <div className="cq md:col-span-3">
+            <div className="md:sticky md:top-28 md:self-start">
+              <p className="t-meta-sm text-stone">Čin 03</p>
+              <h2 className="t-display mt-3 text-[clamp(1.7rem,24cqi,3.2rem)]">
+                Rezultat
+              </h2>
+              <div className="rule-spectrum mt-5 w-14" />
+              <p className="t-body mt-5 max-w-[28ch] text-slate pretty">
+                Čist enterijer. Bolji osećaj u svakoj vožnji.
+              </p>
+              <Reveal delay={0.12} className="mt-7">
+                <Link href="/rezultati" className="btn btn-line">
+                  Svi rezultati
+                </Link>
+              </Reveal>
+            </div>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 gap-3 md:col-span-8 md:col-start-5 md:mt-0">
+            <div className="mt-10 md:mt-16">
+              <ImageReveal
+                src="/media/vozilo-zadnja-posle.jpg"
+                alt="Zadnja klupa u vozilu posle dubinskog pranja i dezinfekcije"
+                ratio="752 / 960"
+                sizes="(max-width: 768px) 46vw, 28vw"
+                shear="left"
+              />
+            </div>
+            <ImageReveal
+              src="/media/vozilo-prednja-posle.jpg"
+              alt="Prednja sedišta vozila posle dubinskog pranja"
+              ratio="752 / 960"
+              sizes="(max-width: 768px) 46vw, 28vw"
+              delay={0.12}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Zone enterijera */}
+      <section className="bg-paper-warm">
+        <div className="edge py-20 md:py-28">
+          <SectionLabel code={`${service.code}.4`}>Zone</SectionLabel>
+
+          <div className="mt-10 grid gap-10 md:grid-cols-12 md:gap-8">
+            <div className="cq md:col-span-5">
+              <LineReveal
+                as="h2"
+                lines={['Sve što se', 'dodiruje.']}
+                className="t-display text-[clamp(1.8rem,22cqi,3.8rem)]"
+              />
+              <Reveal delay={0.16} className="mt-6">
+                <p className="t-body max-w-[34ch] text-slate pretty">
+                  Obim se dogovara pre dolaska — od pojedinačnih sedišta do
+                  cele kabine.
+                </p>
+              </Reveal>
+              <Reveal delay={0.24} className="mt-8">
+                <Parallax amount={18}>
+                  <ImageReveal
+                    src="/media/detalj-sediste.jpg"
+                    alt="Detalj tekstilnog sedišta posle dubinskog pranja"
+                    ratio="960 / 768"
+                    sizes="(max-width: 768px) 100vw, 34vw"
+                  />
+                </Parallax>
+              </Reveal>
+            </div>
+
+            <div className="md:col-span-6 md:col-start-7">
+              <RuleReveal spectrum />
+              <ul className="mt-2">
+                {service.items.map((item, i) => (
+                  <Reveal
+                    as="li"
+                    key={item}
+                    delay={i * 0.06}
+                    className="flex items-baseline gap-5 border-b border-ink/12 py-4"
+                  >
+                    <span className="t-meta-sm w-10 shrink-0 text-stone">
+                      Z.{String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="t-lede text-ink">{item}</span>
+                  </Reveal>
+                ))}
+              </ul>
+
+              <Reveal delay={0.3} className="mt-10">
+                <Link href="/kontakt" className="btn btn-ink shear-l">
+                  Zakaži čišćenje
+                </Link>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

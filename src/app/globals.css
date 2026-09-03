@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DELTA SYSTEMS — design system
+   Motif: Δ (delta = razlika). Dijagonalni rez (shear) preuzet iz
+   PRE/POSLE podele u vizuelnom materijalu klijenta.
+   ============================================================ */
+
+:root {
+  /* brand shear angle — svi dijagonalni rezovi koriste isti ugao */
+  --shear: 6.5%;
+  --edge-x: clamp(1.25rem, 5vw, 5.5rem);
+  --spectrum: linear-gradient(
+    90deg,
+    #f0b48a 0%,
+    #e0899f 34%,
+    #a78bc8 68%,
+    #8e9fd4 100%
+  );
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv01';
+    /* clip, ne hidden — hidden pravi scroll kontejner i kvari position: sticky */
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: #0e1116;
+    color: #f4f1eb;
+  }
+
+  :focus-visible {
+    outline: 2px solid #7a5fa6;
+    outline-offset: 3px;
+  }
+
+  /* Bodoni ima veoma tanke poteze — optical sizing po veličini */
+  .font-display {
+    font-optical-sizing: auto;
+  }
+}
+
+@layer components {
+  /* ---------- layout ---------- */
+  /* container query kontekst: tipografija se skalira po koloni, ne po viewportu */
+  .cq {
+    container-type: inline-size;
+  }
+
+  .edge {
+    padding-inline: var(--edge-x);
+  }
+
+  .rule {
+    @apply border-t border-ink/12;
+  }
+
+  /* ---------- spectrum hairline (jedini "gradijent" na sajtu) ---------- */
+  .rule-spectrum {
+    height: 1px;
+    background: var(--spectrum);
+    opacity: 0.85;
+  }
+
+  .rule-spectrum-v {
+    width: 1px;
+    background: linear-gradient(180deg, #f0b48a, #e0899f, #a78bc8, #8e9fd4);
+    opacity: 0.85;
+  }
+
+  /* ---------- shear: potpis brenda ---------- */
+  .shear-r {
+    clip-path: polygon(0 0, 100% 0, calc(100% - var(--shear)) 100%, 0 100%);
+  }
+
+  .shear-l {
+    clip-path: polygon(var(--shear) 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .shear-both {
+    clip-path: polygon(var(--shear) 0, 100% 0, calc(100% - var(--shear)) 100%, 0 100%);
+  }
+
+  /* ---------- tipografija ---------- */
+  .t-display {
+    @apply font-display font-normal;
+    line-height: 0.88;
+    letter-spacing: -0.015em;
+  }
+
+  .t-meta {
+    @apply font-mono uppercase;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    line-height: 1.4;
+  }
+
+  .t-meta-sm {
+    @apply font-mono uppercase;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    line-height: 1.4;
+  }
+
+  .t-body {
+    @apply font-sans;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    line-height: 1.65;
+    letter-spacing: -0.005em;
+  }
+
+  .t-lede {
+    @apply font-sans;
+    font-size: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+  }
+
+  /* ---------- link sa spectrum podvlakom ---------- */
+  .link-delta {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-delta::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    height: 1px;
+    width: 100%;
+    background: var(--spectrum);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .link-delta:hover::after,
+  .link-delta:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* ---------- dugmad ---------- */
+  .btn {
+    @apply relative inline-flex items-center gap-3 font-mono uppercase overflow-hidden;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    padding: 1.05rem 1.85rem;
+    isolation: isolate;
+    transition: color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: translateY(101%);
+    transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    transform: translateY(0);
+  }
+
+  .btn-ink {
+    @apply bg-ink text-paper;
+  }
+  .btn-ink::before {
+    background: #f4f1eb;
+  }
+  .btn-ink:hover,
+  .btn-ink:focus-visible {
+    @apply text-ink;
+  }
+
+  .btn-line {
+    @apply text-ink;
+    box-shadow: inset 0 0 0 1px rgba(14, 17, 22, 0.28);
+  }
+  .btn-line::before {
+    background: #0e1116;
+  }
+  .btn-line:hover,
+  .btn-line:focus-visible {
+    @apply text-paper;
+  }
+
+  .btn-line-invert {
+    @apply text-paper;
+    box-shadow: inset 0 0 0 1px rgba(244, 241, 235, 0.3);
+  }
+  .btn-line-invert::before {
+    background: #f4f1eb;
+  }
+  .btn-line-invert:hover,
+  .btn-line-invert:focus-visible {
+    @apply text-ink;
+  }
+
+  /* ---------- zrno preko fotografija (maskira nisku rezoluciju) ---------- */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- traka sa dubinskim podeocima (motiv "dubine") ---------- */
+  .depth-ticks {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(14, 17, 22, 0.28) 0 1px,
+      transparent 1px 14px
+    );
+  }
+
+  .depth-ticks-invert {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(244, 241, 235, 0.3) 0 1px,
+      transparent 1px 14px
+    );
+  }
+}
+
+@layer utilities {
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .balance {
+    text-wrap: balance;
+  }
+  .pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
