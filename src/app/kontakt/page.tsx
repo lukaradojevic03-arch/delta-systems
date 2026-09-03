@@ -32,10 +32,6 @@ export default function KontaktPage() {
           {/* ---------- panel sa upitom ---------- */}
           <div className="cq md:col-span-7">
             <div className="relative bg-paper-warm p-6 shadow-[0_28px_70px_-45px_rgba(14,17,22,0.55)] sm:p-9 md:p-11">
-              <span
-                className="rule-azure absolute inset-x-0 top-0"
-                aria-hidden="true"
-              />
               <InquiryFlow />
             </div>
           </div>

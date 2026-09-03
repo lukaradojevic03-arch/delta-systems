@@ -213,19 +213,22 @@ export function InquiryFlow() {
 
   return (
     <div>
-      {/* napredak */}
-      <div className="flex items-center gap-4 border-t border-ink/12 pt-5">
-        <div className="relative h-px flex-1 bg-ink/12">
+      {/* napredak · jedna traka, bez dupliranih linija iznad nje */}
+      <div className="mb-8 sm:mb-10">
+        <div className="mb-3 flex items-baseline justify-between">
+          <span className="t-meta-sm text-ink">
+            {['Predmet', 'Detalji', 'Kontakt'][step]}
+          </span>
+          <span className="t-meta-sm text-slate">{step + 1} / 3</span>
+        </div>
+        <div className="relative h-1 w-full overflow-hidden rounded-full bg-ink/10">
           <motion.div
-            className="rule-azure absolute left-0 top-0 h-px origin-left"
+            className="absolute inset-y-0 left-0 rounded-full bg-azure-600"
             initial={false}
             animate={{ width: `${((step + 1) / 3) * 100}%` }}
             transition={{ duration: 0.7, ease: EASE }}
           />
         </div>
-        <span className="t-meta-sm text-stone">
-          {['Predmet', 'Detalji', 'Kontakt'][step]}
-        </span>
       </div>
 
       <AnimatePresence mode="wait">
@@ -237,7 +240,6 @@ export function InquiryFlow() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.45, ease: EASE }}
-            className="pt-10"
           >
             <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
               Šta želite da očistimo?
@@ -348,7 +350,6 @@ export function InquiryFlow() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.45, ease: EASE }}
-            className="pt-10"
           >
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
@@ -448,7 +449,6 @@ export function InquiryFlow() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.45, ease: EASE }}
-            className="pt-10"
           >
             <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
               Gde da se javimo?
