@@ -169,7 +169,7 @@ export function InquiryFlow() {
         className="border-t border-ink/12 pt-10"
       >
         <p className="t-meta text-stone">Upit primljen</p>
-        <h2 className="t-display mt-5 text-[clamp(1.8rem,9.5cqi,4.6rem)]">
+        <h2 className="t-display mt-5 text-[clamp(1.55rem,7.4cqi,3.59rem)]">
           Hvala, {name.split(' ')[0]}.
         </h2>
         <p className="t-lede mt-6 max-w-[44ch] text-ink/80 pretty">
@@ -242,7 +242,7 @@ export function InquiryFlow() {
             transition={{ duration: 0.45, ease: EASE }}
             className="pt-10"
           >
-            <h2 className="t-display text-[clamp(1.5rem,9.5cqi,3.6rem)]">
+            <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
               Šta želite da očistimo?
             </h2>
 
@@ -281,7 +281,7 @@ export function InquiryFlow() {
                   <span className="t-meta-sm w-9 shrink-0 text-stone">{o.c}</span>
 
                   <span className="cq min-w-0 flex-1">
-                    <span className="t-display block text-[clamp(1.7rem,17cqi,3.2rem)] transition-transform duration-700 ease-delta group-hover:translate-x-2">
+                    <span className="t-display block text-[clamp(1.46rem,13.3cqi,2.5rem)] transition-transform duration-700 ease-delta group-hover:translate-x-2">
                       {o.t}
                     </span>
                     <span className="t-body mt-1.5 block text-slate">{o.s}</span>
@@ -324,7 +324,7 @@ export function InquiryFlow() {
             transition={{ duration: 0.45, ease: EASE }}
             className="pt-10"
           >
-            <h2 className="t-display text-[clamp(1.5rem,9.5cqi,3.6rem)]">
+            <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
               {kind === 'namestaj' ? 'Šta se čisti?' : 'Šta ulazi u obim?'}
             </h2>
 
@@ -404,7 +404,7 @@ export function InquiryFlow() {
             transition={{ duration: 0.45, ease: EASE }}
             className="pt-10"
           >
-            <h2 className="t-display text-[clamp(1.5rem,9.5cqi,3.6rem)]">
+            <h2 className="t-display text-[clamp(1.29rem,7.4cqi,2.81rem)]">
               Gde da se javimo?
             </h2>
 

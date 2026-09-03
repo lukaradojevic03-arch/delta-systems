@@ -14,7 +14,7 @@ export function PageHeader({
   lede,
   meta,
   /** cqi koeficijent naslova — bira se prema dužini najdužeg reda */
-  titleSize = 'text-[clamp(2.2rem,17cqi,7.5rem)]',
+  titleSize = 'text-[clamp(1.89rem,13.3cqi,5.85rem)]',
 }: {
   code: string;
   eyebrow: string;
@@ -24,7 +24,7 @@ export function PageHeader({
   titleSize?: string;
 }) {
   return (
-    <header className="edge pb-12 pt-[132px] md:pb-20 md:pt-[188px]">
+    <header className="edge pb-9 pt-[104px] md:pb-14 md:pt-[136px]">
       <Reveal>
         <p className="t-meta text-stone">
           {code} — {eyebrow}
@@ -64,7 +64,7 @@ export function PageHeader({
         </div>
       </div>
 
-      <RuleReveal className="mt-14 md:mt-20" delay={0.35} spectrum />
+      <RuleReveal className="mt-8 md:mt-10" delay={0.35} spectrum />
     </header>
   );
 }

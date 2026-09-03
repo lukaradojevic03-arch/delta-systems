@@ -43,7 +43,7 @@ export function ServiceRows({
             <Link
               href={`/usluge/${s.slug}`}
               onMouseEnter={() => setHover(s.slug)}
-              className="group relative block py-8 md:py-12"
+              className="group relative block py-6 md:py-9"
             >
               <div className="grid items-center gap-6 md:grid-cols-12 md:gap-8">
                 <div className="md:col-span-1">
@@ -61,7 +61,7 @@ export function ServiceRows({
                 <div className="cq md:col-span-5">
                   <h3
                     className={cn(
-                      't-display text-[clamp(2.2rem,22cqi,6rem)] transition-all duration-[900ms] ease-delta',
+                      't-display text-[clamp(1.89rem,17.2cqi,4.68rem)] transition-all duration-[900ms] ease-delta',
                       'group-hover:translate-x-2 md:group-hover:translate-x-5',
                       invert ? 'text-paper' : 'text-ink',
                       dim && 'opacity-30',

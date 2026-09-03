@@ -9,9 +9,9 @@ export function Footer() {
       <div className="rule-spectrum" />
 
       {/* velika izjava — tagline klijenta kao tipografski potpis */}
-      <div className="edge pb-16 pt-20 md:pb-20 md:pt-28">
+      <div className="edge pb-12 pt-14 md:pb-14 md:pt-20">
         <Reveal className="cq">
-          <p className="t-display text-[clamp(1.9rem,15cqi,7rem)] text-ink">
+          <p className="t-display text-[clamp(1.5rem,9cqi,4.5rem)] text-ink">
             Details make
             <br />
             the difference

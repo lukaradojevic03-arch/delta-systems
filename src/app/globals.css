@@ -125,9 +125,9 @@
 
   .t-lede {
     @apply font-sans;
-    font-size: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-    line-height: 1.45;
-    letter-spacing: -0.015em;
+    font-size: clamp(1.0625rem, 0.98rem + 0.42vw, 1.3125rem);
+    line-height: 1.5;
+    letter-spacing: -0.012em;
   }
 
   /* ---------- link sa spectrum podvlakom ---------- */
@@ -211,6 +211,55 @@
   .btn-line-invert:hover,
   .btn-line-invert:focus-visible {
     @apply text-ink;
+  }
+
+  /* glavni konverzioni CTA — jedini element koji nosi pun spektar */
+  .btn-spectrum {
+    @apply text-ink;
+    background: var(--spectrum);
+    padding: 1.25rem 2.25rem;
+    font-size: 0.75rem;
+  }
+  .btn-spectrum::before {
+    background: #0e1116;
+  }
+  .btn-spectrum:hover,
+  .btn-spectrum:focus-visible {
+    @apply text-paper;
+  }
+
+  .btn-lg {
+    padding: 1.3rem 2.4rem;
+    font-size: 0.75rem;
+  }
+
+  /* ---------- tonirane fotografije ---------- */
+  .tint {
+    position: relative;
+  }
+  .tint::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .tint-ink::before {
+    background: linear-gradient(
+      180deg,
+      rgba(14, 17, 22, 0.15) 0%,
+      rgba(14, 17, 22, 0.72) 100%
+    );
+  }
+  .tint-petrol::before {
+    background: linear-gradient(
+      200deg,
+      rgba(18, 52, 55, 0.28) 0%,
+      rgba(12, 37, 40, 0.8) 100%
+    );
+  }
+  .tint-soft::before {
+    background: rgba(14, 17, 22, 0.22);
   }
 
   /* ---------- zrno preko fotografija (maskira nisku rezoluciju) ---------- */

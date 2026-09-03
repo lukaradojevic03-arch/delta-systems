@@ -92,7 +92,7 @@ export function DepthProcess() {
               <span className="t-meta-sm text-stone">{s.depth}</span>
             </div>
 
-            <h3 className="t-display mt-4 text-[clamp(1.7rem,11cqi,4rem)]">
+            <h3 className="t-display mt-4 text-[clamp(1.46rem,8.6cqi,3.12rem)]">
               {s.title}
             </h3>
 

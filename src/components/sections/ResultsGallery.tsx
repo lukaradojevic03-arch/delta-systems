@@ -72,7 +72,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
   const Head = (
     <div className="cq">
       <span className="t-meta block text-stone">{data.code}</span>
-      <h2 className="t-display mt-2 text-[clamp(1.6rem,12cqi,4rem)]">
+      <h2 className="t-display mt-2 text-[clamp(1.38rem,9.4cqi,3.12rem)]">
         {data.title}
       </h2>
     </div>
@@ -98,7 +98,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
   /* Varijanta 0 — medij desno, podaci levo */
   if (variant === 0) {
     return (
-      <section className="edge border-b border-ink/12 py-16 md:py-24">
+      <section className="edge border-b border-ink/12 py-12 md:py-18">
         <div className="grid gap-8 md:grid-cols-12">
           <div className="md:col-span-4">
             {Head}
@@ -114,7 +114,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
   /* Varijanta 1 — široki medij, podaci ispod u dve kolone */
   if (variant === 1) {
     return (
-      <section className="edge border-b border-ink/12 py-16 md:py-24">
+      <section className="edge border-b border-ink/12 py-12 md:py-18">
         {Head}
         <div className="mt-8 md:mt-10">{Media}</div>
         <div className="mt-8 grid gap-8 md:grid-cols-12">
@@ -127,7 +127,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
 
   /* Varijanta 2 — medij levo sa uvlakom, podaci desno */
   return (
-    <section className="edge border-b border-ink/12 py-16 md:py-24">
+    <section className="edge border-b border-ink/12 py-12 md:py-18">
       <div className="grid gap-8 md:grid-cols-12">
         <div className="md:col-span-6 md:col-start-2">{Media}</div>
         <div className="md:col-span-4 md:col-start-9 md:pt-10">

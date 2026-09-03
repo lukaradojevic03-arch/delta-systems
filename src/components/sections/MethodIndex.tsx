@@ -38,7 +38,7 @@ export function MethodIndex() {
               </span>
               <span
                 className={cn(
-                  't-display text-[clamp(1.1rem,8cqi,2.8rem)] transition-all duration-700 ease-delta',
+                  't-display text-[clamp(0.95rem,6.2cqi,2.18rem)] transition-all duration-700 ease-delta',
                   idx === i
                     ? 'translate-x-1.5 text-ink'
                     : 'text-ink/35 group-hover:text-ink/70',
@@ -76,7 +76,7 @@ export function MethodIndex() {
         {pillars.map((p) => (
           <li key={p.code} className="cq border-t border-ink/12 py-6 last:border-b">
             <p className="t-meta-sm text-stone">{p.code}</p>
-            <h3 className="t-display mt-2 text-[clamp(1.4rem,9cqi,2.2rem)]">
+            <h3 className="t-display mt-2 text-[clamp(1.2rem,7cqi,1.72rem)]">
               {p.title}
             </h3>
             <p className="t-body mt-3 text-ink/85 pretty">{p.body}</p>

@@ -36,10 +36,16 @@ najdužem redu naslova.
 
 ### Paleta
 
-Izvedena iz logotipa: `ink` (grafitna), `paper` / `paper-warm` (topla
-slonovača), `stone` / `slate` (sekundarni tekst) i **spektar**
-(breskva → roza → lila → plava) koji se koristi isključivo kao linija
-debljine 1px — nikada kao pozadinski gradijent.
+Izvedena iz logotipa i iz materijala koje firma čisti:
+
+- `ink` — grafitna, glavna tamna podloga
+- `petrol` — duboka plavo-zelena (iz velura), druga tamna podloga da se
+  tamne sekcije ne ponavljaju
+- `paper` / `paper-warm` — topla slonovača
+- `stone` / `slate` — sekundarni tekst
+- **spektar** (breskva → roza → lila → plava) — linije debljine 1px,
+  indikator skrola i **jedini** element koji ga nosi kao punu površinu:
+  glavni CTA (`.btn-spectrum`). Nigde drugde nema gradijentnih podloga.
 
 ---
 
@@ -97,10 +103,20 @@ unosi ne razbijaju ritam stranice.
 
 ### Fotografije
 
-Sve fotografije na sajtu su **stvarni radovi klijenta**, izvučene iz
-objava sa `@deltasystems.rs`. Nema stock materijala i nema izmišljenih
-podataka — bez cena, broja klijenata, godina iskustva, sertifikata i
-recenzija.
+Fotografije su podeljene u dve grupe, i ta podela je namerna:
+
+| Prefiks | Šta je | Gde se koristi |
+| --- | --- | --- |
+| `tabure-`, `garnitura-`, `vozilo-`, `detalj-` | **Stvarni radovi klijenta**, izvučeni iz objava sa `@deltasystems.rs` | Δ klizači, diptisi, sve što nosi oznaku PRE / POSLE |
+| `mat-`, `amb-` | **Licencirane fotografije materijala i ambijenta** (Pexels, besplatna licenca) | Traka materijala, pozadine sekcija, teksture |
+
+Fotografije sa prefiksom `mat-` i `amb-` **nikada ne nose oznaku PRE /
+POSLE i nikada se ne predstavljaju kao rezultat rada klijenta.** One
+pokazuju vrstu površine, ne konkretan posao. Kada klijent dostavi svoje
+fotografije ambijenta, zamenite fajlove istim imenima.
+
+Nema izmišljenih podataka — bez cena, broja klijenata, godina iskustva,
+sertifikata i recenzija.
 
 Rezolucija izvornog materijala je ograničena (Instagram kreative), pa se
 slike prikazuju u kontrolisanim veličinama uz blago zrno. **Kada klijent

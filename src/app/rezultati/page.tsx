@@ -19,7 +19,7 @@ export default function RezultatiPage() {
         code="04"
         eyebrow="Rezultati"
         lines={['Isti kadar.', 'Druga slika.']}
-        titleSize="text-[clamp(2.2rem,17cqi,7.5rem)]"
+        titleSize="text-[clamp(1.89rem,13.3cqi,5.85rem)]"
         lede={
           <>
             Poređenja su iz stvarnih izlazaka. Povucite Δ i sami odredite gde
@@ -36,7 +36,7 @@ export default function RezultatiPage() {
       <ResultsGallery />
 
       <section className="bg-paper-warm">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-6">
               <SectionLabel code="04.1">Sledeći slučaj</SectionLabel>
@@ -44,7 +44,7 @@ export default function RezultatiPage() {
                 as="h2"
                 delay={0.08}
                 lines={['Vaš komad', 'može biti', 'sledeći.']}
-                className="t-display mt-6 text-[clamp(1.9rem,19cqi,4.6rem)]"
+                className="t-display mt-6 text-[clamp(1.63rem,14.8cqi,3.59rem)]"
               />
             </div>
 
@@ -57,7 +57,7 @@ export default function RezultatiPage() {
               </Reveal>
 
               <Reveal delay={0.26} className="mt-8 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-ink shear-l">
+                <Link href="/kontakt" className="btn btn-spectrum shear-l">
                   Pošalji fotografiju
                 </Link>
                 <a

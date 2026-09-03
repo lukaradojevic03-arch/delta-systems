@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { services } from '@/lib/site';
 import { PageHeader, SectionLabel, MetaList } from '@/components/ui/Bits';
@@ -20,7 +21,7 @@ export default function UslugePage() {
         code="02"
         eyebrow="Usluge"
         lines={['Dve celine.', 'Jedan metod.']}
-        titleSize="text-[clamp(2.2rem,16cqi,7.5rem)]"
+        titleSize="text-[clamp(1.89rem,12.5cqi,5.85rem)]"
         lede={
           <>
             Nameštaj i vozila razlikuju se po pristupu i pristupačnosti, ne po
@@ -34,13 +35,70 @@ export default function UslugePage() {
         ]}
       />
 
-      <section className="edge pb-20 md:pb-28">
+      <section className="edge pb-14 md:pb-20">
         <ServiceRows detailed />
+      </section>
+
+      {/* Gde se to radi — ambijent, puna širina */}
+      <section className="relative">
+        <div className="grid gap-px bg-ink/10 sm:grid-cols-3">
+          {[
+            {
+              src: '/media/amb-dnevna-siva.jpg',
+              alt: 'Dnevna soba sa svetlom tapaciranom garniturom',
+              k: 'A.01',
+              t: 'Stan i kuća',
+              s: 'Garniture, fotelje, tepisi',
+            },
+            {
+              src: '/media/amb-dusek.jpg',
+              alt: 'Spavaća soba sa dušekom i tapaciranim uzglavljem',
+              k: 'A.02',
+              t: 'Spavaći deo',
+              s: 'Dušeci, uzglavlja, tekstil',
+            },
+            {
+              src: '/media/amb-sediste.jpg',
+              alt: 'Tapacirano sedište iz blizine',
+              k: 'A.03',
+              t: 'Enterijer vozila',
+              s: 'Sedišta, patosnice, tapacirung',
+            },
+          ].map((x, i) => (
+            <Reveal key={x.k} delay={i * 0.08} className="cq group relative">
+              <div className="relative aspect-[4/3] overflow-hidden bg-ink">
+                <Image
+                  src={x.src}
+                  alt={x.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  quality={78}
+                  className="object-cover transition-transform duration-[1400ms] ease-delta group-hover:scale-[1.06]"
+                />
+                <span
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(14,17,22,0) 0%, rgba(14,17,22,0.55) 42%, rgba(14,17,22,0.93) 100%)',
+                  }}
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <span className="t-meta-sm block text-paper/50">{x.k}</span>
+                  <span className="t-display mt-1 block text-[clamp(1.15rem,5.4cqi,1.9rem)] text-paper">
+                    {x.t}
+                  </span>
+                  <span className="t-meta-sm mt-1.5 block text-paper/65">{x.s}</span>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       {/* Matrica površina — tehnički pregled, ne marketinški grid */}
       <section className="bg-ink text-paper">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <SectionLabel code="02.1" invert>
             Površina → metod
           </SectionLabel>
@@ -50,7 +108,7 @@ export default function UslugePage() {
               <LineReveal
                 as="h2"
                 lines={['Metod se bira', 'po materijalu.']}
-                className="t-display text-[clamp(1.7rem,15cqi,4.2rem)]"
+                className="t-display text-[clamp(1.46rem,11.7cqi,3.28rem)]"
               />
               <Reveal delay={0.18} className="mt-7">
                 <p className="t-body max-w-[38ch] text-paper/70 pretty">
@@ -98,13 +156,13 @@ export default function UslugePage() {
       </section>
 
       <section className="bg-paper-warm">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="cq md:col-span-6">
               <LineReveal
                 as="h2"
                 lines={['Niste sigurni', 'šta vam treba?']}
-                className="t-display text-[clamp(1.7rem,14cqi,4rem)]"
+                className="t-display text-[clamp(1.46rem,10.9cqi,3.12rem)]"
               />
             </div>
             <div className="md:col-span-4 md:col-start-8">
@@ -115,7 +173,7 @@ export default function UslugePage() {
                 </p>
               </Reveal>
               <Reveal delay={0.22} className="mt-7">
-                <Link href="/kontakt" className="btn btn-ink shear-l">
+                <Link href="/kontakt" className="btn btn-spectrum shear-l">
                   Pošalji upit
                 </Link>
               </Reveal>

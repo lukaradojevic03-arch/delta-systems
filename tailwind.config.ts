@@ -23,6 +23,13 @@ const config: Config = {
         stone: '#B5AEA1',
         slate: '#6F6A60',
         iris: '#7A5FA6',
+        // duboka plavo-zelena iz velura — druga tamna podloga pored ink-a
+        petrol: {
+          DEFAULT: '#123437',
+          deep: '#0C2528',
+          soft: '#1B4448',
+        },
+        clay: '#8C5A46',
         spectrum: {
           peach: '#F0B48A',
           rose: '#E0899F',
@@ -39,6 +46,9 @@ const config: Config = {
         wider: '0.08em',
         widest: '0.18em',
         brand: '0.34em',
+      },
+      spacing: {
+        18: '4.5rem',
       },
       maxWidth: {
         edge: '96rem',

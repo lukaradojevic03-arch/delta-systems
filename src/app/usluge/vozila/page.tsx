@@ -21,7 +21,7 @@ export default function VozilaPage() {
         code={service.code}
         eyebrow="Usluga — Vozila"
         lines={['Enterijer', 'do vlakna.']}
-        titleSize="text-[clamp(2.4rem,20cqi,7.5rem)]"
+        titleSize="text-[clamp(2.06rem,15.6cqi,5.85rem)]"
         lede={service.lede}
         meta={[
           { k: 'Sedišta', v: 'Dubinsko pranje' },
@@ -35,12 +35,12 @@ export default function VozilaPage() {
       {/* ---------------------------------------------------------- */}
 
       {/* ČIN 01 — STANJE */}
-      <section className="edge pb-16 md:pb-24">
+      <section className="edge pb-12 md:pb-18">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-3">
             <div className="md:sticky md:top-28 md:self-start">
               <p className="t-meta-sm text-stone">Čin 01</p>
-              <h2 className="t-display mt-3 text-[clamp(1.7rem,24cqi,3.2rem)]">
+              <h2 className="t-display mt-3 text-[clamp(1.46rem,18.7cqi,2.5rem)]">
                 Stanje
               </h2>
               <div className="rule-spectrum mt-5 w-14" />
@@ -59,7 +59,7 @@ export default function VozilaPage() {
               sizes="(max-width: 768px) 46vw, 28vw"
               shear="right"
             />
-            <div className="mt-10 md:mt-16">
+            <div className="mt-8 md:mt-12">
               <ImageReveal
                 src="/media/vozilo-zadnja-pre.jpg"
                 alt="Zadnja klupa u vozilu pre čišćenja enterijera"
@@ -74,11 +74,11 @@ export default function VozilaPage() {
 
       {/* ČIN 02 — TRETMAN (bez fotografije: to je deo koji se ne vidi) */}
       <section className="relative bg-ink text-paper">
-        <div className="edge py-20 md:py-32">
+        <div className="edge py-14 md:py-24">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-3">
               <p className="t-meta-sm text-paper/45">Čin 02</p>
-              <h2 className="t-display mt-3 text-[clamp(1.7rem,24cqi,3.2rem)]">
+              <h2 className="t-display mt-3 text-[clamp(1.46rem,18.7cqi,2.5rem)]">
                 Tretman
               </h2>
               <div className="rule-spectrum mt-5 w-14" />
@@ -91,7 +91,7 @@ export default function VozilaPage() {
               <LineReveal
                 as="p"
                 lines={['Deo posla koji', 'se ne fotografiše.']}
-                className="t-display text-[clamp(1.6rem,12cqi,4.2rem)]"
+                className="t-display text-[clamp(1.38rem,9.4cqi,3.28rem)]"
               />
 
               <Reveal delay={0.2} className="mt-8">
@@ -109,7 +109,36 @@ export default function VozilaPage() {
                 </p>
               </Reveal>
 
-              <Reveal delay={0.34} className="mt-10">
+              <div className="mt-9 grid grid-cols-3 gap-3">
+                <ImageReveal
+                  src="/media/amb-tapaciranje.jpg"
+                  alt="Tapacirano sedište sa vertikalnim šavovima"
+                  ratio="1 / 1"
+                  sizes="(max-width: 768px) 30vw, 14vw"
+                  delay={0.06}
+                />
+                <ImageReveal
+                  src="/media/mat-koza.jpg"
+                  alt="Makro snimak zrna crne kože"
+                  ratio="1 / 1"
+                  sizes="(max-width: 768px) 30vw, 14vw"
+                  delay={0.12}
+                />
+                <ImageReveal
+                  src="/media/mat-velur-petrol.jpg"
+                  alt="Tamnozeleni velur u naborima"
+                  ratio="1 / 1"
+                  sizes="(max-width: 768px) 30vw, 14vw"
+                  delay={0.18}
+                />
+              </div>
+              <Reveal delay={0.24}>
+                <p className="t-meta-sm mt-3 text-paper/45">
+                  Materijali u kabini — tekstil, koža, tapacirung
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.34} className="mt-9">
                 <MetaList
                   invert
                   items={service.surfaces.map((s) => ({
@@ -124,12 +153,12 @@ export default function VozilaPage() {
       </section>
 
       {/* ČIN 03 — REZULTAT */}
-      <section className="edge py-16 md:py-28">
+      <section className="edge py-12 md:py-20">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-3">
             <div className="md:sticky md:top-28 md:self-start">
               <p className="t-meta-sm text-stone">Čin 03</p>
-              <h2 className="t-display mt-3 text-[clamp(1.7rem,24cqi,3.2rem)]">
+              <h2 className="t-display mt-3 text-[clamp(1.46rem,18.7cqi,2.5rem)]">
                 Rezultat
               </h2>
               <div className="rule-spectrum mt-5 w-14" />
@@ -145,7 +174,7 @@ export default function VozilaPage() {
           </div>
 
           <div className="mt-10 grid grid-cols-2 gap-3 md:col-span-8 md:col-start-5 md:mt-0">
-            <div className="mt-10 md:mt-16">
+            <div className="mt-8 md:mt-12">
               <ImageReveal
                 src="/media/vozilo-zadnja-posle.jpg"
                 alt="Zadnja klupa u vozilu posle dubinskog pranja i dezinfekcije"
@@ -167,7 +196,7 @@ export default function VozilaPage() {
 
       {/* Zone enterijera */}
       <section className="bg-paper-warm">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <SectionLabel code={`${service.code}.4`}>Zone</SectionLabel>
 
           <div className="mt-10 grid gap-10 md:grid-cols-12 md:gap-8">
@@ -175,7 +204,7 @@ export default function VozilaPage() {
               <LineReveal
                 as="h2"
                 lines={['Sve što se', 'dodiruje.']}
-                className="t-display text-[clamp(1.8rem,22cqi,3.8rem)]"
+                className="t-display text-[clamp(1.55rem,17.2cqi,2.96rem)]"
               />
               <Reveal delay={0.16} className="mt-6">
                 <p className="t-body max-w-[34ch] text-slate pretty">
@@ -214,7 +243,7 @@ export default function VozilaPage() {
               </ul>
 
               <Reveal delay={0.3} className="mt-10">
-                <Link href="/kontakt" className="btn btn-ink shear-l">
+                <Link href="/kontakt" className="btn btn-spectrum shear-l">
                   Zakaži čišćenje
                 </Link>
               </Reveal>

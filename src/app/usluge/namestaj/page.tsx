@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { cases, getService, steps } from '@/lib/site';
 import { DeltaSlider } from '@/components/ui/DeltaSlider';
@@ -24,7 +25,7 @@ export default function NamestajPage() {
         code={service.code}
         eyebrow="Usluga — Nameštaj"
         lines={['Nameštaj', 'iznutra.']}
-        titleSize="text-[clamp(2.4rem,22cqi,7.5rem)]"
+        titleSize="text-[clamp(2.06rem,17.2cqi,5.85rem)]"
         lede={service.lede}
         meta={[
           { k: 'Osnovno', v: 'Dubinsko pranje' },
@@ -34,7 +35,7 @@ export default function NamestajPage() {
       />
 
       {/* Poređenje — tapacirani velur, isti kadar */}
-      <section className="edge pb-20 md:pb-28">
+      <section className="edge pb-14 md:pb-20">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
             <DeltaSlider
@@ -73,9 +74,38 @@ export default function NamestajPage() {
         </div>
       </section>
 
+      {/* Ambijent — gde taj nameštaj stoji */}
+      <section className="relative isolate overflow-hidden">
+        <Image
+          src="/media/amb-dnevna-zelena.jpg"
+          alt="Dnevni boravak sa tapaciranom garniturom i tepihom"
+          fill
+          sizes="100vw"
+          quality={78}
+          className="-z-10 object-cover"
+        />
+        <span
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(14,17,22,0.9) 0%, rgba(14,17,22,0.55) 55%, rgba(14,17,22,0.25) 100%)',
+          }}
+          aria-hidden="true"
+        />
+        <div className="edge py-16 md:py-24">
+          <div className="cq max-w-[46ch]">
+            <p className="t-meta-sm text-paper/55">Ambijent</p>
+            <p className="t-display mt-3 text-[clamp(1.4rem,9cqi,2.8rem)] text-paper">
+              Sve u sobi se čisti. Osim onoga na čemu se sedi.
+            </p>
+            <div className="rule-spectrum mt-6 w-20" />
+          </div>
+        </div>
+      </section>
+
       {/* Kome je namenjeno */}
       <section className="bg-ink text-paper">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <SectionLabel code={`${service.code}.2`} invert>
             Kada ima smisla
           </SectionLabel>
@@ -85,7 +115,7 @@ export default function NamestajPage() {
               <LineReveal
                 as="h2"
                 lines={['Nije stvar', 'urednosti nego', 'materijala.']}
-                className="t-display text-[clamp(1.8rem,14cqi,4.6rem)]"
+                className="t-display text-[clamp(1.55rem,10.9cqi,3.59rem)]"
               />
               <Reveal delay={0.2} className="mt-8">
                 <p className="t-lede max-w-[42ch] text-paper/85 pretty">
@@ -120,7 +150,24 @@ export default function NamestajPage() {
                 </p>
               </Reveal>
 
-              <Reveal delay={0.24} className="mt-10">
+              <div className="mt-7 grid grid-cols-2 gap-3">
+                <ImageReveal
+                  src="/media/mat-velur-rose.jpg"
+                  alt="Nabori velura u toplom bakarnom tonu"
+                  ratio="1 / 1"
+                  sizes="(max-width: 768px) 46vw, 19vw"
+                  delay={0.08}
+                />
+                <ImageReveal
+                  src="/media/mat-velur-bordo.jpg"
+                  alt="Rebrasta tapacirna tkanina u bordo tonu"
+                  ratio="1 / 1"
+                  sizes="(max-width: 768px) 46vw, 19vw"
+                  delay={0.16}
+                />
+              </div>
+
+              <Reveal delay={0.24} className="mt-8">
                 <MetaList
                   invert
                   items={service.surfaces.map((s) => ({
@@ -136,7 +183,7 @@ export default function NamestajPage() {
 
       {/* Kako izgleda proces — kratak izvod, pun proces na /proces */}
       <section className="bg-paper-warm">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionLabel code={`${service.code}.3`}>Tok posla</SectionLabel>
             <Reveal delay={0.1}>
@@ -152,7 +199,7 @@ export default function NamestajPage() {
             {steps.slice(1, 5).map((s, i) => (
               <Reveal as="li" key={s.code} delay={i * 0.1} className="cq">
                 <p className="t-meta-sm text-stone">{s.code}</p>
-                <h3 className="t-display mt-3 text-[clamp(1.2rem,11cqi,2rem)]">
+                <h3 className="t-display mt-3 text-[clamp(1.03rem,8.6cqi,1.56rem)]">
                   {s.title}
                 </h3>
                 <p className="t-body mt-3 text-slate pretty">{s.body}</p>
@@ -163,7 +210,7 @@ export default function NamestajPage() {
       </section>
 
       {/* Rezultat + CTA */}
-      <section className="edge py-20 md:py-28">
+      <section className="edge py-14 md:py-20">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-5">
             <SectionLabel code={`${service.code}.4`}>Rezultat</SectionLabel>
@@ -171,7 +218,7 @@ export default function NamestajPage() {
               as="h2"
               delay={0.08}
               lines={['Ton tkanine', 'nazad na jedno.']}
-              className="t-display mt-6 text-[clamp(1.6rem,13cqi,3.8rem)]"
+              className="t-display mt-6 text-[clamp(1.38rem,10.1cqi,2.96rem)]"
             />
             <Reveal delay={0.2} className="mt-6">
               <p className="t-body max-w-[36ch] text-slate pretty">
@@ -179,7 +226,7 @@ export default function NamestajPage() {
               </p>
             </Reveal>
             <Reveal delay={0.28} className="mt-8 flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn btn-ink shear-l">
+              <Link href="/kontakt" className="btn btn-spectrum shear-l">
                 Pošalji upit
               </Link>
               <Link href="/rezultati" className="btn btn-line">

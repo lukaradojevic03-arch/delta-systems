@@ -19,7 +19,7 @@ export default function ONamaPage() {
         code="05"
         eyebrow="O nama"
         lines={['Delta je', 'oznaka za', 'razliku.']}
-        titleSize="text-[clamp(2.4rem,21cqi,7.5rem)]"
+        titleSize="text-[clamp(2.06rem,16.4cqi,5.85rem)]"
         lede={
           <>
             U matematici Δ znači promenu između dva stanja. Ime firme je i
@@ -35,7 +35,7 @@ export default function ONamaPage() {
       />
 
       {/* Izjava */}
-      <section className="edge pb-20 md:pb-28">
+      <section className="edge pb-14 md:pb-20">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-7">
             <LineReveal
@@ -47,7 +47,7 @@ export default function ONamaPage() {
                   Radimo je.
                 </span>,
               ]}
-              className="t-display text-[clamp(2rem,15cqi,5.5rem)]"
+              className="t-display text-[clamp(1.72rem,11.7cqi,4.29rem)]"
             />
 
             <Reveal delay={0.2} className="mt-10 max-w-[52ch]">
@@ -89,12 +89,12 @@ export default function ONamaPage() {
 
       {/* Principi */}
       <section className="bg-ink text-paper">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <SectionLabel code="05.1" invert>
             Način rada
           </SectionLabel>
 
-          <ul className="mt-10 md:mt-14">
+          <ul className="mt-8 md:mt-10">
             {principles.map((p, i) => (
               <Reveal
                 as="li"
@@ -106,7 +106,7 @@ export default function ONamaPage() {
                   {p.code}
                 </span>
                 <div className="cq md:col-span-5">
-                  <h3 className="t-display text-[clamp(1.4rem,8cqi,3rem)]">
+                  <h3 className="t-display text-[clamp(1.2rem,6.2cqi,2.34rem)]">
                     {p.title}
                   </h3>
                 </div>
@@ -121,7 +121,7 @@ export default function ONamaPage() {
 
       {/* Područje i kanal */}
       <section className="bg-paper-warm">
-        <div className="edge py-20 md:py-28">
+        <div className="edge py-14 md:py-20">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             <div className="cq md:col-span-5">
               <SectionLabel code="05.2">Gde radimo</SectionLabel>
@@ -129,7 +129,7 @@ export default function ONamaPage() {
                 as="h2"
                 delay={0.08}
                 lines={['Beograd', 'i okolina.']}
-                className="t-display mt-6 text-[clamp(1.8rem,22cqi,4rem)]"
+                className="t-display mt-6 text-[clamp(1.55rem,17.2cqi,3.12rem)]"
               />
               <Reveal delay={0.18} className="mt-6">
                 <p className="t-body max-w-[34ch] text-slate pretty">
@@ -140,16 +140,28 @@ export default function ONamaPage() {
             </div>
 
             <div className="cq md:col-span-5 md:col-start-8">
+              <Parallax amount={16} className="mb-9">
+                <ImageReveal
+                  src="/media/mat-velur-petrol.jpg"
+                  alt="Tamnozeleni velur u naborima"
+                  ratio="1200 / 620"
+                  shear="left"
+                  sizes="(max-width: 768px) 100vw, 38vw"
+                />
+              </Parallax>
               <RuleReveal spectrum />
               <Reveal delay={0.16} className="mt-8">
-                <p className="t-display text-[clamp(1.6rem,13cqi,2.6rem)]">
-                  {site.tagline}
+                <p className="t-display text-[clamp(1.38rem,13cqi,2.6rem)]">
+                  Δ — razlika
                 </p>
-                <p className="t-meta mt-4 text-stone">{site.taglineSr}</p>
+                <p className="t-body mt-3 max-w-[30ch] text-slate pretty">
+                  Merilo posla je ono što se vidi kada se uporede isti kadar pre
+                  i posle. {site.taglineSr}
+                </p>
               </Reveal>
 
               <Reveal delay={0.24} className="mt-10 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-ink shear-l">
+                <Link href="/kontakt" className="btn btn-spectrum shear-l">
                   Pošalji upit
                 </Link>
                 <a

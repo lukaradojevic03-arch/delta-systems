@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <section className="cq edge flex min-h-[70vh] flex-col justify-center py-32">
       <p className="t-meta text-stone">404 — Stranica ne postoji</p>
-      <h1 className="t-display mt-6 text-[clamp(2.2rem,19cqi,7rem)]">
+      <h1 className="t-display mt-6 text-[clamp(1.89rem,14.8cqi,5.46rem)]">
         Ovde nema
         <br />
         <span className="italic">ničega.</span>

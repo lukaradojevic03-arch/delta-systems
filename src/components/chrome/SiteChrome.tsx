@@ -2,7 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+  type MotionValue,
+} from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { nav, site } from '@/lib/site';
 import { cn, EASE, EASE_SHEAR } from '@/lib/cn';
@@ -46,7 +54,7 @@ export function SiteChrome() {
     <>
       {/* traka napretka — jedina stalna pojava spektra */}
       <motion.div
-        className="rule-spectrum fixed left-0 top-0 z-[70] w-full origin-left"
+        className="rule-spectrum fixed left-0 top-0 z-[70] h-[3px] w-full origin-left"
         style={{ scaleX: progress }}
         aria-hidden="true"
       />
@@ -83,7 +91,7 @@ export function SiteChrome() {
             )}
           >
             <span className="t-meta hidden sm:inline">
-              {open ? 'Zatvori' : 'Indeks'}
+              {open ? 'Zatvori' : 'Meni'}
             </span>
             <span className="relative block h-[14px] w-[26px]" aria-hidden="true">
               <span
@@ -103,10 +111,65 @@ export function SiteChrome() {
         </div>
       </header>
 
+      <ScrollRail progress={progress} hidden={open} />
+
       <AnimatePresence>{open && <IndexOverlay pathname={pathname} />}</AnimatePresence>
 
       <CtaDock hidden={open || pathname === '/kontakt'} />
     </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Uspravni indikator skrola — puni se nadole, prazni nagore          */
+/* ------------------------------------------------------------------ */
+
+function ScrollRail({
+  progress,
+  hidden,
+}: {
+  progress: MotionValue<number>;
+  hidden: boolean;
+}) {
+  const [pct, setPct] = useState(0);
+  const knobTop = useTransform(progress, [0, 1], ['0%', '100%']);
+  useMotionValueEvent(progress, 'change', (v) =>
+    setPct(Math.round(Math.min(1, Math.max(0, v)) * 100)),
+  );
+
+  return (
+    <div
+      aria-hidden="true"
+      className={cn(
+        'pointer-events-none fixed left-0 top-1/2 z-[50] hidden w-[var(--edge-x)] -translate-y-1/2 flex-col items-center gap-4 transition-opacity duration-500 lg:flex',
+        hidden ? 'opacity-0' : 'opacity-100',
+      )}
+    >
+      <span className="font-mono text-[10px] tabular-nums tracking-[0.2em] text-stone">
+        {String(pct).padStart(2, '0')}
+      </span>
+
+      <div className="relative h-[190px] w-px bg-ink/15">
+        <div className="depth-ticks absolute -left-[5px] top-0 h-full w-[11px] opacity-45" />
+        <motion.div
+          className="absolute left-0 top-0 w-px origin-top"
+          style={{
+            scaleY: progress,
+            height: '100%',
+            background:
+              'linear-gradient(180deg,#F0B48A,#E0899F,#A78BC8,#8E9FD4)',
+          }}
+        />
+        <motion.div
+          className="absolute -left-[3px] h-[7px] w-[7px] bg-ink"
+          style={{ top: knobTop }}
+        />
+      </div>
+
+      <span className="font-mono text-[9px] tracking-[0.2em] text-stone [writing-mode:vertical-rl]">
+        Δ SCROLL
+      </span>
+    </div>
   );
 }
 
@@ -160,7 +223,7 @@ function IndexOverlay({ pathname }: { pathname: string }) {
 
                     <span
                       className={cn(
-                        't-display text-[clamp(1.9rem,min(8vw,8vh),5rem)] transition-[transform,opacity] duration-700 ease-delta',
+                        't-display text-[clamp(1.7rem,min(6.6vw,7vh),4rem)] transition-[transform,opacity] duration-700 ease-delta',
                         'group-hover:translate-x-2 md:group-hover:translate-x-4',
                         hover && hover !== item.href ? 'opacity-35' : 'opacity-100',
                       )}
@@ -257,7 +320,7 @@ function CtaDock({ hidden }: { hidden: boolean }) {
         >
           <Link
             href="/kontakt"
-            className="btn btn-ink shear-l !py-3.5 !pl-7 !pr-6 md:!py-4 md:!pl-8 md:!pr-7"
+            className="btn btn-spectrum shear-l !py-3.5 !pl-7 !pr-6 !text-[11px] shadow-[0_18px_40px_-22px_rgba(14,17,22,0.7)] md:!py-4 md:!pl-8 md:!pr-7"
           >
             <span aria-hidden="true" className="text-[13px]">Δ</span>
             Pošalji upit
