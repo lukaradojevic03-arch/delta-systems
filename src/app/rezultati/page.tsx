@@ -33,6 +33,38 @@ export default function RezultatiPage() {
         ]}
       />
 
+      <section className="bg-azure-50">
+        <div className="edge py-10 md:py-12">
+          <div className="grid gap-6 sm:grid-cols-3 sm:gap-8">
+            {[
+              {
+                k: 'R.01',
+                t: 'Isti kadar',
+                s: 'Fotografija posle snima se sa istog mesta kao ona pre. Bez druge sobe i drugog svetla.',
+              },
+              {
+                k: 'R.02',
+                t: 'Bez obrade',
+                s: 'Nema retuširanja, izoštravanja ni pojačane boje. Ono što vidite je ono što je ostalo posle tretmana.',
+              },
+              {
+                k: 'R.03',
+                t: 'Δ klizač',
+                s: 'Gde se kadrovi poklapaju, povlačite granicu sami. Gde se ne poklapaju, stoje dve odvojene fotografije.',
+              },
+            ].map((x, i) => (
+              <Reveal key={x.k} delay={i * 0.08}>
+                <p className="t-meta-sm text-azure-600">{x.k}</p>
+                <p className="t-display mt-2 text-[clamp(1.15rem,3vw,1.6rem)] text-ink">
+                  {x.t}
+                </p>
+                <p className="t-body mt-2.5 text-slate pretty">{x.s}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ResultsGallery />
 
       <section className="bg-paper-warm">
@@ -57,7 +89,7 @@ export default function RezultatiPage() {
               </Reveal>
 
               <Reveal delay={0.26} className="mt-8 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-spectrum shear-l">
+                <Link href="/kontakt" className="btn btn-blue shear-l">
                   Pošalji fotografiju
                 </Link>
                 <a

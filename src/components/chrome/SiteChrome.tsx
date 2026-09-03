@@ -2,19 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  AnimatePresence,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
-} from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { nav, site } from '@/lib/site';
 import { cn, EASE, EASE_SHEAR } from '@/lib/cn';
 import { Wordmark } from '@/components/ui/Wordmark';
+
+/** Stavke u traci na desktopu — Kontakt je izdvojen kao dugme. */
+const barItems = nav.filter((n) => n.href !== '/' && n.href !== '/kontakt');
 
 export function SiteChrome() {
   const pathname = usePathname();
@@ -50,12 +45,18 @@ export function SiteChrome() {
     };
   }, [open]);
 
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
+
   return (
     <>
-      {/* traka napretka — jedina stalna pojava spektra */}
+      {/* napredak čitanja — puni se nadole, prazni nagore */}
       <motion.div
-        className="rule-spectrum fixed left-0 top-0 z-[70] h-[3px] w-full origin-left"
-        style={{ scaleX: progress }}
+        className="fixed left-0 top-0 z-[70] h-[3px] w-full origin-left"
+        style={{
+          scaleX: progress,
+          background: 'linear-gradient(90deg,#A8C1E4,#5B80BC,#324973)',
+        }}
         aria-hidden="true"
       />
 
@@ -63,16 +64,16 @@ export function SiteChrome() {
         className={cn(
           'fixed inset-x-0 top-0 z-[60] transition-[background-color,box-shadow,backdrop-filter] duration-500',
           scrolled && !open
-            ? 'bg-paper/82 backdrop-blur-md shadow-[0_1px_0_0_rgba(14,17,22,0.10)]'
+            ? 'bg-paper/88 backdrop-blur-md shadow-[0_1px_0_0_rgba(14,17,22,0.10)]'
             : 'bg-transparent',
         )}
       >
-        <div className="edge flex h-[72px] items-center justify-between md:h-[84px]">
+        <div className="edge flex h-[72px] items-center justify-between gap-8 md:h-[84px]">
           <Link
             href="/"
             aria-label="Delta Systems — početna"
             className={cn(
-              'transition-colors duration-500',
+              'shrink-0 transition-colors duration-500',
               open ? 'text-paper' : 'text-ink',
             )}
           >
@@ -80,13 +81,53 @@ export function SiteChrome() {
             <Wordmark size="md" className="hidden md:inline-flex" />
           </Link>
 
+          {/* ---------- desktop: cela navigacija u zaglavlju ---------- */}
+          <nav
+            aria-label="Glavna navigacija"
+            className="hidden items-center gap-5 md:flex lg:gap-7 xl:gap-9"
+          >
+            {barItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                className={cn(
+                  'group relative py-2 font-sans text-[0.9375rem] tracking-[-0.01em] transition-colors duration-500',
+                  isActive(item.href) ? 'text-ink' : 'text-slate hover:text-ink',
+                )}
+              >
+                {item.label}
+                <span
+                  className={cn(
+                    'absolute inset-x-0 -bottom-0.5 h-px origin-left bg-azure-600 transition-transform duration-500 ease-delta',
+                    isActive(item.href)
+                      ? 'scale-x-100'
+                      : 'scale-x-0 group-hover:scale-x-100',
+                  )}
+                  aria-hidden="true"
+                />
+              </Link>
+            ))}
+
+            <Link
+              href="/kontakt"
+              className={cn(
+                'btn shear-l !px-5 !py-3 lg:!px-6',
+                pathname === '/kontakt' ? 'btn-line' : 'btn-blue',
+              )}
+            >
+              Pošalji upit
+            </Link>
+          </nav>
+
+          {/* ---------- mobilni / tablet: dugme za meni ---------- */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="delta-index"
             className={cn(
-              'group flex items-center gap-3 py-2 transition-colors duration-500',
+              'group flex items-center gap-3 py-2 transition-colors duration-500 md:hidden',
               open ? 'text-paper' : 'text-ink',
             )}
           >
@@ -111,9 +152,7 @@ export function SiteChrome() {
         </div>
       </header>
 
-      <ScrollRail progress={progress} hidden={open} />
-
-      <AnimatePresence>{open && <IndexOverlay pathname={pathname} />}</AnimatePresence>
+      <AnimatePresence>{open && <MenuOverlay pathname={pathname} />}</AnimatePresence>
 
       <CtaDock hidden={open || pathname === '/kontakt'} />
     </>
@@ -121,64 +160,10 @@ export function SiteChrome() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Uspravni indikator skrola — puni se nadole, prazni nagore          */
+/*  Meni — celoekranska navigacija za mobilni i tablet                 */
 /* ------------------------------------------------------------------ */
 
-function ScrollRail({
-  progress,
-  hidden,
-}: {
-  progress: MotionValue<number>;
-  hidden: boolean;
-}) {
-  const [pct, setPct] = useState(0);
-  const knobTop = useTransform(progress, [0, 1], ['0%', '100%']);
-  useMotionValueEvent(progress, 'change', (v) =>
-    setPct(Math.round(Math.min(1, Math.max(0, v)) * 100)),
-  );
-
-  return (
-    <div
-      aria-hidden="true"
-      className={cn(
-        'pointer-events-none fixed left-0 top-1/2 z-[50] hidden w-[var(--edge-x)] -translate-y-1/2 flex-col items-center gap-4 transition-opacity duration-500 lg:flex',
-        hidden ? 'opacity-0' : 'opacity-100',
-      )}
-    >
-      <span className="font-mono text-[10px] tabular-nums tracking-[0.2em] text-stone">
-        {String(pct).padStart(2, '0')}
-      </span>
-
-      <div className="relative h-[190px] w-px bg-ink/15">
-        <div className="depth-ticks absolute -left-[5px] top-0 h-full w-[11px] opacity-45" />
-        <motion.div
-          className="absolute left-0 top-0 w-px origin-top"
-          style={{
-            scaleY: progress,
-            height: '100%',
-            background:
-              'linear-gradient(180deg,#F0B48A,#E0899F,#A78BC8,#8E9FD4)',
-          }}
-        />
-        <motion.div
-          className="absolute -left-[3px] h-[7px] w-[7px] bg-ink"
-          style={{ top: knobTop }}
-        />
-      </div>
-
-      <span className="font-mono text-[9px] tracking-[0.2em] text-stone [writing-mode:vertical-rl]">
-        Δ SCROLL
-      </span>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Indeks — celoekranska tipografska navigacija                       */
-/* ------------------------------------------------------------------ */
-
-function IndexOverlay({ pathname }: { pathname: string }) {
-  const [hover, setHover] = useState<string | null>(null);
+function MenuOverlay({ pathname }: { pathname: string }) {
   const firstRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -189,15 +174,15 @@ function IndexOverlay({ pathname }: { pathname: string }) {
   return (
     <motion.div
       id="delta-index"
-      className="fixed inset-0 z-[55] overflow-y-auto overscroll-contain bg-ink text-paper"
+      className="fixed inset-0 z-[55] overflow-y-auto overscroll-contain bg-azure-900 text-paper md:hidden"
       initial={{ clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' }}
       animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
       exit={{ clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)' }}
-      transition={{ duration: 0.72, ease: EASE_SHEAR }}
+      transition={{ duration: 0.66, ease: EASE_SHEAR }}
     >
-      <div className="edge flex min-h-full flex-col justify-between pb-8 pt-[96px] md:pt-[116px]">
+      <div className="edge flex min-h-full flex-col justify-between pb-8 pt-[96px]">
         <nav aria-label="Glavna navigacija">
-          <ul onMouseLeave={() => setHover(null)}>
+          <ul>
             {nav.map((item, i) => {
               const active =
                 item.href === '/'
@@ -206,44 +191,27 @@ function IndexOverlay({ pathname }: { pathname: string }) {
               return (
                 <motion.li
                   key={item.href}
-                  initial={{ opacity: 0, y: 26 }}
+                  initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.16 + i * 0.055, ease: EASE }}
-                  className="border-b border-paper/12"
+                  transition={{ duration: 0.65, delay: 0.14 + i * 0.05, ease: EASE }}
+                  className="border-b border-paper/15"
                 >
                   <Link
                     ref={i === 0 ? firstRef : undefined}
                     href={item.href}
-                    onMouseEnter={() => setHover(item.href)}
-                    className="group flex items-baseline gap-4 py-3 md:gap-8 md:py-4"
+                    className="group flex items-center gap-4 py-3.5"
                   >
-                    <span className="t-meta-sm w-7 shrink-0 text-paper/45 md:w-10">
+                    <span className="t-meta-sm w-7 shrink-0 text-paper/45">
                       {item.code}
                     </span>
-
-                    <span
-                      className={cn(
-                        't-display text-[clamp(1.7rem,min(6.6vw,7vh),4rem)] transition-[transform,opacity] duration-700 ease-delta',
-                        'group-hover:translate-x-2 md:group-hover:translate-x-4',
-                        hover && hover !== item.href ? 'opacity-35' : 'opacity-100',
-                      )}
-                    >
+                    <span className="t-display text-[clamp(1.7rem,min(7.5vw,7vh),3.2rem)]">
                       {item.label}
                     </span>
-
-                    <span className="ml-auto hidden items-center gap-4 md:flex">
-                      <span
-                        className={cn(
-                          't-meta-sm text-paper/55 transition-opacity duration-500',
-                          hover === item.href ? 'opacity-100' : 'opacity-0',
-                        )}
-                      >
-                        {item.note}
+                    {active && (
+                      <span className="t-meta-sm ml-auto text-azure-200">
+                        Trenutno
                       </span>
-                      {active && (
-                        <span className="t-meta-sm text-paper/70">Trenutno</span>
-                      )}
-                    </span>
+                    )}
                   </Link>
                 </motion.li>
               );
@@ -254,30 +222,23 @@ function IndexOverlay({ pathname }: { pathname: string }) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="mt-10"
         >
-          <div>
-            <div className="rule-spectrum mb-4 w-24" />
-            <p className="t-meta text-paper/55">{site.tagline}</p>
-            <p className="t-meta mt-1.5 text-paper/35">
-              {site.city} — Dubinsko čišćenje
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            <a
-              href={site.instagram.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="t-meta link-delta text-paper/75 hover:text-paper"
-            >
-              Instagram {site.instagram.handle}
-            </a>
-            <Link href="/kontakt" className="btn btn-line-invert">
-              Pošalji upit
-            </Link>
-          </div>
+          <Link href="/kontakt" className="btn btn-line-invert w-full justify-center">
+            Pošalji upit
+          </Link>
+          <a
+            href={site.instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="t-meta link-delta mt-6 block text-paper/70"
+          >
+            Instagram {site.instagram.handle}
+          </a>
+          <p className="t-meta mt-2 text-paper/40">
+            {site.city} — {site.tagline}
+          </p>
         </motion.div>
       </div>
     </motion.div>
@@ -285,11 +246,10 @@ function IndexOverlay({ pathname }: { pathname: string }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Stalni CTA                                                         */
+/*  Stalni CTA — samo tamo gde nema trake u zaglavlju                  */
 /* ------------------------------------------------------------------ */
 
 function CtaDock({ hidden }: { hidden: boolean }) {
-  // Sklanja se pri skrolu nadole da ne prekriva tekst, vraća se pri skrolu nagore.
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -315,14 +275,13 @@ function CtaDock({ hidden }: { hidden: boolean }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 24 }}
           transition={{ duration: 0.45, ease: EASE }}
-          className="fixed bottom-0 right-0 z-[58] p-4 md:p-6"
+          className="fixed bottom-0 right-0 z-[58] p-4 md:hidden"
           style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 1rem)' }}
         >
           <Link
             href="/kontakt"
-            className="btn btn-spectrum shear-l !py-3.5 !pl-7 !pr-6 !text-[11px] shadow-[0_18px_40px_-22px_rgba(14,17,22,0.7)] md:!py-4 md:!pl-8 md:!pr-7"
+            className="btn btn-blue shear-l !py-3.5 !pl-7 !pr-6 !text-[11px] shadow-[0_18px_40px_-22px_rgba(14,17,22,0.7)]"
           >
-            <span aria-hidden="true" className="text-[13px]">Δ</span>
             Pošalji upit
           </Link>
         </motion.div>

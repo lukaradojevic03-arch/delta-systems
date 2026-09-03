@@ -389,3 +389,74 @@ export const principles = [
       'Šavovi, ivice, uglovi i prostor koji se ne vidi na prvi pogled. Details make the difference.',
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/*  ČESTA PITANJA                                                      */
+/*  Odgovori su namerno bez brojeva koje ne možemo da garantujemo —    */
+/*  bez cena, rokova i procenata. Ono što zavisi od slučaja, tako i    */
+/*  piše.                                                              */
+/* ------------------------------------------------------------------ */
+
+export type Faq = { q: string; a: string };
+
+export const faqs: Faq[] = [
+  {
+    q: 'Da li izlazite na adresu?',
+    a: 'Za nameštaj — da, radi se kod vas. Za vozila se lokacija dogovara unapred, zavisno od obima posla.',
+  },
+  {
+    q: 'Koliko traje sušenje?',
+    a: 'Ekstrakcija vlage je deo tretmana, pa nameštaj ne ostaje mokar kao posle običnog pranja. Koliko tačno treba zavisi od materijala, debljine sunđera i provetravanja prostorije — okvir dobijate na licu mesta, kada se vidi šta se radi.',
+  },
+  {
+    q: 'Da li se sve fleke skidaju?',
+    a: 'Ne. Neke fleke su trajno vezale boju vlakna ili su ga oštetile, i to se ne može poništiti čišćenjem. Ako je slučaj takav, kažemo pre nego što počnemo. Ne obećavamo ono što se ne može uraditi.',
+  },
+  {
+    q: 'Koristite li hemikalije?',
+    a: 'Na površinama koje ne upijaju radi para — bez sredstava. Kod upijajućih materijala koristi se rastvor koji se posle ekstrahuje iz vlakna zajedno sa prljavštinom, tako da u tkanini ne ostaje talog.',
+  },
+  {
+    q: 'Kako da znam da li mom nameštaju treba dubinsko čišćenje?',
+    a: 'Najčešći znaci su promena tona tkanine u zonama gde se najviše sedi i miris koji se ne gubi provetravanjem. Ako niste sigurni, pošaljite fotografiju — po njoj se vidi dosta.',
+  },
+  {
+    q: 'Šta treba da pripremim pre dolaska?',
+    a: 'Sklonite sitnice sa i ispod predmeta i oslobodite prostor oko njega da se može prići sa svih strana. Tokom sušenja pomaže otvoren prozor. Ostalo je na nama.',
+  },
+  {
+    q: 'Kako se zakazuje i kako se dobija cena?',
+    a: 'Pošaljete fotografiju i opis kroz upit na sajtu ili porukom na Instagram. Na osnovu materijala, veličine i stepena zaprljanja javljamo procenu i dogovaramo termin. Cena se ne daje napamet, bez uvida u predmet.',
+  },
+  {
+    q: 'Radite li dušeke i tepihe, ili samo garniture?',
+    a: 'Radi se sve što je tapacirano ili tkano: garniture, fotelje, stolice, taburei, dušeci, tepisi i staze. Isti metod, drugačije podešavanje prema materijalu.',
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  USISAVANJE vs DUBINSKO PRANJE — poređenje, ne marketing            */
+/* ------------------------------------------------------------------ */
+
+export const comparison = {
+  a: {
+    label: 'Usisavanje',
+    rows: [
+      'Skida ono što leži na površini',
+      'Ne ulazi u vlakno',
+      'Miris ostaje jer ostaje izvor',
+      'Ton tkanine se ne menja',
+      'Bez dezinfekcije',
+    ],
+  },
+  b: {
+    label: 'Dubinsko pranje',
+    rows: [
+      'Rastvor ulazi u vlakno i veže prljavštinu',
+      'Prljavština izlazi iz tkanine, ne razmazuje se',
+      'Miris se uklanja zajedno sa izvorom',
+      'Zone najveće upotrebe vraćaju se na ton ostatka',
+      'Dubinska dezinfekcija kao poslednji sloj',
+    ],
+  },
+};

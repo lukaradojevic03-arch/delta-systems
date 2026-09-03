@@ -150,7 +150,7 @@ export function ServiceRows({
               {/* spectrum linija koja se izvlači po hover-u */}
               <span
                 className={cn(
-                  'rule-spectrum absolute bottom-0 left-0 w-full origin-left transition-transform duration-[900ms] ease-delta',
+                  'rule-azure absolute bottom-0 left-0 w-full origin-left transition-transform duration-[900ms] ease-delta',
                   on ? 'scale-x-100' : 'scale-x-0',
                 )}
                 aria-hidden="true"

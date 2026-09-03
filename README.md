@@ -36,16 +36,22 @@ najdužem redu naslova.
 
 ### Paleta
 
-Izvedena iz logotipa i iz materijala koje firma čisti:
-
 - `ink` — grafitna, glavna tamna podloga
-- `petrol` — duboka plavo-zelena (iz velura), druga tamna podloga da se
-  tamne sekcije ne ponavljaju
+- `azure` (50 → 900) — svetlo do duboko plava, izvedena iz periwinkle
+  tona u logotipu. Nosi **sve stranice osim početne**: podloge sekcija
+  (`azure-50`), tamni blokovi (`azure-800/900`), CTA (`.btn-blue`),
+  aktivna stavka u navigaciji.
 - `paper` / `paper-warm` — topla slonovača
 - `stone` / `slate` — sekundarni tekst
-- **spektar** (breskva → roza → lila → plava) — linije debljine 1px,
-  indikator skrola i **jedini** element koji ga nosi kao punu površinu:
-  glavni CTA (`.btn-spectrum`). Nigde drugde nema gradijentnih podloga.
+- **spektar** (breskva → roza → lila → plava) — **samo na početnoj**, i to
+  kao glavni CTA (`.btn-spectrum`) i tanke linije. Nijedna unutrašnja
+  stranica ga ne ponavlja.
+
+### Fotografije van početne
+
+Sve prolaze kroz klasu `.duotone` — sivo pa plavi multiply — pa materijal
+iz različitih izvora deluje kao jedna serija umesto kao skup šarenih
+stock slika. Početna zadržava pune boje materijala.
 
 ---
 
@@ -122,6 +128,23 @@ Rezolucija izvornog materijala je ograničena (Instagram kreative), pa se
 slike prikazuju u kontrolisanim veličinama uz blago zrno. **Kada klijent
 dostavi originale, dovoljno je zameniti fajlove u `public/media/` istim
 imenima.**
+
+---
+
+## Sadržajne celine
+
+Pored teksta, sajt nosi tri stvari koje rade posao umesto da popunjavaju
+prostor:
+
+| Celina | Fajl | Gde |
+| --- | --- | --- |
+| **Δ klizač** pre/posle | `ui/DeltaSlider.tsx` | Početna, Rezultati, Nameštaj |
+| **Šta imate → šta se radi** — mali alat koji za izabrani predmet pokazuje postupak, obim i rezultat | `sections/MethodMatrix.tsx` | Usluge, Nameštaj, Vozila |
+| **Usisavanje vs dubinsko pranje** — poređenje dokle koji postupak stiže | `sections/Comparison.tsx` | Usluge, Proces |
+| **Česta pitanja** | `sections/Faq.tsx` + `faqs` u `site.ts` | Usluge |
+
+Odgovori u `faqs` namerno nemaju brojeve koji se ne mogu garantovati —
+bez rokova, procenata i cena. Ono što zavisi od slučaja, tako i piše.
 
 ---
 

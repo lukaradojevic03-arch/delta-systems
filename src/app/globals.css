@@ -76,6 +76,11 @@
     opacity: 0.85;
   }
 
+  .rule-azure {
+    height: 1px;
+    background: linear-gradient(90deg, #A8C1E4, #5B80BC, #324973);
+  }
+
   .rule-spectrum-v {
     width: 1px;
     background: linear-gradient(180deg, #f0b48a, #e0899f, #a78bc8, #8e9fd4);
@@ -213,7 +218,21 @@
     @apply text-ink;
   }
 
-  /* glavni konverzioni CTA — jedini element koji nosi pun spektar */
+  /* plavi CTA — nosi sve stranice osim početne */
+  .btn-blue {
+    @apply text-paper;
+    background: #324973;
+    padding: 1.15rem 2.1rem;
+  }
+  .btn-blue::before {
+    background: #0e1116;
+  }
+  .btn-blue:hover,
+  .btn-blue:focus-visible {
+    @apply text-paper;
+  }
+
+  /* glavni konverzioni CTA — samo na početnoj */
   .btn-spectrum {
     @apply text-ink;
     background: var(--spectrum);
@@ -260,6 +279,46 @@
   }
   .tint-soft::before {
     background: rgba(14, 17, 22, 0.22);
+  }
+
+  /* ---------- plavi duotone ---------- */
+  /* Sve fotografije van početne prolaze kroz istu plavu obradu, pa
+     materijal iz različitih izvora deluje kao jedna serija. */
+  .duotone {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .duotone img {
+    filter: grayscale(1) contrast(1.08) brightness(1.04);
+  }
+  .duotone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: #5b80bc;
+    mix-blend-mode: multiply;
+    opacity: 0.82;
+  }
+  .duotone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: #e1ebf8;
+    mix-blend-mode: screen;
+    opacity: 0.16;
+  }
+
+  .duotone-deep::after {
+    background: #26375a;
+    opacity: 0.86;
+  }
+  .duotone-deep::before {
+    opacity: 0.1;
   }
 
   /* ---------- zrno preko fotografija (maskira nisku rezoluciju) ---------- */

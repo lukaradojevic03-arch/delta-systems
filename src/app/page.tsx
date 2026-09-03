@@ -4,7 +4,7 @@ import { cases, pillars, site } from '@/lib/site';
 import { DeltaSlider } from '@/components/ui/DeltaSlider';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
 import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
-import { DepthScale, MetaList, SectionLabel } from '@/components/ui/Bits';
+import { MetaList, SectionLabel } from '@/components/ui/Bits';
 import { MaterialBand } from '@/components/sections/MaterialBand';
 import { MethodIndex } from '@/components/sections/MethodIndex';
 import { ServiceRows } from '@/components/sections/ServiceRows';
@@ -98,7 +98,7 @@ export default function HomePage() {
       {/* ============================================================ */}
       {/*  02 — PROBLEM                                                */}
       {/* ============================================================ */}
-      <section className="relative bg-petrol text-paper">
+      <section className="relative bg-azure-900 text-paper">
         <div className="edge py-14 md:py-24">
           <SectionLabel code="02" invert>
             Šta ostaje u tkanini
@@ -140,9 +140,7 @@ export default function HomePage() {
                 />
               </Reveal>
 
-              <Reveal delay={0.4} className="mt-8 hidden md:block">
-                <DepthScale invert className="h-24" />
-              </Reveal>
+
             </div>
 
             {/* detalji površine */}
@@ -329,7 +327,7 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0 -z-10"
           style={{
             background:
-              'linear-gradient(105deg, rgba(14,17,22,0.96) 0%, rgba(18,52,55,0.9) 55%, rgba(12,37,40,0.82) 100%)',
+              'linear-gradient(105deg, rgba(14,17,22,0.96) 0%, rgba(26,39,64,0.92) 55%, rgba(38,55,90,0.84) 100%)',
           }}
           aria-hidden="true"
         />

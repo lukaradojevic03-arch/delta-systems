@@ -5,6 +5,7 @@ import { DepthProcess } from '@/components/sections/DepthProcess';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
 import { LineReveal, Reveal } from '@/components/motion/Reveal';
 import { MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
+import { Comparison } from '@/components/sections/Comparison';
 
 export const metadata: Metadata = {
   title: 'Proces — od upita do predaje',
@@ -129,6 +130,32 @@ export default function ProcesPage() {
         </div>
       </section>
 
+      {/* Dokle koji postupak stiže */}
+      <section className="bg-azure-50">
+        <div className="edge py-14 md:py-20">
+          <div className="grid gap-8 md:grid-cols-12">
+            <div className="cq md:col-span-5">
+              <SectionLabel code="03.15">Razlika</SectionLabel>
+              <LineReveal
+                as="h2"
+                delay={0.08}
+                lines={['Zašto se ovo', 'ne rešava', 'usisivačem.']}
+                className="t-display mt-5 text-[clamp(1.4rem,12cqi,3rem)]"
+              />
+            </div>
+            <div className="md:col-span-6 md:col-start-7 md:pt-4">
+              <Reveal delay={0.16}>
+                <p className="t-body max-w-[44ch] text-slate pretty">
+                  Redovno usisavanje je neophodno, ali radi samo na površini.
+                  Ispod nje se sloj nastavlja i raste.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+          <Comparison className="mt-10 md:mt-12" />
+        </div>
+      </section>
+
       {/* Šta je potrebno pre dolaska */}
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-20">
@@ -163,7 +190,7 @@ export default function ProcesPage() {
               </Reveal>
 
               <Reveal delay={0.26} className="mt-10 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-spectrum shear-l">
+                <Link href="/kontakt" className="btn btn-blue shear-l">
                   Pošalji upit
                 </Link>
                 <Link href="/rezultati" className="btn btn-line">

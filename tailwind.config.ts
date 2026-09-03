@@ -29,6 +29,20 @@ const config: Config = {
           deep: '#0C2528',
           soft: '#1B4448',
         },
+        // svetlo plava izvedena iz periwinkle tona u logotipu —
+        // nosi sve stranice osim početne
+        azure: {
+          50: '#F0F5FC',
+          100: '#E1EBF8',
+          200: '#C7D9F0',
+          300: '#A8C1E4',
+          400: '#7E9FD2',
+          500: '#5B80BC',
+          600: '#42639C',
+          700: '#324973',
+          800: '#26375A',
+          900: '#1A2740',
+        },
         clay: '#8C5A46',
         spectrum: {
           peach: '#F0B48A',

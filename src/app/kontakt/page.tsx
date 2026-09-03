@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { site } from '@/lib/site';
 import { InquiryFlow } from '@/components/forms/InquiryFlow';
 import { Reveal } from '@/components/motion/Reveal';
-import { DepthScale, MetaList, PageHeader } from '@/components/ui/Bits';
+import { MetaList, PageHeader } from '@/components/ui/Bits';
 
 export const metadata: Metadata = {
   title: 'Kontakt — pošaljite upit',
@@ -39,7 +39,7 @@ export default function KontaktPage() {
           <div className="cq md:col-span-7">
             <div className="relative bg-paper-warm p-6 shadow-[0_28px_70px_-45px_rgba(14,17,22,0.55)] sm:p-9 md:p-11">
               <span
-                className="rule-spectrum absolute inset-x-0 top-0"
+                className="rule-azure absolute inset-x-0 top-0"
                 aria-hidden="true"
               />
               <InquiryFlow />
@@ -50,7 +50,7 @@ export default function KontaktPage() {
           <aside className="md:col-span-4 md:col-start-9">
             {/* tamni blok — vizuelno sidro pored svetlog panela */}
             <Reveal className="cq">
-              <div className="relative isolate overflow-hidden bg-petrol p-6 text-paper sm:p-7">
+              <div className="relative isolate overflow-hidden bg-azure-800 p-6 text-paper sm:p-7">
                 <Image
                   src="/media/mat-velur-rose.jpg"
                   alt=""
@@ -58,13 +58,13 @@ export default function KontaktPage() {
                   fill
                   sizes="(max-width: 768px) 100vw, 30vw"
                   quality={70}
-                  className="-z-10 object-cover opacity-30"
+                  className="-z-10 object-cover opacity-25 grayscale"
                 />
                 <span
                   className="pointer-events-none absolute inset-0 -z-10"
                   style={{
                     background:
-                      'linear-gradient(160deg, rgba(18,52,55,0.86) 0%, rgba(12,37,40,0.96) 100%)',
+                      'linear-gradient(160deg, rgba(50,73,115,0.82) 0%, rgba(26,39,64,0.97) 100%)',
                   }}
                   aria-hidden="true"
                 />
@@ -138,9 +138,7 @@ export default function KontaktPage() {
               />
             </Reveal>
 
-            <Reveal delay={0.26} className="mt-10 hidden md:block">
-              <DepthScale className="h-24" />
-            </Reveal>
+
           </aside>
         </div>
       </section>

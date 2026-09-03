@@ -119,6 +119,108 @@ export default function ONamaPage() {
         </div>
       </section>
 
+      {/* Očekivanja — najpošteniji deo stranice */}
+      <section className="bg-azure-50">
+        <div className="edge py-14 md:py-20">
+          <div className="grid gap-8 md:grid-cols-12">
+            <div className="cq md:col-span-5">
+              <SectionLabel code="05.15">Očekivanja</SectionLabel>
+              <LineReveal
+                as="h2"
+                delay={0.08}
+                lines={['Šta dobijate', 'i šta nećete', 'dobiti.']}
+                className="t-display mt-5 text-[clamp(1.4rem,12cqi,3rem)]"
+              />
+            </div>
+            <div className="md:col-span-6 md:col-start-7 md:pt-4">
+              <Reveal delay={0.16}>
+                <p className="t-body max-w-[44ch] text-slate pretty">
+                  Druga lista je jednako važna kao prva. Ako se nešto ne može
+                  uraditi, bolje je da to znate pre nego posle.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 md:gap-6">
+            {[
+              {
+                t: 'Šta dobijate',
+                tone: 'accent' as const,
+                rows: [
+                  'Procenu pre nego što se bilo šta radi',
+                  'Postupak izabran prema materijalu, ne prema ceni',
+                  'Ekstrakciju vlage kao deo tretmana, ne kao dodatak',
+                  'Dubinsku dezinfekciju kao poslednji sloj',
+                  'Jasno „ne" ako se nešto ne može uraditi',
+                ],
+              },
+              {
+                t: 'Šta nećete dobiti',
+                tone: 'muted' as const,
+                rows: [
+                  'Cenu izrečenu napamet, bez uvida u predmet',
+                  'Obećanje da svaka fleka izlazi',
+                  'Sredstvo koje ostaje u tkanini i hvata prašinu',
+                  'Nameštaj koji ostaje mokar do sutra',
+                  'Paket u koji ulazi i ono što vam ne treba',
+                ],
+              },
+            ].map((col, ci) => (
+              <Reveal key={col.t} delay={ci * 0.1}>
+                <div
+                  className={
+                    col.tone === 'accent'
+                      ? 'h-full bg-azure-800 p-6 text-paper sm:p-8'
+                      : 'h-full bg-paper-warm p-6 text-ink sm:p-8'
+                  }
+                >
+                  <p
+                    className={
+                      col.tone === 'accent'
+                        ? 't-display text-[clamp(1.3rem,3.6vw,1.9rem)] text-paper'
+                        : 't-display text-[clamp(1.3rem,3.6vw,1.9rem)] text-ink'
+                    }
+                  >
+                    {col.t}
+                  </p>
+                  <ul className="mt-6">
+                    {col.rows.map((r) => (
+                      <li
+                        key={r}
+                        className={
+                          col.tone === 'accent'
+                            ? 'flex gap-4 border-t border-paper/18 py-3.5'
+                            : 'flex gap-4 border-t border-ink/12 py-3.5'
+                        }
+                      >
+                        <span
+                          className={
+                            col.tone === 'accent'
+                              ? 'mt-[0.55em] block h-px w-4 shrink-0 bg-azure-300'
+                              : 'mt-[0.55em] block h-px w-4 shrink-0 bg-stone'
+                          }
+                          aria-hidden="true"
+                        />
+                        <span
+                          className={
+                            col.tone === 'accent'
+                              ? 'font-sans text-[0.9375rem] leading-relaxed text-paper/85 md:text-base'
+                              : 'font-sans text-[0.9375rem] leading-relaxed text-slate md:text-base'
+                          }
+                        >
+                          {r}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Područje i kanal */}
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-20">
@@ -161,7 +263,7 @@ export default function ONamaPage() {
               </Reveal>
 
               <Reveal delay={0.24} className="mt-10 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-spectrum shear-l">
+                <Link href="/kontakt" className="btn btn-blue shear-l">
                   Pošalji upit
                 </Link>
                 <a

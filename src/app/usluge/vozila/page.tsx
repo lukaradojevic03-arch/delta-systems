@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { getService } from '@/lib/site';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
 import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
-import { DepthScale, MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
+import { MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
+import { MethodMatrix } from '@/components/sections/MethodMatrix';
 
 export const metadata: Metadata = {
   title: 'Vozila — dubinsko pranje sedišta i enterijera',
@@ -82,9 +83,7 @@ export default function VozilaPage() {
                 Tretman
               </h2>
               <div className="rule-spectrum mt-5 w-14" />
-              <Reveal delay={0.1} className="mt-8 hidden md:block">
-                <DepthScale invert className="h-32" />
-              </Reveal>
+
             </div>
 
             <div className="cq md:col-span-7 md:col-start-6">
@@ -194,6 +193,34 @@ export default function VozilaPage() {
         </div>
       </section>
 
+      {/* Šta imate → šta se radi */}
+      <section className="bg-azure-50">
+        <div className="edge py-14 md:py-20">
+          <div className="grid gap-8 md:grid-cols-12">
+            <div className="cq md:col-span-6">
+              <SectionLabel code={`${service.code}.5`}>Provera</SectionLabel>
+              <LineReveal
+                as="h2"
+                delay={0.08}
+                lines={['Deo kabine,', 'pa postupak.']}
+                className="t-display mt-5 text-[clamp(1.4rem,12cqi,3rem)]"
+              />
+            </div>
+            <div className="md:col-span-5 md:col-start-8 md:pt-4">
+              <Reveal delay={0.16}>
+                <p className="t-body max-w-[40ch] text-slate pretty">
+                  Tekstil i tvrde površine ne idu istim postupkom. Izaberite deo
+                  kabine i vidite šta se radi.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+          <div className="mt-10 md:mt-12">
+            <MethodMatrix filter="Vozilo" />
+          </div>
+        </div>
+      </section>
+
       {/* Zone enterijera */}
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-20">
@@ -243,7 +270,7 @@ export default function VozilaPage() {
               </ul>
 
               <Reveal delay={0.3} className="mt-10">
-                <Link href="/kontakt" className="btn btn-spectrum shear-l">
+                <Link href="/kontakt" className="btn btn-blue shear-l">
                   Zakaži čišćenje
                 </Link>
               </Reveal>

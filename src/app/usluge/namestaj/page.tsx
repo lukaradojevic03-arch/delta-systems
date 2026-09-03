@@ -6,6 +6,8 @@ import { DeltaSlider } from '@/components/ui/DeltaSlider';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
 import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
 import { MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
+import { MethodMatrix } from '@/components/sections/MethodMatrix';
+import { Faq } from '@/components/sections/Faq';
 
 export const metadata: Metadata = {
   title: 'Nameštaj — dubinsko pranje sofa, dušeka i tepiha',
@@ -209,6 +211,34 @@ export default function NamestajPage() {
         </div>
       </section>
 
+      {/* Šta imate → šta se radi */}
+      <section className="bg-azure-50">
+        <div className="edge py-14 md:py-20">
+          <div className="grid gap-8 md:grid-cols-12">
+            <div className="cq md:col-span-6">
+              <SectionLabel code={`${service.code}.5`}>Provera</SectionLabel>
+              <LineReveal
+                as="h2"
+                delay={0.08}
+                lines={['Vaš komad,', 'vaš postupak.']}
+                className="t-display mt-5 text-[clamp(1.4rem,12cqi,3rem)]"
+              />
+            </div>
+            <div className="md:col-span-5 md:col-start-8 md:pt-4">
+              <Reveal delay={0.16}>
+                <p className="t-body max-w-[40ch] text-slate pretty">
+                  Izaberite predmet i vidite koji tretman ide na njega i šta
+                  tačno ulazi u posao.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+          <div className="mt-10 md:mt-12">
+            <MethodMatrix filter="Nameštaj" />
+          </div>
+        </div>
+      </section>
+
       {/* Rezultat + CTA */}
       <section className="edge py-14 md:py-20">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
@@ -226,7 +256,7 @@ export default function NamestajPage() {
               </p>
             </Reveal>
             <Reveal delay={0.28} className="mt-8 flex flex-wrap gap-3">
-              <Link href="/kontakt" className="btn btn-spectrum shear-l">
+              <Link href="/kontakt" className="btn btn-blue shear-l">
                 Pošalji upit
               </Link>
               <Link href="/rezultati" className="btn btn-line">

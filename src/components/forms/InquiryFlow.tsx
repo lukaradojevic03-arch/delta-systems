@@ -177,7 +177,7 @@ export function InquiryFlow() {
           {phone ? 'broj koji ste ostavili' : 'Instagram'} radi termina i obima
           posla.
         </p>
-        <div className="rule-spectrum my-9 w-24" />
+        <div className="rule-azure my-9 w-24" />
         <div className="flex flex-wrap gap-3">
           <a
             href={dmLink}
@@ -220,7 +220,7 @@ export function InquiryFlow() {
         </span>
         <div className="relative h-px flex-1 bg-ink/12">
           <motion.div
-            className="rule-spectrum absolute left-0 top-0 h-px origin-left"
+            className="rule-azure absolute left-0 top-0 h-px origin-left"
             initial={false}
             animate={{ width: `${((step + 1) / 3) * 100}%` }}
             transition={{ duration: 0.7, ease: EASE }}
@@ -246,7 +246,16 @@ export function InquiryFlow() {
               Šta želite da očistimo?
             </h2>
 
-            <div className="mt-9 border-t border-ink/12">
+            <p className="t-body mt-3 max-w-[46ch] text-slate pretty">
+              Izaberite jednu od dve celine. Sledeća pitanja zavise od izbora,
+              pa dobijate samo ona koja se tiču vašeg predmeta.
+            </p>
+
+            <p className="t-meta-sm mt-5 text-azure-700 sm:hidden">
+              ↓ Dodirnite jednu opciju
+            </p>
+
+            <div className="mt-6 border-t border-ink/12 sm:mt-9">
               {(
                 [
                   {
@@ -276,36 +285,60 @@ export function InquiryFlow() {
                     setMaterial('');
                     setStep(1);
                   }}
-                  className="group relative flex w-full items-center gap-5 border-b border-ink/12 py-6 text-left md:gap-8"
+                  className="group relative block w-full border-b border-ink/12 py-5 text-left sm:py-6"
                 >
-                  <span className="t-meta-sm w-9 shrink-0 text-stone">{o.c}</span>
-
-                  <span className="cq min-w-0 flex-1">
-                    <span className="t-display block text-[clamp(1.46rem,13.3cqi,2.5rem)] transition-transform duration-700 ease-delta group-hover:translate-x-2">
-                      {o.t}
+                  <span className="flex items-start gap-4 sm:items-center sm:gap-8">
+                    <span className="t-meta-sm mt-2 w-9 shrink-0 text-stone sm:mt-0">
+                      {o.c}
                     </span>
-                    <span className="t-body mt-1.5 block text-slate">{o.s}</span>
+
+                    <span className="cq min-w-0 flex-1">
+                      <span className="t-display block text-[clamp(1.46rem,13.3cqi,2.5rem)] transition-transform duration-700 ease-delta group-hover:translate-x-2">
+                        {o.t}
+                      </span>
+                      <span className="t-body mt-1.5 block text-slate">{o.s}</span>
+                    </span>
+
+                    {/* desktop: sličica + dugme u istom redu */}
+                    <span className="relative hidden h-[92px] w-[76px] shrink-0 overflow-hidden shear-r grain sm:block">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={o.img}
+                        alt={o.alt}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[1100ms] ease-delta group-hover:scale-110"
+                      />
+                    </span>
+
+                    <span
+                      className="t-meta-sm hidden shrink-0 items-center gap-1.5 whitespace-nowrap bg-azure-700 px-3.5 py-2.5 text-paper transition-transform duration-500 group-hover:translate-x-1 sm:flex"
+                      aria-hidden="true"
+                    >
+                      Izaberi <span>→</span>
+                    </span>
                   </span>
 
-                  <span className="relative block h-[76px] w-[62px] shrink-0 overflow-hidden shear-r grain md:h-[92px] md:w-[76px]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={o.img}
-                      alt={o.alt}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[1100ms] ease-delta group-hover:scale-110"
-                    />
+                  {/* mobilni: sličica i dugme u zasebnom redu, bez gužve */}
+                  <span className="mt-4 flex items-center gap-4 sm:hidden">
+                    <span className="relative block h-[58px] w-[74px] shrink-0 overflow-hidden shear-r grain">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={o.img}
+                        alt={o.alt}
+                        loading="lazy"
+                        className="h-full w-full object-cover"
+                      />
+                    </span>
+                    <span
+                      className="t-meta-sm flex flex-1 items-center justify-center gap-2 whitespace-nowrap bg-azure-700 px-4 py-3.5 text-paper"
+                      aria-hidden="true"
+                    >
+                      Izaberi <span>→</span>
+                    </span>
                   </span>
 
                   <span
-                    className="t-meta-sm shrink-0 text-ink opacity-55 transition-all duration-500 group-hover:translate-x-1 group-hover:opacity-100"
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-
-                  <span
-                    className="rule-spectrum absolute bottom-0 left-0 w-full origin-left scale-x-0 transition-transform duration-700 ease-delta group-hover:scale-x-100"
+                    className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-azure-600 transition-transform duration-700 ease-delta group-hover:scale-x-100"
                     aria-hidden="true"
                   />
                 </button>
