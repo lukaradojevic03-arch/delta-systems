@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { faqs } from '@/lib/site';
 import { cn, EASE } from '@/lib/cn';
 
-/** Česta pitanja — otvoreno prvo, ostalo na klik. */
+/** Česta pitanja · otvoreno prvo, ostalo na klik. */
 export function Faq({ limit }: { limit?: number }) {
   const list = limit ? faqs.slice(0, limit) : faqs;
   const [open, setOpen] = useState<number | null>(0);

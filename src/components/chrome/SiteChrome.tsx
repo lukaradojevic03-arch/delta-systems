@@ -8,7 +8,7 @@ import { nav, site } from '@/lib/site';
 import { cn, EASE, EASE_SHEAR } from '@/lib/cn';
 import { Wordmark } from '@/components/ui/Wordmark';
 
-/** Stavke u traci na desktopu — Kontakt je izdvojen kao dugme. */
+/** Stavke u traci na desktopu · Kontakt je izdvojen kao dugme. */
 const barItems = nav.filter((n) => n.href !== '/' && n.href !== '/kontakt');
 
 export function SiteChrome() {
@@ -50,7 +50,7 @@ export function SiteChrome() {
 
   return (
     <>
-      {/* napredak čitanja — puni se nadole, prazni nagore */}
+      {/* napredak čitanja · puni se nadole, prazni nagore */}
       <motion.div
         className="fixed left-0 top-0 z-[70] h-[3px] w-full origin-left"
         style={{
@@ -71,7 +71,7 @@ export function SiteChrome() {
         <div className="edge flex h-[72px] items-center justify-between gap-8 md:h-[84px]">
           <Link
             href="/"
-            aria-label="Delta Systems — početna"
+            aria-label="Delta Systems, početna"
             className={cn(
               'shrink-0 transition-colors duration-500',
               open ? 'text-paper' : 'text-ink',
@@ -160,7 +160,7 @@ export function SiteChrome() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Meni — celoekranska navigacija za mobilni i tablet                 */
+/*  Meni · celoekranska navigacija za mobilni i tablet                 */
 /* ------------------------------------------------------------------ */
 
 function MenuOverlay({ pathname }: { pathname: string }) {
@@ -237,7 +237,7 @@ function MenuOverlay({ pathname }: { pathname: string }) {
             Instagram {site.instagram.handle}
           </a>
           <p className="t-meta mt-2 text-paper/40">
-            {site.city} — {site.tagline}
+            {site.city} · {site.tagline}
           </p>
         </motion.div>
       </div>
@@ -246,7 +246,7 @@ function MenuOverlay({ pathname }: { pathname: string }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Stalni CTA — samo tamo gde nema trake u zaglavlju                  */
+/*  Stalni CTA · samo tamo gde nema trake u zaglavlju                  */
 /* ------------------------------------------------------------------ */
 
 function CtaDock({ hidden }: { hidden: boolean }) {

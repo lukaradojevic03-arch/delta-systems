@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Bodoni_Moda, Archivo, IBM_Plex_Mono } from 'next/font/google';
+import { Bodoni_Moda, Archivo } from 'next/font/google';
 import './globals.css';
 import { SiteChrome } from '@/components/chrome/SiteChrome';
 import { Footer } from '@/components/chrome/Footer';
@@ -18,21 +18,14 @@ const sans = Archivo({
   variable: '--font-sans',
 });
 
-const mono = IBM_Plex_Mono({
-  subsets: ['latin', 'latin-ext'],
-  display: 'swap',
-  variable: '--font-mono',
-  weight: ['400', '500'],
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Delta Systems — Dubinsko čišćenje nameštaja i vozila | Beograd',
-    template: '%s — Delta Systems',
+    default: 'Delta Systems · Dubinsko čišćenje nameštaja i vozila · Beograd',
+    template: '%s · Delta Systems',
   },
   description:
-    'Dubinsko pranje i parno čišćenje nameštaja, tekstila i enterijera vozila u Beogradu. Prljavština, fleke i mirisi izlaze iz vlakana — ne razmazuju se po njima.',
+    'Dubinsko pranje i parno čišćenje nameštaja, tekstila i enterijera vozila u Beogradu. Prljavština, fleke i mirisi izlaze iz vlakana, ne razmazuju se po njima.',
   applicationName: site.name,
   keywords: [
     'dubinsko čišćenje',
@@ -48,13 +41,13 @@ export const metadata: Metadata = {
     locale: 'sr_RS',
     url: baseUrl,
     siteName: site.name,
-    title: 'Delta Systems — Dubinsko čišćenje nameštaja i vozila',
+    title: 'Delta Systems · Dubinsko čišćenje nameštaja i vozila',
     description:
       'Razlika se ne vidi samo na površini. Dubinsko pranje i parno čišćenje nameštaja, tekstila i enterijera vozila. Beograd.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Delta Systems — Dubinsko čišćenje',
+    title: 'Delta Systems · Dubinsko čišćenje',
     description: 'Razlika se ne vidi samo na površini. Beograd.',
   },
   alternates: { canonical: '/' },
@@ -108,7 +101,7 @@ export default function RootLayout({
   return (
     <html
       lang="sr-Latn-RS"
-      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+      className={`${display.variable} ${sans.variable}`}
     >
       <body>
         <a

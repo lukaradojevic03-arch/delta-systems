@@ -8,7 +8,7 @@ import { services } from '@/lib/site';
 import { cn, EASE } from '@/lib/cn';
 
 /**
- * Usluge kao editorial navigacija — redovi, ne kartice.
+ * Usluge kao editorial navigacija · redovi, ne kartice.
  * Fotografija je uska traka koja se pri hover-u širi i skalira,
  * a naslov se pomera uz dijagonalni rez.
  */

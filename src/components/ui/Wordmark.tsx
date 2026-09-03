@@ -1,7 +1,7 @@
 import { cn } from '@/lib/cn';
 
 /**
- * Tipografski lockup — verna rekonstrukcija strukture logotipa
+ * Tipografski lockup · verna rekonstrukcija strukture logotipa
  * (široko razmaknuto D E L T Λ, ispod S Y S T E M S između linija).
  * Koristi se svuda gde raster logo ne bi bio dovoljno oštar.
  */
@@ -35,7 +35,7 @@ export function Wordmark({
         <span className={cn('flex w-full items-center gap-2', scale.gap)} aria-hidden="true">
           <span className="h-px flex-1 bg-current opacity-35" />
           <span
-            className={cn('font-mono uppercase leading-none', scale.sub)}
+            className={cn('font-sans uppercase leading-none', scale.sub)}
             style={{ letterSpacing: '0.4em', paddingLeft: '0.4em' }}
           >
             Systems

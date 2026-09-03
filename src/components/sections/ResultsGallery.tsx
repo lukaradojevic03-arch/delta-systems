@@ -86,7 +86,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
       afterAlt={data.compare.after.alt}
       ratio={data.compare.ratio}
       sizes={variant === 1 ? '(max-width: 768px) 100vw, 72vw' : '(max-width: 768px) 100vw, 52vw'}
-      label={`${data.title} — poređenje pre i posle`}
+      label={`${data.title} · poređenje pre i posle`}
     />
   ) : (
     <Diptych
@@ -95,7 +95,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
     />
   );
 
-  /* Varijanta 0 — medij desno, podaci levo */
+  /* Varijanta 0 · medij desno, podaci levo */
   if (variant === 0) {
     return (
       <section className="edge border-b border-ink/12 py-12 md:py-18">
@@ -111,7 +111,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
     );
   }
 
-  /* Varijanta 1 — široki medij, podaci ispod u dve kolone */
+  /* Varijanta 1 · široki medij, podaci ispod u dve kolone */
   if (variant === 1) {
     return (
       <section className="edge border-b border-ink/12 py-12 md:py-18">
@@ -125,7 +125,7 @@ function CaseEntry({ data, variant }: { data: CaseStudy; variant: number }) {
     );
   }
 
-  /* Varijanta 2 — medij levo sa uvlakom, podaci desno */
+  /* Varijanta 2 · medij levo sa uvlakom, podaci desno */
   return (
     <section className="edge border-b border-ink/12 py-12 md:py-18">
       <div className="grid gap-8 md:grid-cols-12">

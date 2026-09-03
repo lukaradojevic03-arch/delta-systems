@@ -4,12 +4,11 @@ import { getService } from '@/lib/site';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
 import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
 import { MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
-import { MethodMatrix } from '@/components/sections/MethodMatrix';
 
 export const metadata: Metadata = {
-  title: 'Vozila — dubinsko pranje sedišta i enterijera',
+  title: 'Vozila · Dubinsko pranje sedišta i enterijera',
   description:
-    'Dubinsko pranje sedišta, patosnica i tapacirunga, parno čišćenje tvrdih površina i dezinfekcija enterijera — sa pažnjom prema materijalima i detaljima.',
+    'Dubinsko pranje sedišta, patosnica i tapacirunga, parno čišćenje tvrdih površina i dezinfekcija enterijera, sa pažnjom prema materijalima i detaljima.',
   alternates: { canonical: '/usluge/vozila' },
 };
 
@@ -20,7 +19,7 @@ export default function VozilaPage() {
     <>
       <PageHeader
         code={service.code}
-        eyebrow="Usluga — Vozila"
+        eyebrow="Usluga · Vozila"
         lines={['Enterijer', 'do vlakna.']}
         titleSize="text-[clamp(2.06rem,15.6cqi,5.85rem)]"
         lede={service.lede}
@@ -35,7 +34,7 @@ export default function VozilaPage() {
       {/*  Tri čina: stanje → tretman → rezultat                      */}
       {/* ---------------------------------------------------------- */}
 
-      {/* ČIN 01 — STANJE */}
+      {/* ČIN 01 · STANJE */}
       <section className="edge pb-12 md:pb-18">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-3">
@@ -73,7 +72,7 @@ export default function VozilaPage() {
         </div>
       </section>
 
-      {/* ČIN 02 — TRETMAN (bez fotografije: to je deo koji se ne vidi) */}
+      {/* ČIN 02 · TRETMAN (bez fotografije: to je deo koji se ne vidi) */}
       <section className="relative bg-ink text-paper">
         <div className="edge py-14 md:py-24">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
@@ -95,7 +94,7 @@ export default function VozilaPage() {
 
               <Reveal delay={0.2} className="mt-8">
                 <p className="t-lede max-w-[44ch] text-paper/85 pretty">
-                  Sedišta i patosnice idu na ekstrakciju — rastvor ulazi u
+                  Sedišta i patosnice idu na ekstrakciju: rastvor ulazi u
                   vlakno i izlazi zajedno sa prljavštinom. Plastika, staklo i
                   detalji oko ventilacije rade se parom, bez hemikalija.
                 </p>
@@ -133,7 +132,7 @@ export default function VozilaPage() {
               </div>
               <Reveal delay={0.24}>
                 <p className="t-meta-sm mt-3 text-paper/45">
-                  Materijali u kabini — tekstil, koža, tapacirung
+                  Materijali u kabini: tekstil, koža, tapacirung
                 </p>
               </Reveal>
 
@@ -151,7 +150,7 @@ export default function VozilaPage() {
         </div>
       </section>
 
-      {/* ČIN 03 — REZULTAT */}
+      {/* ČIN 03 · REZULTAT */}
       <section className="edge py-12 md:py-20">
         <div className="md:grid md:grid-cols-12 md:gap-8">
           <div className="cq md:col-span-3">
@@ -193,34 +192,6 @@ export default function VozilaPage() {
         </div>
       </section>
 
-      {/* Šta imate → šta se radi */}
-      <section className="bg-azure-50">
-        <div className="edge py-14 md:py-20">
-          <div className="grid gap-8 md:grid-cols-12">
-            <div className="cq md:col-span-6">
-              <SectionLabel code={`${service.code}.5`}>Provera</SectionLabel>
-              <LineReveal
-                as="h2"
-                delay={0.08}
-                lines={['Deo kabine,', 'pa postupak.']}
-                className="t-display mt-5 text-[clamp(1.4rem,12cqi,3rem)]"
-              />
-            </div>
-            <div className="md:col-span-5 md:col-start-8 md:pt-4">
-              <Reveal delay={0.16}>
-                <p className="t-body max-w-[40ch] text-slate pretty">
-                  Tekstil i tvrde površine ne idu istim postupkom. Izaberite deo
-                  kabine i vidite šta se radi.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-          <div className="mt-10 md:mt-12">
-            <MethodMatrix filter="Vozilo" />
-          </div>
-        </div>
-      </section>
-
       {/* Zone enterijera */}
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-20">
@@ -235,7 +206,7 @@ export default function VozilaPage() {
               />
               <Reveal delay={0.16} className="mt-6">
                 <p className="t-body max-w-[34ch] text-slate pretty">
-                  Obim se dogovara pre dolaska — od pojedinačnih sedišta do
+                  Obim se dogovara pre dolaska, od pojedinačnih sedišta do
                   cele kabine.
                 </p>
               </Reveal>

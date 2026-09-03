@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import { cn, EASE } from '@/lib/cn';
 
 /* ------------------------------------------------------------------ */
-/*  Reveal — blok koji ulazi odozdo pri prvom pojavljivanju            */
+/*  Reveal · blok koji ulazi odozdo pri prvom pojavljivanju            */
 /* ------------------------------------------------------------------ */
 
 export function Reveal({
@@ -38,7 +38,7 @@ export function Reveal({
 }
 
 /* ------------------------------------------------------------------ */
-/*  LineReveal — tipografski reveal: svaki red iza svoje maske         */
+/*  LineReveal · tipografski reveal: svaki red iza svoje maske         */
 /*  Prelomi su namerni (editorial), pa se redovi prosleđuju ručno.     */
 /* ------------------------------------------------------------------ */
 
@@ -68,7 +68,7 @@ export function LineReveal({
           key={i}
           className={cn('block overflow-hidden', lineClassName)}
           // Prostor za kvačice na velikim slovima (Č, Ć, Š, Ž, Đ) i za
-          // donje produžetke — line-height je 0.88, pa bi ih maska odsekla.
+          // donje produžetke · line-height je 0.88, pa bi ih maska odsekla.
           // Negativne margine vraćaju prored na projektovanu vrednost.
           style={{ marginTop: '-0.26em', marginBottom: '-0.24em' }}
           initial="hidden"
@@ -101,7 +101,7 @@ export function LineReveal({
 }
 
 /* ------------------------------------------------------------------ */
-/*  RuleReveal — spectrum hairline koja se izvlači                     */
+/*  RuleReveal · spectrum hairline koja se izvlači                     */
 /* ------------------------------------------------------------------ */
 
 export function RuleReveal({

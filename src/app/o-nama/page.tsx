@@ -6,7 +6,7 @@ import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
 import { PageHeader, SectionLabel } from '@/components/ui/Bits';
 
 export const metadata: Metadata = {
-  title: 'O nama — kako radimo',
+  title: 'O nama · Kako radimo',
   description:
     'Delta Systems iz Beograda. Način rada: materijal pre metode, ekstrakcija umesto maskiranja, para gde para radi bolje, sušenje kao deo posla.',
   alternates: { canonical: '/o-nama' },
@@ -54,7 +54,7 @@ export default function ONamaPage() {
               <p className="t-lede text-ink/80 pretty">
                 Delta Systems radi dubinsko pranje i parno čišćenje nameštaja,
                 tekstila i enterijera vozila. Posao je uvek isti po redosledu i
-                nikad isti po materijalu — i baš tu se prave greške koje se
+                nikad isti po materijalu, i baš tu se prave greške koje se
                 kasnije ne mogu ispraviti.
               </p>
             </Reveal>
@@ -80,7 +80,7 @@ export default function ONamaPage() {
             </Parallax>
             <Reveal delay={0.16}>
               <p className="t-meta-sm mt-4 text-stone">
-                Detalj — tekstil posle tretmana
+                Detalj · tekstil posle tretmana
               </p>
             </Reveal>
           </div>
@@ -119,7 +119,7 @@ export default function ONamaPage() {
         </div>
       </section>
 
-      {/* Očekivanja — najpošteniji deo stranice */}
+      {/* Očekivanja · najpošteniji deo stranice */}
       <section className="bg-azure-50">
         <div className="edge py-14 md:py-20">
           <div className="grid gap-8 md:grid-cols-12">
@@ -236,7 +236,7 @@ export default function ONamaPage() {
               <Reveal delay={0.18} className="mt-6">
                 <p className="t-body max-w-[34ch] text-slate pretty">
                   Izlazak na adresu za nameštaj i dogovor oko lokacije za
-                  vozila. Za tačan termin i obim — upit.
+                  vozila. Za tačan termin i obim, pošaljite upit.
                 </p>
               </Reveal>
             </div>
@@ -254,7 +254,7 @@ export default function ONamaPage() {
               <RuleReveal spectrum />
               <Reveal delay={0.16} className="mt-8">
                 <p className="t-display text-[clamp(1.38rem,13cqi,2.6rem)]">
-                  Δ — razlika
+                  Δ je razlika
                 </p>
                 <p className="t-body mt-3 max-w-[30ch] text-slate pretty">
                   Merilo posla je ono što se vidi kada se uporede isti kadar pre

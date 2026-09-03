@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-paper-warm">
       <div className="rule-spectrum" />
 
-      {/* velika izjava — tagline klijenta kao tipografski potpis */}
+      {/* velika izjava · tagline klijenta kao tipografski potpis */}
       <div className="edge pb-12 pt-14 md:pb-14 md:pt-20">
         <Reveal className="cq">
           <p className="t-display text-[clamp(1.5rem,9cqi,4.5rem)] text-ink">

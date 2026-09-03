@@ -6,7 +6,7 @@ import { steps } from '@/lib/site';
 import { cn, EASE } from '@/lib/cn';
 
 /**
- * Proces kao spuštanje kroz slojeve — ne kao „01 / 02 / 03" mreža.
+ * Proces kao spuštanje kroz slojeve · ne kao „01 / 02 / 03" mreža.
  * Uspravni lenjir prati skrol i pokazuje na kom je sloju trenutni korak.
  */
 export function DepthProcess() {

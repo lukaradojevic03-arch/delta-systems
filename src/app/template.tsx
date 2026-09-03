@@ -52,7 +52,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: 0.6, times: [0, 0.4, 1], ease: 'linear' }}
           >
-            {entry ? `${entry.code} — ${entry.label}` : 'Delta Systems'}
+            {entry ? `${entry.code} · ${entry.label}` : 'Delta Systems'}
           </motion.span>
         </motion.div>
       </div>

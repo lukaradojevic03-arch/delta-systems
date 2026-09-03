@@ -6,7 +6,7 @@ import { pillars } from '@/lib/site';
 import { cn, EASE } from '@/lib/cn';
 
 /**
- * Metod — nije mreža od četiri kartice.
+ * Metod · nije mreža od četiri kartice.
  * Desktop: indeks levo, sadržaj se menja desno.
  * Mobilni: uspravna lista, sve otvoreno (bez skrivenog sadržaja iza tapa).
  */
@@ -16,7 +16,7 @@ export function MethodIndex() {
 
   return (
     <div className="grid gap-10 md:grid-cols-12 md:gap-8">
-      {/* indeks — desktop */}
+      {/* indeks · desktop */}
       <ul className="cq hidden md:col-span-5 md:block">
         {pillars.map((p, idx) => (
           <li key={p.code}>
@@ -51,7 +51,7 @@ export function MethodIndex() {
         ))}
       </ul>
 
-      {/* sadržaj — desktop */}
+      {/* sadržaj · desktop */}
       <div className="hidden md:col-span-6 md:col-start-7 md:block">
         <div className="relative min-h-[280px] border-t border-ink/12 pt-8">
           <AnimatePresence mode="wait">
@@ -71,7 +71,7 @@ export function MethodIndex() {
         </div>
       </div>
 
-      {/* mobilni — sve vidljivo */}
+      {/* mobilni · sve vidljivo */}
       <ul className="md:hidden">
         {pillars.map((p) => (
           <li key={p.code} className="cq border-t border-ink/12 py-6 last:border-b">

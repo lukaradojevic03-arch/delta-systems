@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { cn, EASE } from '@/lib/cn';
 
 /**
- * Traka materijala — puna širina, bez ivica.
+ * Traka materijala · puna širina, bez ivica.
  *
  * Fotografije su licencirane atmosferske/materijalne snimke (Pexels).
  * Nikada ne nose oznaku PRE/POSLE i nikada se ne predstavljaju kao
- * rezultati klijenta — služe da se vidi na kojim se površinama radi.
+ * rezultati klijenta · služe da se vidi na kojim se površinama radi.
  */
 
 const MATERIALS = [

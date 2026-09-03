@@ -5,12 +5,11 @@ import { services } from '@/lib/site';
 import { PageHeader, SectionLabel, MetaList } from '@/components/ui/Bits';
 import { ServiceRows } from '@/components/sections/ServiceRows';
 import { Comparison } from '@/components/sections/Comparison';
-import { MethodMatrix } from '@/components/sections/MethodMatrix';
 import { Faq } from '@/components/sections/Faq';
 import { LineReveal, Reveal } from '@/components/motion/Reveal';
 
 export const metadata: Metadata = {
-  title: 'Usluge — dubinsko čišćenje nameštaja i vozila',
+  title: 'Usluge · Dubinsko čišćenje nameštaja i vozila',
   description:
     'Dve celine: nameštaj i vozila. Dubinsko pranje upijajućih površina, parno čišćenje onih koje ne upijaju, dezinfekcija i brzo sušenje. Šta se radi na kom materijalu i česta pitanja.',
   alternates: { canonical: '/usluge' },
@@ -51,7 +50,7 @@ export default function UslugePage() {
         lede={
           <>
             Nameštaj i vozila razlikuju se po pristupu i pristupačnosti, ne po
-            standardu. Redosled tretmana je isti — menja se materijal.
+            standardu. Redosled tretmana je isti, menja se samo materijal.
           </>
         }
         meta={[
@@ -65,7 +64,7 @@ export default function UslugePage() {
         <ServiceRows detailed />
       </section>
 
-      {/* Gde se radi — jedinstvena plava obrada, bez šarenila */}
+      {/* Gde se radi · jedinstvena plava obrada, bez šarenila */}
       <section className="relative bg-azure-900">
         <div className="grid sm:grid-cols-3">
           {AMBIENT.map((x, i) => (
@@ -120,37 +119,7 @@ export default function UslugePage() {
         </div>
       </section>
 
-      {/* Interaktivno: šta imate → šta se radi */}
-      <section className="bg-azure-50">
-        <div className="edge py-14 md:py-20">
-          <div className="grid gap-8 md:grid-cols-12">
-            <div className="cq md:col-span-6">
-              <SectionLabel code="02.2">Provera</SectionLabel>
-              <LineReveal
-                as="h2"
-                delay={0.08}
-                lines={['Šta imate,', 'šta se radi.']}
-                className="t-display mt-5 text-[clamp(1.5rem,12cqi,3.2rem)]"
-              />
-            </div>
-            <div className="md:col-span-5 md:col-start-8 md:pt-4">
-              <Reveal delay={0.16}>
-                <p className="t-body max-w-[42ch] text-slate pretty">
-                  Izaberite predmet i vidite koji postupak ide na njega, šta
-                  tačno ulazi u posao i šta se dobija. Bez čitanja cele
-                  stranice.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-
-          <div className="mt-10 md:mt-12">
-            <MethodMatrix />
-          </div>
-        </div>
-      </section>
-
-      {/* Matrica površina — tehnički pregled */}
+      {/* Matrica površina · tehnički pregled */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-20">
           <SectionLabel code="02.3" invert>
@@ -167,7 +136,7 @@ export default function UslugePage() {
               <Reveal delay={0.18} className="mt-6">
                 <p className="t-body max-w-[36ch] text-paper/70 pretty">
                   Podela je jednostavna: ono što upija radi se ekstrakcijom, ono
-                  što ne upija radi se parom. Sve ostalo su detalji — i oni
+                  što ne upija radi se parom. Sve ostalo su detalji, i oni
                   odlučuju.
                 </p>
               </Reveal>
@@ -190,7 +159,7 @@ export default function UslugePage() {
                 {services.map((s, i) => (
                   <Reveal key={s.slug} delay={i * 0.12}>
                     <p className="t-meta text-paper/55">
-                      {s.code} — {s.title}
+                      {s.code} · {s.title}
                     </p>
                     <MetaList
                       invert
@@ -201,7 +170,7 @@ export default function UslugePage() {
                       href={`/usluge/${s.slug}`}
                       className="link-delta t-meta mt-5 inline-block text-paper/80"
                     >
-                      {s.title} — detaljno →
+                      {s.title}, detaljno →
                     </Link>
                   </Reveal>
                 ))}
@@ -225,7 +194,7 @@ export default function UslugePage() {
               />
               <Reveal delay={0.18} className="mt-6">
                 <p className="t-body max-w-[32ch] text-slate pretty">
-                  Ako nema odgovora koji vam treba, pitajte direktno — javljamo
+                  Ako nema odgovora koji vam treba, pitajte direktno, javljamo
                   se na isti kanal na koji ste pisali.
                 </p>
               </Reveal>

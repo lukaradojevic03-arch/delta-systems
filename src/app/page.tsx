@@ -16,13 +16,13 @@ export default function HomePage() {
   return (
     <>
       {/* ============================================================ */}
-      {/*  01 — PAŽNJA                                                 */}
+      {/*  01 · PAŽNJA                                                 */}
       {/* ============================================================ */}
       <section className="relative overflow-hidden">
         <div className="edge pb-12 pt-[100px] md:pb-16 md:pt-[132px]">
           <Reveal>
             <p className="t-meta text-stone">
-              {site.city} — Dubinsko čišćenje nameštaja i vozila
+              {site.city} · Dubinsko čišćenje nameštaja i vozila
             </p>
           </Reveal>
 
@@ -46,12 +46,12 @@ export default function HomePage() {
                 <p className="t-lede text-ink/80 pretty">
                   Dubinsko pranje i parno čišćenje nameštaja, tekstila i
                   enterijera vozila. Prljavština, fleke i mirisi izlaze iz
-                  vlakana — ne razmazuju se po njima.
+                  vlakana, ne razmazuju se po njima.
                 </p>
               </Reveal>
 
               <Reveal delay={0.46} className="mt-7 flex flex-wrap items-center gap-3">
-                <Link href="/kontakt" className="btn btn-spectrum shear-l">
+                <Link href="/kontakt" className="btn btn-blue shear-l">
                   Pošalji upit
                 </Link>
                 <Link href="/rezultati" className="btn btn-line">
@@ -72,12 +72,12 @@ export default function HomePage() {
                     ratio={tabure.compare!.ratio}
                     priority
                     sizes="(max-width: 768px) 100vw, 38vw"
-                    label="Tabure od velura — poređenje pre i posle dubinskog pranja"
+                    label="Tabure od velura, poređenje pre i posle dubinskog pranja"
                   />
 
                   <div className="mt-3 flex items-start justify-between gap-6">
                     <p className="t-meta-sm text-stone">
-                      {tabure.code} — {tabure.title}
+                      {tabure.code} · {tabure.title}
                     </p>
                     <p className="t-meta-sm max-w-[22ch] text-right text-stone">
                       Prevucite da vidite razliku
@@ -91,12 +91,12 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/*  Traka materijala — puna širina                              */}
+      {/*  Traka materijala · puna širina                              */}
       {/* ============================================================ */}
       <MaterialBand />
 
       {/* ============================================================ */}
-      {/*  02 — PROBLEM                                                */}
+      {/*  02 · PROBLEM                                                */}
       {/* ============================================================ */}
       <section className="relative bg-azure-900 text-paper">
         <div className="edge py-14 md:py-24">
@@ -115,7 +115,7 @@ export default function HomePage() {
               <Reveal delay={0.2} className="mt-7 max-w-[48ch] md:mt-9">
                 <p className="t-lede text-paper/85 pretty">
                   Usisivač skida ono što je gore. Ispod toga ostaje sloj koji se
-                  primeti tek kada ga nema — prašina i mast koje su se slegle u
+                  primeti tek kada ga nema: prašina i mast koje su se slegle u
                   vlakno, ostaci pića, dlaka i miris koji se vraća čim se
                   prostorija zagreje.
                 </p>
@@ -124,8 +124,8 @@ export default function HomePage() {
               <Reveal delay={0.28} className="mt-6">
                 <p className="t-body max-w-[46ch] text-paper/60 pretty">
                   Zato tretman ne počinje sredstvom nego materijalom. Velur,
-                  štof, tepih i podloga koja ne upija ne podnose isti postupak —
-                  i ne dobijaju ga.
+                  štof, tepih i podloga koja ne upija ne podnose isti postupak,
+                  pa ga i ne dobijaju.
                 </p>
               </Reveal>
 
@@ -156,7 +156,7 @@ export default function HomePage() {
               </Parallax>
               <Reveal delay={0.16}>
                 <p className="t-meta-sm mt-3 text-paper/45">
-                  Stvarni rad — velur pre tretmana
+                  Stvarni rad · velur pre tretmana
                 </p>
               </Reveal>
 
@@ -187,7 +187,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/*  03 — USLUGE                                                 */}
+      {/*  03 · USLUGE                                                 */}
       {/* ============================================================ */}
       <section className="bg-paper">
         <div className="edge py-14 md:py-24">
@@ -207,7 +207,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/*  04 — METOD                                                  */}
+      {/*  04 · METOD                                                  */}
       {/* ============================================================ */}
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-24">
@@ -223,7 +223,7 @@ export default function HomePage() {
               <Reveal delay={0.18} className="mt-6">
                 <p className="t-body max-w-[38ch] text-slate pretty">
                   Isti redosled na sofi i na sedištu automobila. Menja se samo
-                  materijal — i sve što iz njega sledi.
+                  materijal, i sve što iz njega sledi.
                 </p>
               </Reveal>
             </div>
@@ -254,7 +254,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/*  05 — REZULTATI                                              */}
+      {/*  05 · REZULTATI                                              */}
       {/* ============================================================ */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-24">
@@ -302,7 +302,7 @@ export default function HomePage() {
                 afterAlt={garnitura.compare!.after.alt}
                 ratio={garnitura.compare!.ratio}
                 sizes="(max-width: 768px) 100vw, 55vw"
-                label="Ugaona garnitura — poređenje pre i posle dubinskog pranja"
+                label="Ugaona garnitura, poređenje pre i posle dubinskog pranja"
               />
               <p className="t-meta-sm mt-3 text-paper/45">{garnitura.note}</p>
             </div>
@@ -311,7 +311,7 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/*  06 — UPIT — najglasniji blok na stranici                    */}
+      {/*  06 · UPIT · najglasniji blok na stranici                    */}
       {/* ============================================================ */}
       <section className="relative isolate overflow-hidden">
         <Image
@@ -355,7 +355,7 @@ export default function HomePage() {
               </Reveal>
 
               <Reveal delay={0.3} className="mt-8 flex flex-wrap gap-3">
-                <Link href="/kontakt" className="btn btn-spectrum btn-lg shear-l">
+                <Link href="/kontakt" className="btn btn-paper btn-lg shear-l">
                   <span aria-hidden="true" className="text-[13px]">
                     Δ
                   </span>

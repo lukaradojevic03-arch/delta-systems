@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 import { cn, EASE } from '@/lib/cn';
 
 /**
- * Upit u tri koraka — ne „Ime / Email / Poruka / Pošalji".
+ * Upit u tri koraka · ne „Ime / Email / Poruka / Pošalji".
  * 01 Šta čistimo → 02 Detalji (zavise od izbora) → 03 Kontakt i fotografije.
  */
 
@@ -98,7 +98,7 @@ export function InquiryFlow() {
     }
     const total = next.reduce((s, p) => s + p.file.size, 0);
     if (total > MAX_TOTAL) {
-      setPhotoError('Fotografije su prevelike — pošaljite ih porukom na Instagram.');
+      setPhotoError('Fotografije su prevelike. Pošaljite ih porukom na Instagram.');
       return;
     }
     setPhotos(next);
@@ -369,7 +369,7 @@ export function InquiryFlow() {
               />
             </Field>
 
-            <Field label="Materijal" hint="Ako ne znate — nije problem">
+            <Field label="Materijal" hint="Ako ne znate, nije problem">
               <Chips
                 options={MATERIALS[kind]}
                 selected={material ? [material] : []}
@@ -485,7 +485,7 @@ export function InquiryFlow() {
             </div>
 
             {/* fotografije */}
-            <Field label="Fotografije" hint={`Najviše ${MAX_PHOTOS} — najbrži put do procene`}>
+            <Field label="Fotografije" hint={`Najviše ${MAX_PHOTOS} · najbrži put do procene`}>
               <div className="flex flex-wrap items-center gap-3">
                 {photos.map((p, i) => (
                   <div key={p.url} className="relative">
@@ -613,7 +613,7 @@ function Chips({
             onClick={() => onToggle(o)}
             aria-pressed={on}
             className={cn(
-              'font-mono text-[11px] uppercase tracking-[0.14em] px-4 py-2.5 transition-all duration-500 ease-delta',
+              'font-sans text-[11px] uppercase tracking-[0.14em] px-4 py-2.5 transition-all duration-500 ease-delta',
               on
                 ? 'bg-ink text-paper'
                 : 'text-slate shadow-[inset_0_0_0_1px_rgba(14,17,22,0.18)] hover:shadow-[inset_0_0_0_1px_rgba(14,17,22,0.45)] hover:text-ink',

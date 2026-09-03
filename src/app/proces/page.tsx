@@ -8,7 +8,7 @@ import { MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
 import { Comparison } from '@/components/sections/Comparison';
 
 export const metadata: Metadata = {
-  title: 'Proces — od upita do predaje',
+  title: 'Proces · Od upita do predaje',
   description:
     'Sedam koraka dubinskog čišćenja: procena materijala, pretretman, dubinsko pranje, para i dezinfekcija, ekstrakcija vlage i provera detalja.',
   alternates: { canonical: '/proces' },
@@ -35,7 +35,7 @@ export default function ProcesPage() {
         ]}
       />
 
-      {/* Tri sloja — materijalni ključ za lenjir dubine */}
+      {/* Tri sloja · materijalni ključ za lenjir dubine */}
       <section className="edge pb-12 md:pb-16">
         <div className="grid grid-cols-3 gap-3 md:gap-5">
           {[
@@ -79,7 +79,7 @@ export default function ProcesPage() {
         <DepthProcess />
       </section>
 
-      {/* Metod — četiri stuba kao tehnički rezime */}
+      {/* Metod · četiri stuba kao tehnički rezime */}
       <section className="bg-ink text-paper">
         <div className="edge py-14 md:py-20">
           <SectionLabel code="03.1" invert>
@@ -170,7 +170,7 @@ export default function ProcesPage() {
               />
               <Reveal delay={0.18} className="mt-6">
                 <p className="t-body max-w-[34ch] text-slate pretty">
-                  Ništa komplikovano — samo ono što ubrzava posao i skraćuje
+                  Ništa komplikovano, samo ono što ubrzava posao i skraćuje
                   vreme sušenja.
                 </p>
               </Reveal>
@@ -179,6 +179,7 @@ export default function ProcesPage() {
             <div className="md:col-span-6 md:col-start-7">
               <Reveal delay={0.16}>
                 <MetaList
+                  columns={2}
                   items={[
                     { k: 'Fotografija', v: 'Predmet i zaprljanje' },
                     { k: 'Materijal', v: 'Ako je poznat' },

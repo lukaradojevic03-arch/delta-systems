@@ -6,7 +6,7 @@ import { LineReveal, Reveal } from '@/components/motion/Reveal';
 import { PageHeader, SectionLabel } from '@/components/ui/Bits';
 
 export const metadata: Metadata = {
-  title: 'Rezultati — pre i posle dubinskog čišćenja',
+  title: 'Rezultati · Pre i posle dubinskog čišćenja',
   description:
     'Stvarni slučajevi: tabure od velura, ugaona garnitura i enterijer vozila. Isti kadar pre i posle tretmana, bez retuširanja.',
   alternates: { canonical: '/rezultati' },
@@ -84,7 +84,7 @@ export default function RezultatiPage() {
               <Reveal delay={0.18}>
                 <p className="t-body max-w-[34ch] text-slate pretty">
                   Pošaljite fotografiju stanja. Ako se posao završi kod vas,
-                  isti kadar pre i posle ide u arhivu — uz vašu saglasnost.
+                  isti kadar pre i posle ide u arhivu, uz vašu saglasnost.
                 </p>
               </Reveal>
 

@@ -2,7 +2,7 @@
  * Jedini izvor istine za sadržaj brenda.
  *
  * VAŽNO: ovde se nalaze samo podaci potvrđeni iz materijala klijenta
- * (logo, Instagram objave @deltasystems.rs). Ništa nije izmišljeno —
+ * (logo, Instagram objave @deltasystems.rs). Ništa nije izmišljeno ·
  * bez cena, broja klijenata, godina iskustva, sertifikata i recenzija.
  * Polja koja klijent treba da popuni stoje kao `null` i UI ih preskače.
  */
@@ -50,7 +50,7 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  { code: '01', label: 'Početna', href: '/', note: 'Δ — razlika' },
+  { code: '01', label: 'Početna', href: '/', note: 'Razlika pre i posle' },
   { code: '02', label: 'Usluge', href: '/usluge', note: 'Nameštaj i vozila' },
   { code: '03', label: 'Proces', href: '/proces', note: 'Od upita do predaje' },
   { code: '04', label: 'Rezultati', href: '/rezultati', note: 'Pre / posle' },
@@ -59,7 +59,7 @@ export const nav: NavItem[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  METOD — četiri stuba, doslovno iz materijala klijenta              */
+/*  METOD · četiri stuba, doslovno iz materijala klijenta              */
 /* ------------------------------------------------------------------ */
 
 export type Pillar = {
@@ -75,7 +75,7 @@ export const pillars: Pillar[] = [
     title: 'Dubinsko pranje',
     body: 'Uklanjamo dubinsku prljavštinu, fleke i neprijatne mirise iz vlakana.',
     detail:
-      'Rastvor ulazi u vlakno, veže prljavštinu i izlazi zajedno sa njom. Ono što je bilo u dubini ne ostaje u tkanini — vadi se iz nje.',
+      'Rastvor ulazi u vlakno, veže prljavštinu i izlazi zajedno sa njom. Ono što je bilo u dubini ne ostaje u tkanini, već se vadi iz nje.',
   },
   {
     code: 'M.02',
@@ -149,7 +149,7 @@ export const services: Service[] = [
     title: 'Vozila',
     kicker: 'Enterijer, sedišta, tapacirung',
     lede:
-      'Dubinsko pranje sedišta i pažljivo čišćenje enterijera — sa pažnjom prema materijalima i detaljima.',
+      'Dubinsko pranje sedišta i pažljivo čišćenje enterijera, sa pažnjom prema materijalima i detaljima.',
     image: '/media/vozilo-zadnja-posle.jpg',
     imageAlt: 'Zadnja klupa u vozilu nakon dubinskog pranja sedišta',
     items: [
@@ -190,7 +190,7 @@ export const steps: Step[] = [
     depth: 'Površina',
     title: 'Upit i fotografija',
     body:
-      'Pošaljete šta treba očistiti i fotografiju stanja. Fotografija skraćuje ceo razgovor — po njoj se vidi materijal i tip zaprljanja.',
+      'Pošaljete šta treba očistiti i fotografiju stanja. Fotografija skraćuje ceo razgovor, jer se po njoj vidi materijal i tip zaprljanja.',
   },
   {
     code: '01',
@@ -211,7 +211,7 @@ export const steps: Step[] = [
     depth: 'Dubina',
     title: 'Dubinsko pranje',
     body:
-      'Uklanjamo dubinsku prljavštinu, fleke i neprijatne mirise iz vlakana. Prljavština izlazi iz tkanine — ne razmazuje se po njoj.',
+      'Uklanjamo dubinsku prljavštinu, fleke i neprijatne mirise iz vlakana. Prljavština izlazi iz tkanine, ne razmazuje se po njoj.',
   },
   {
     code: '04',
@@ -232,12 +232,12 @@ export const steps: Step[] = [
     depth: 'Površina',
     title: 'Provera i predaja',
     body:
-      'Poslednji prolaz po detaljima — šavovi, ivice, uglovi. Tek onda je posao završen.',
+      'Poslednji prolaz po detaljima: šavovi, ivice, uglovi. Tek onda je posao završen.',
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/*  REZULTATI — isključivo stvarne fotografije klijenta                */
+/*  REZULTATI · isključivo stvarne fotografije klijenta                */
 /*  Nove slučajeve dodati ovde; komponente se same prilagođavaju.       */
 /* ------------------------------------------------------------------ */
 
@@ -272,12 +272,12 @@ export const cases: CaseStudy[] = [
     compare: {
       before: {
         src: '/media/tabure-pre.jpg',
-        alt: 'Ljubičasti tabure od velura pre čišćenja — tamne mrlje po sedištu i stranicama',
+        alt: 'Ljubičasti tabure od velura pre čišćenja, sa tamnim mrljama po sedištu i stranicama',
         state: 'PRE',
       },
       after: {
         src: '/media/tabure-posle.jpg',
-        alt: 'Isti tabure posle dubinskog pranja — ujednačena boja velura bez mrlja',
+        alt: 'Isti tabure posle dubinskog pranja, sa ujednačenom bojom velura bez mrlja',
         state: 'POSLE',
       },
       ratio: '856 / 940',
@@ -294,12 +294,12 @@ export const cases: CaseStudy[] = [
     compare: {
       before: {
         src: '/media/garnitura-pre.jpg',
-        alt: 'Sedeći deo ugaone garniture pre čišćenja — potamnele zone i tragovi na tkanini',
+        alt: 'Sedeći deo ugaone garniture pre čišćenja, sa potamnelim zonama i tragovima na tkanini',
         state: 'PRE',
       },
       after: {
         src: '/media/garnitura-posle.jpg',
-        alt: 'Isti sedeći deo posle dubinskog pranja — ujednačena siva tkanina',
+        alt: 'Isti sedeći deo posle dubinskog pranja, sa ujednačenom sivom tkaninom',
         state: 'POSLE',
       },
       ratio: '1100 / 580',
@@ -354,7 +354,7 @@ export const cases: CaseStudy[] = [
 export const getCase = (id: string) => cases.find((c) => c.id === id);
 
 /* ------------------------------------------------------------------ */
-/*  PRINCIPI — način rada                                              */
+/*  PRINCIPI · način rada                                              */
 /* ------------------------------------------------------------------ */
 
 export const principles = [
@@ -368,7 +368,7 @@ export const principles = [
     code: 'P.02',
     title: 'Ekstrakcija, ne maskiranje',
     body:
-      'Prljavština izlazi iz vlakna. Miris se ne prekriva mirisom — uklanja se izvor.',
+      'Prljavština izlazi iz vlakna. Miris se ne prekriva mirisom. Uklanja se izvor.',
   },
   {
     code: 'P.03',
@@ -392,7 +392,7 @@ export const principles = [
 
 /* ------------------------------------------------------------------ */
 /*  ČESTA PITANJA                                                      */
-/*  Odgovori su namerno bez brojeva koje ne možemo da garantujemo —    */
+/*  Odgovori su namerno bez brojeva koje ne možemo da garantujemo ·    */
 /*  bez cena, rokova i procenata. Ono što zavisi od slučaja, tako i    */
 /*  piše.                                                              */
 /* ------------------------------------------------------------------ */
@@ -402,11 +402,11 @@ export type Faq = { q: string; a: string };
 export const faqs: Faq[] = [
   {
     q: 'Da li izlazite na adresu?',
-    a: 'Za nameštaj — da, radi se kod vas. Za vozila se lokacija dogovara unapred, zavisno od obima posla.',
+    a: 'Za nameštaj da, radi se kod vas. Za vozila se lokacija dogovara unapred, zavisno od obima posla.',
   },
   {
     q: 'Koliko traje sušenje?',
-    a: 'Ekstrakcija vlage je deo tretmana, pa nameštaj ne ostaje mokar kao posle običnog pranja. Koliko tačno treba zavisi od materijala, debljine sunđera i provetravanja prostorije — okvir dobijate na licu mesta, kada se vidi šta se radi.',
+    a: 'Ekstrakcija vlage je deo tretmana, pa nameštaj ne ostaje mokar kao posle običnog pranja. Koliko tačno treba zavisi od materijala, debljine sunđera i provetravanja prostorije. Okvir dobijate na licu mesta, kada se vidi šta se radi.',
   },
   {
     q: 'Da li se sve fleke skidaju?',
@@ -414,11 +414,11 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Koristite li hemikalije?',
-    a: 'Na površinama koje ne upijaju radi para — bez sredstava. Kod upijajućih materijala koristi se rastvor koji se posle ekstrahuje iz vlakna zajedno sa prljavštinom, tako da u tkanini ne ostaje talog.',
+    a: 'Na površinama koje ne upijaju radi para, bez sredstava. Kod upijajućih materijala koristi se rastvor koji se posle ekstrahuje iz vlakna zajedno sa prljavštinom, tako da u tkanini ne ostaje talog.',
   },
   {
     q: 'Kako da znam da li mom nameštaju treba dubinsko čišćenje?',
-    a: 'Najčešći znaci su promena tona tkanine u zonama gde se najviše sedi i miris koji se ne gubi provetravanjem. Ako niste sigurni, pošaljite fotografiju — po njoj se vidi dosta.',
+    a: 'Najčešći znaci su promena tona tkanine u zonama gde se najviše sedi i miris koji se ne gubi provetravanjem. Ako niste sigurni, pošaljite fotografiju, po njoj se vidi dosta.',
   },
   {
     q: 'Šta treba da pripremim pre dolaska?',
@@ -435,7 +435,7 @@ export const faqs: Faq[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  USISAVANJE vs DUBINSKO PRANJE — poređenje, ne marketing            */
+/*  USISAVANJE vs DUBINSKO PRANJE · poređenje, ne marketing            */
 /* ------------------------------------------------------------------ */
 
 export const comparison = {

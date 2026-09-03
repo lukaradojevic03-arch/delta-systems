@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/cn';
 
 /**
- * Δ — interaktivno poređenje PRE / POSLE.
+ * Δ · interaktivno poređenje PRE / POSLE.
  *
  * Rez nije vertikalan nego dijagonalan, pod istim uglom kao podela
  * u vizuelnom materijalu klijenta (var --shear). Radi mišem, prstom
@@ -87,7 +87,7 @@ export function DeltaSlider({
     }
   };
 
-  /* diskretan nagoveštaj da se element pomera — jednom, pri ulasku u vidno polje */
+  /* diskretan nagoveštaj da se element pomera · jednom, pri ulasku u vidno polje */
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -138,7 +138,7 @@ export function DeltaSlider({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
       >
-        {/* POSLE — puna podloga */}
+        {/* POSLE · puna podloga */}
         <Image
           src={after}
           alt={afterAlt}
@@ -150,7 +150,7 @@ export function DeltaSlider({
           draggable={false}
         />
 
-        {/* PRE — isečeno dijagonalno */}
+        {/* PRE · isečeno dijagonalno */}
         <div
           className="absolute inset-0"
           style={{
@@ -184,10 +184,9 @@ export function DeltaSlider({
           >
             <defs>
               <linearGradient id="delta-cut" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#F0B48A" />
-                <stop offset="38%" stopColor="#E0899F" />
-                <stop offset="72%" stopColor="#A78BC8" />
-                <stop offset="100%" stopColor="#8E9FD4" />
+                <stop offset="0%" stopColor="#C7D9F0" />
+                <stop offset="50%" stopColor="#5B80BC" />
+                <stop offset="100%" stopColor="#324973" />
               </linearGradient>
             </defs>
             <line
@@ -217,7 +216,7 @@ export function DeltaSlider({
               onKeyDown={onKeyDown}
               className={cn(
                 'pointer-events-auto flex h-11 w-11 items-center justify-center',
-                'bg-paper text-ink font-mono text-[13px] leading-none',
+                'bg-paper text-ink font-sans text-[13px] leading-none',
                 'transition-transform duration-500 ease-delta',
                 active ? 'scale-95' : 'hover:scale-110',
               )}

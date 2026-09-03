@@ -54,7 +54,8 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-display)', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+        // mono porodica je uklonjena; sve oznake idu kroz sans
+        mono: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       letterSpacing: {
         wider: '0.08em',

@@ -13,7 +13,7 @@ export function PageHeader({
   lines,
   lede,
   meta,
-  /** cqi koeficijent naslova — bira se prema dužini najdužeg reda */
+  /** cqi koeficijent naslova · bira se prema dužini najdužeg reda */
   titleSize = 'text-[clamp(1.89rem,13.3cqi,5.85rem)]',
 }: {
   code: string;
@@ -27,7 +27,7 @@ export function PageHeader({
     <header className="edge pb-9 pt-[104px] md:pb-14 md:pt-[136px]">
       <Reveal>
         <p className="t-meta text-stone">
-          {code} — {eyebrow}
+          {code} · {eyebrow}
         </p>
       </Reveal>
 
@@ -48,17 +48,7 @@ export function PageHeader({
 
           {meta && (
             <Reveal delay={0.3}>
-              <dl className="mt-8 space-y-2.5">
-                {meta.map((m) => (
-                  <div
-                    key={m.k}
-                    className="flex items-baseline gap-4 border-t border-ink/12 pt-2.5"
-                  >
-                    <dt className="t-meta-sm w-28 shrink-0 text-stone">{m.k}</dt>
-                    <dd className="t-meta-sm text-ink">{m.v}</dd>
-                  </div>
-                ))}
-              </dl>
+              <MetaList className="mt-8" items={meta} />
             </Reveal>
           )}
         </div>
@@ -97,7 +87,7 @@ export function SectionLabel({
 }
 
 /* ------------------------------------------------------------------ */
-/*  Diptih — dva kadra koja se ne poklapaju, pa se ne lažira klizač    */
+/*  Diptih · dva kadra koja se ne poklapaju, pa se ne lažira klizač    */
 /* ------------------------------------------------------------------ */
 
 export function Diptych({
@@ -154,28 +144,42 @@ export function MetaList({
   items,
   invert = false,
   className,
+  columns = 1,
 }: {
   items: { k: string; v: string }[];
   invert?: boolean;
   className?: string;
+  /** 2 kada kolona ima dovoljno širine */
+  columns?: 1 | 2;
 }) {
   return (
-    <dl className={cn('space-y-0', className)}>
+    <dl
+      className={cn(
+        'grid gap-x-8 gap-y-5',
+        columns === 2 && 'sm:grid-cols-2',
+        className,
+      )}
+    >
       {items.map((m) => (
         <div
           key={m.k}
           className={cn(
-            'flex items-baseline justify-between gap-6 border-t py-2.5',
-            invert ? 'border-paper/15' : 'border-ink/12',
+            'border-l-2 pl-4',
+            invert ? 'border-azure-400/60' : 'border-azure-200',
           )}
         >
-          <dt className={cn('t-meta-sm', invert ? 'text-paper/45' : 'text-stone')}>
+          <dt
+            className={cn(
+              't-meta-sm',
+              invert ? 'text-paper/50' : 'text-slate',
+            )}
+          >
             {m.k}
           </dt>
           <dd
             className={cn(
-              't-meta-sm text-right',
-              invert ? 'text-paper/90' : 'text-ink',
+              'mt-1.5 font-sans text-[0.9375rem] leading-snug tracking-[-0.008em] md:text-base',
+              invert ? 'text-paper' : 'text-ink',
             )}
           >
             {m.v}
@@ -187,7 +191,7 @@ export function MetaList({
 }
 
 /* ------------------------------------------------------------------ */
-/*  Skala dubine — ponavljajući motiv (površina → vlakno → dubina)     */
+/*  Skala dubine · ponavljajući motiv (površina → vlakno → dubina)     */
 /* ------------------------------------------------------------------ */
 
 export function DepthScale({

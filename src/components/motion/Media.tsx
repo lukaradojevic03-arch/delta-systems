@@ -6,7 +6,7 @@ import { useRef } from 'react';
 import { cn, EASE } from '@/lib/cn';
 
 /* ------------------------------------------------------------------ */
-/*  ImageReveal — slika se otkriva ispod maske koja klizi naviše,      */
+/*  ImageReveal · slika se otkriva ispod maske koja klizi naviše,      */
 /*  uz blagi zoom-out. Opcioni dijagonalni rez (potpis brenda).        */
 /* ------------------------------------------------------------------ */
 
@@ -53,7 +53,7 @@ export function ImageReveal({
       whileInView="shown"
       viewport={{ once: true, margin: '0px 0px -8% 0px' }}
     >
-      {/* otkrivanje rezom, ne obojenom maskom — radi na svakoj podlozi */}
+      {/* otkrivanje rezom, ne obojenom maskom · radi na svakoj podlozi */}
       <motion.div
         className="absolute inset-0"
         variants={
@@ -91,7 +91,7 @@ export function ImageReveal({
 }
 
 /* ------------------------------------------------------------------ */
-/*  Parallax — suptilno pomeranje pri skrolu (samo desktop-nivo amplituda) */
+/*  Parallax · suptilno pomeranje pri skrolu (samo desktop-nivo amplituda) */
 /* ------------------------------------------------------------------ */
 
 export function Parallax({

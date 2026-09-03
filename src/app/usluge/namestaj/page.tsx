@@ -6,11 +6,10 @@ import { DeltaSlider } from '@/components/ui/DeltaSlider';
 import { ImageReveal, Parallax } from '@/components/motion/Media';
 import { LineReveal, Reveal, RuleReveal } from '@/components/motion/Reveal';
 import { MetaList, PageHeader, SectionLabel } from '@/components/ui/Bits';
-import { MethodMatrix } from '@/components/sections/MethodMatrix';
 import { Faq } from '@/components/sections/Faq';
 
 export const metadata: Metadata = {
-  title: 'Nameštaj — dubinsko pranje sofa, dušeka i tepiha',
+  title: 'Nameštaj · Dubinsko pranje sofa, dušeka i tepiha',
   description:
     'Dubinsko pranje tapaciranog nameštaja, dušeka, tepiha i tekstila. Fleke, prljavština i mirisi izlaze iz vlakana; ne-upijajuće podloge se rade parom.',
   alternates: { canonical: '/usluge/namestaj' },
@@ -25,7 +24,7 @@ export default function NamestajPage() {
     <>
       <PageHeader
         code={service.code}
-        eyebrow="Usluga — Nameštaj"
+        eyebrow="Usluga · Nameštaj"
         lines={['Nameštaj', 'iznutra.']}
         titleSize="text-[clamp(2.06rem,17.2cqi,5.85rem)]"
         lede={service.lede}
@@ -36,7 +35,7 @@ export default function NamestajPage() {
         ]}
       />
 
-      {/* Poređenje — tapacirani velur, isti kadar */}
+      {/* Poređenje · tapacirani velur, isti kadar */}
       <section className="edge pb-14 md:pb-20">
         <div className="grid gap-10 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-5">
@@ -48,10 +47,10 @@ export default function NamestajPage() {
               ratio={tabure.compare!.ratio}
               priority
               sizes="(max-width: 768px) 100vw, 40vw"
-              label="Tabure od velura — poređenje pre i posle dubinskog pranja"
+              label="Tabure od velura, poređenje pre i posle dubinskog pranja"
             />
             <p className="t-meta-sm mt-4 text-stone">
-              {tabure.code} — {tabure.title}, isti kadar
+              {tabure.code} · {tabure.title}, isti kadar
             </p>
           </div>
 
@@ -76,7 +75,7 @@ export default function NamestajPage() {
         </div>
       </section>
 
-      {/* Ambijent — gde taj nameštaj stoji */}
+      {/* Ambijent · gde taj nameštaj stoji */}
       <section className="relative isolate overflow-hidden">
         <Image
           src="/media/amb-dnevna-zelena.jpg"
@@ -122,7 +121,7 @@ export default function NamestajPage() {
               <Reveal delay={0.2} className="mt-8">
                 <p className="t-lede max-w-[42ch] text-paper/85 pretty">
                   Tapacirani nameštaj radi kao filter. Sve što prođe kroz
-                  prostoriju jednom završi u njemu — i ostane tamo dok se ne
+                  prostoriju jednom završi u njemu i ostane tamo dok se ne
                   izvuče.
                 </p>
               </Reveal>
@@ -148,7 +147,7 @@ export default function NamestajPage() {
               </Parallax>
               <Reveal delay={0.16}>
                 <p className="t-meta-sm mt-4 text-paper/45">
-                  Zone najveće upotrebe — pre tretmana
+                  Zone najveće upotrebe · pre tretmana
                 </p>
               </Reveal>
 
@@ -183,7 +182,7 @@ export default function NamestajPage() {
         </div>
       </section>
 
-      {/* Kako izgleda proces — kratak izvod, pun proces na /proces */}
+      {/* Kako izgleda proces · kratak izvod, pun proces na /proces */}
       <section className="bg-paper-warm">
         <div className="edge py-14 md:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -208,34 +207,6 @@ export default function NamestajPage() {
               </Reveal>
             ))}
           </ol>
-        </div>
-      </section>
-
-      {/* Šta imate → šta se radi */}
-      <section className="bg-azure-50">
-        <div className="edge py-14 md:py-20">
-          <div className="grid gap-8 md:grid-cols-12">
-            <div className="cq md:col-span-6">
-              <SectionLabel code={`${service.code}.5`}>Provera</SectionLabel>
-              <LineReveal
-                as="h2"
-                delay={0.08}
-                lines={['Vaš komad,', 'vaš postupak.']}
-                className="t-display mt-5 text-[clamp(1.4rem,12cqi,3rem)]"
-              />
-            </div>
-            <div className="md:col-span-5 md:col-start-8 md:pt-4">
-              <Reveal delay={0.16}>
-                <p className="t-body max-w-[40ch] text-slate pretty">
-                  Izaberite predmet i vidite koji tretman ide na njega i šta
-                  tačno ulazi u posao.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-          <div className="mt-10 md:mt-12">
-            <MethodMatrix filter="Nameštaj" />
-          </div>
         </div>
       </section>
 

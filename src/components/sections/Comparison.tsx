@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 
 /**
  * Usisavanje vs dubinsko pranje.
- * Nije marketinška tabela — samo razlika u tome dokle koji postupak stiže.
+ * Nije marketinška tabela · samo razlika u tome dokle koji postupak stiže.
  */
 export function Comparison({ className }: { className?: string }) {
   const cols = [

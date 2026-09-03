@@ -3,22 +3,16 @@
 @tailwind utilities;
 
 /* ============================================================
-   DELTA SYSTEMS — design system
+   DELTA SYSTEMS · design system
    Motif: Δ (delta = razlika). Dijagonalni rez (shear) preuzet iz
    PRE/POSLE podele u vizuelnom materijalu klijenta.
    ============================================================ */
 
 :root {
-  /* brand shear angle — svi dijagonalni rezovi koriste isti ugao */
+  /* brand shear angle · svi dijagonalni rezovi koriste isti ugao */
   --shear: 6.5%;
   --edge-x: clamp(1.25rem, 5vw, 5.5rem);
-  --spectrum: linear-gradient(
-    90deg,
-    #f0b48a 0%,
-    #e0899f 34%,
-    #a78bc8 68%,
-    #8e9fd4 100%
-  );
+  --spectrum: linear-gradient(90deg, #a8c1e4 0%, #5b80bc 55%, #324973 100%);
 }
 
 @layer base {
@@ -34,7 +28,7 @@
   body {
     @apply bg-paper text-ink font-sans antialiased;
     font-feature-settings: 'ss01', 'cv01';
-    /* clip, ne hidden — hidden pravi scroll kontejner i kvari position: sticky */
+    /* clip, ne hidden · hidden pravi scroll kontejner i kvari position: sticky */
     overflow-x: clip;
   }
 
@@ -48,7 +42,7 @@
     outline-offset: 3px;
   }
 
-  /* Bodoni ima veoma tanke poteze — optical sizing po veličini */
+  /* Bodoni ima veoma tanke poteze · optical sizing po veličini */
   .font-display {
     font-optical-sizing: auto;
   }
@@ -83,7 +77,7 @@
 
   .rule-spectrum-v {
     width: 1px;
-    background: linear-gradient(180deg, #f0b48a, #e0899f, #a78bc8, #8e9fd4);
+    background: linear-gradient(180deg, #a8c1e4, #5b80bc, #324973);
     opacity: 0.85;
   }
 
@@ -108,17 +102,19 @@
   }
 
   .t-meta {
-    @apply font-mono uppercase;
-    font-size: 0.6875rem;
-    letter-spacing: 0.18em;
-    line-height: 1.4;
+    @apply font-sans uppercase;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.45;
   }
 
   .t-meta-sm {
-    @apply font-mono uppercase;
-    font-size: 0.625rem;
-    letter-spacing: 0.2em;
-    line-height: 1.4;
+    @apply font-sans uppercase;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.055em;
+    line-height: 1.45;
   }
 
   .t-body {
@@ -161,9 +157,10 @@
 
   /* ---------- dugmad ---------- */
   .btn {
-    @apply relative inline-flex items-center gap-3 font-mono uppercase overflow-hidden;
-    font-size: 0.6875rem;
-    letter-spacing: 0.2em;
+    @apply relative inline-flex items-center gap-3 font-sans uppercase overflow-hidden;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
     padding: 1.05rem 1.85rem;
     isolation: isolate;
     transition: color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -218,7 +215,7 @@
     @apply text-ink;
   }
 
-  /* plavi CTA — nosi sve stranice osim početne */
+  /* plavi CTA · nosi sve stranice osim početne */
   .btn-blue {
     @apply text-paper;
     background: #324973;
@@ -232,18 +229,16 @@
     @apply text-paper;
   }
 
-  /* glavni konverzioni CTA — samo na početnoj */
-  .btn-spectrum {
-    @apply text-ink;
-    background: var(--spectrum);
-    padding: 1.25rem 2.25rem;
-    font-size: 0.75rem;
+
+  /* svetlo dugme na tamnoj podlozi */
+  .btn-paper {
+    @apply bg-paper text-ink;
   }
-  .btn-spectrum::before {
-    background: #0e1116;
+  .btn-paper::before {
+    background: #324973;
   }
-  .btn-spectrum:hover,
-  .btn-spectrum:focus-visible {
+  .btn-paper:hover,
+  .btn-paper:focus-visible {
     @apply text-paper;
   }
 

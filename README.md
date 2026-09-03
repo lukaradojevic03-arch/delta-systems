@@ -1,6 +1,6 @@
-# Delta Systems — website
+# Delta Systems · website
 
-Višestranični sajt za **Delta Systems** (Beograd) — dubinsko čišćenje nameštaja
+Višestranični sajt za **Delta Systems** (Beograd) · dubinsko čišćenje nameštaja
 i enterijera vozila.
 
 Next.js 15 (App Router) · TypeScript · Tailwind CSS · Framer Motion.
@@ -12,12 +12,12 @@ Next.js 15 (App Router) · TypeScript · Tailwind CSS · Framer Motion.
 **Δ = razlika.** Ime firme je i merilo posla: razlika između stanja pre i
 posle tretmana. Iz toga sledi sve ostalo:
 
-- **Dijagonalni rez (shear)** — preuzet iz PRE/POSLE podele u vizuelnim
+- **Dijagonalni rez (shear)** · preuzet iz PRE/POSLE podele u vizuelnim
   materijalima klijenta. Ponavlja se na dugmadima, slikama, klizaču i
   prelazima između stranica (`--shear` u `globals.css`).
-- **Skala dubine** — Površina → Vlakno → Osnova. Nosi stranicu `/proces`
+- **Skala dubine** · Površina → Vlakno → Osnova. Nosi stranicu `/proces`
   (lenjir koji prati skrol) i pojavljuje se kao motiv na drugim mestima.
-- **Tehnički indeks** — svaka usluga, korak i slučaj nosi mono oznaku
+- **Tehnički indeks** · svaka usluga, korak i slučaj nosi mono oznaku
   (`S.01`, `M.03`, `Δ 02`). Sajt se čita kao evidencija radionice, ne kao
   reklama.
 
@@ -26,30 +26,31 @@ posle tretmana. Iz toga sledi sve ostalo:
 | Uloga | Font | Gde |
 | --- | --- | --- |
 | Display | Bodoni Moda | Naslovi, imena slučajeva |
-| Tekst | Archivo | Uvodi, opisi |
-| Tehnički | IBM Plex Mono | Oznake, brojevi, metapodaci |
+| Sve ostalo | Archivo | Tekst, oznake, brojevi, dugmad |
 
-Svi naslovi se skaliraju **container query jedinicama (`cqi`)**, ne `vw` —
+Dva fonta, bez mono porodice. Sitne oznake (`.t-meta`, `.t-meta-sm`) su
+Archivo u verzalu, sa umerenim razmakom između slova.
+
+Svi naslovi se skaliraju **container query jedinicama (`cqi`)**, ne `vw` ·
 veličina prati širinu kolone, pa se ručno prelomljeni redovi nikad ne lome
 sami. Klasa `.cq` označava kontejner; koeficijent je izračunat prema
 najdužem redu naslova.
 
 ### Paleta
 
-- `ink` — grafitna, glavna tamna podloga
-- `azure` (50 → 900) — svetlo do duboko plava, izvedena iz periwinkle
+- `ink` · grafitna, glavna tamna podloga
+- `azure` (50 → 900) · svetlo do duboko plava, izvedena iz periwinkle
   tona u logotipu. Nosi **sve stranice osim početne**: podloge sekcija
   (`azure-50`), tamni blokovi (`azure-800/900`), CTA (`.btn-blue`),
   aktivna stavka u navigaciji.
-- `paper` / `paper-warm` — topla slonovača
-- `stone` / `slate` — sekundarni tekst
-- **spektar** (breskva → roza → lila → plava) — **samo na početnoj**, i to
-  kao glavni CTA (`.btn-spectrum`) i tanke linije. Nijedna unutrašnja
-  stranica ga ne ponavlja.
+- `paper` / `paper-warm` · topla slonovača
+- `stone` / `slate` · sekundarni tekst
+- Šarena spektralna varijanta je uklonjena sa celog sajta. Sve linije i
+  akcenti idu kroz `azure` skalu.
 
 ### Fotografije van početne
 
-Sve prolaze kroz klasu `.duotone` — sivo pa plavi multiply — pa materijal
+Sve prolaze kroz klasu `.duotone` · sivo pa plavi multiply · pa materijal
 iz različitih izvora deluje kao jedna serija umesto kao skup šarenih
 stock slika. Početna zadržava pune boje materijala.
 
@@ -70,7 +71,7 @@ npm run build && npm start
 
 ---
 
-## Sadržaj — gde se šta menja
+## Sadržaj · gde se šta menja
 
 Sav tekst i podaci su na jednom mestu: **`src/lib/site.ts`**.
 
@@ -87,7 +88,7 @@ Sav tekst i podaci su na jednom mestu: **`src/lib/site.ts`**.
 ### Telefon i email
 
 U `site` stoje kao `null`. Čim se popune, automatski se pojavljuju u
-podnožju i na stranici Kontakt — nije potrebna nijedna druga izmena.
+podnožju i na stranici Kontakt · nije potrebna nijedna druga izmena.
 
 ```ts
 phone: '+381 6x xxx xxxx',
@@ -100,8 +101,8 @@ email: 'info@deltasystems.rs',
 2. Dodajte unos u `cases` u `src/lib/site.ts`.
 
 - Ako su **dva kadra poravnata** (isti ugao, isti okvir), koristite
-  `compare` — dobija se interaktivni Δ klizač.
-- Ako **nisu poravnata**, koristite `frames` — dobija se diptih sa
+  `compare` · dobija se interaktivni Δ klizač.
+- Ako **nisu poravnata**, koristite `frames` · dobija se diptih sa
   oznakama PRE / POSLE. Klizač se ne lažira.
 
 Galerija sama raspoređuje slučajeve kroz tri različita rasporeda, pa novi
@@ -121,7 +122,7 @@ POSLE i nikada se ne predstavljaju kao rezultat rada klijenta.** One
 pokazuju vrstu površine, ne konkretan posao. Kada klijent dostavi svoje
 fotografije ambijenta, zamenite fajlove istim imenima.
 
-Nema izmišljenih podataka — bez cena, broja klijenata, godina iskustva,
+Nema izmišljenih podataka · bez cena, broja klijenata, godina iskustva,
 sertifikata i recenzija.
 
 Rezolucija izvornog materijala je ograničena (Instagram kreative), pa se
@@ -139,11 +140,10 @@ prostor:
 | Celina | Fajl | Gde |
 | --- | --- | --- |
 | **Δ klizač** pre/posle | `ui/DeltaSlider.tsx` | Početna, Rezultati, Nameštaj |
-| **Šta imate → šta se radi** — mali alat koji za izabrani predmet pokazuje postupak, obim i rezultat | `sections/MethodMatrix.tsx` | Usluge, Nameštaj, Vozila |
-| **Usisavanje vs dubinsko pranje** — poređenje dokle koji postupak stiže | `sections/Comparison.tsx` | Usluge, Proces |
+| **Usisavanje vs dubinsko pranje** · poređenje dokle koji postupak stiže | `sections/Comparison.tsx` | Usluge, Proces |
 | **Česta pitanja** | `sections/Faq.tsx` + `faqs` u `site.ts` | Usluge |
 
-Odgovori u `faqs` namerno nemaju brojeve koji se ne mogu garantovati —
+Odgovori u `faqs` namerno nemaju brojeve koji se ne mogu garantovati ·
 bez rokova, procenata i cena. Ono što zavisi od slučaja, tako i piše.
 
 ---
@@ -161,7 +161,7 @@ Upit se šalje na `POST /api/upit`. Ponašanje:
   potvrdu i direktan link ka Instagram poruci.
 
 Na Vercelu se promenljiva dodaje u **Project → Settings → Environment
-Variables**. Lokalno — u `.env.local`:
+Variables**. Lokalno · u `.env.local`:
 
 ```
 CONTACT_WEBHOOK_URL=https://...
@@ -174,7 +174,7 @@ Fotografije se šalju kao data URL, najviše 3 komada i ukupno do ~3.6 MB.
 ## SEO
 
 - Metapodaci po stranici, Open Graph slika, `sitemap.xml`, `robots.txt`.
-- `LocalBusiness` structured data u `src/app/layout.tsx` — sadrži samo
+- `LocalBusiness` structured data u `src/app/layout.tsx` · sadrži samo
   potvrđene podatke. **Kada dobijete adresu i telefon, dopunite `site`;**
   structured data se popunjava odatle.
 - Pre puštanja u rad proverite da `site.url` pokazuje na pravi domen.

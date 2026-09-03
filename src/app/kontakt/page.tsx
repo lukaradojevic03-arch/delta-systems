@@ -6,7 +6,7 @@ import { Reveal } from '@/components/motion/Reveal';
 import { MetaList, PageHeader } from '@/components/ui/Bits';
 
 export const metadata: Metadata = {
-  title: 'Kontakt — pošaljite upit',
+  title: 'Kontakt · Pošaljite upit',
   description:
     'Recite šta treba očistiti, dodajte fotografiju i ostavite kontakt. Dubinsko čišćenje nameštaja i vozila, Beograd.',
   alternates: { canonical: '/kontakt' },
@@ -22,7 +22,7 @@ export default function KontaktPage() {
         titleSize="text-[clamp(1.89rem,12.5cqi,5.85rem)]"
         lede={
           <>
-            Tri koraka. Fotografija je najkraći put do tačne procene — po njoj
+            Tri koraka. Fotografija je najkraći put do tačne procene, po njoj
             se vidi materijal i tip zaprljanja.
           </>
         }
@@ -48,7 +48,7 @@ export default function KontaktPage() {
 
           {/* ---------- bočna kolona ---------- */}
           <aside className="md:col-span-4 md:col-start-9">
-            {/* tamni blok — vizuelno sidro pored svetlog panela */}
+            {/* tamni blok · vizuelno sidro pored svetlog panela */}
             <Reveal className="cq">
               <div className="relative isolate overflow-hidden bg-azure-800 p-6 text-paper sm:p-7">
                 <Image
